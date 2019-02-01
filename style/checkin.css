@@ -1,0 +1,133 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 12pt;
+}
+
+#boxHeader {
+    margin-bottom: 15px;
+    font-size: 18pt;
+    font-family: arial;
+    font-weight: bold;
+}
+
+
+
+#buttonsDiv {
+    width: 100%;
+    margin-bottom: 10px;  
+    font-weight: bold;
+    font-size: 18pt;
+    text-align: center;
+    overflow-y: auto;
+}
+
+#container {
+    display: none;
+    padding: 0, 0, 0, 0;
+    
+}
+
+.form {
+    background-color: darkgray;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+@media only screen and (max-width : 768px){
+    #vehicleInfo {
+        margin-top: 10px;
+    }
+}
+
+
+#serviceRequests {
+    margin-top: 10px;
+    overflow: auto;
+    margin-bottom: 5%;
+}
+
+#requestedServicesTable {
+    background-color: white;
+    border-radius: 7px;
+}
+
+#submitBut {
+    margin-top: 20px;
+    width: 100%;
+    font-family: arial;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+#requestsDropdown {
+    width: 100%;
+    height: 30px;
+}
+
+#otherRequestsInp {
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+#logoDiv {
+    margin-left: 15px;
+}
+
+#searchButDiv {
+    padding: 0 0 0 0;
+}
+
+#searchBut {
+    width: 100%;
+    font-family: arial;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+#clearTableDiv {
+    padding: 0 0 0 10px;
+}
+
+@media only screen and (max-width : 768px){
+    #clearTableDiv {
+        padding: 0 0 0 0;
+        margin-top: 10px;
+    }
+}
+
+#clearForm {
+    width: 100%;
+    font-family: arial;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+#timeInpDiv {
+    padding: 0 0 0 0;
+}
+
+.requiredText {
+    text-align: right;
+}
+
+.paddingu {
+    padding: 0vw 10vw 0vw 10vw;
+}
+
+#addBut {
+    font-family: arial;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+#OtherServiceReqBut {
+    font-family: arial;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+

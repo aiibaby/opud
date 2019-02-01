@@ -1,0 +1,152 @@
+/*
+Thing to note: use margin to give spacing instead of position stuff;
+*/
+body {
+    font-family: arial;
+    font-size: 12pt;
+}
+
+#searchBody {
+    width: 97vw;
+    height: 100vh;
+    display: block;
+    
+}
+
+#main_div{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	/*margin: 10px 10px 10px 10px;*/
+	height: auto;
+    border-radius: 7px;
+}
+
+#search_input{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+#search_result{
+	
+	margin-left: 7%;
+	margin-right: 7%;
+	margin-bottom: 15px;
+    overflow: auto;
+}
+
+
+.submit_button{
+	width: 100%;
+	height:60px;
+}
+
+
+
+#query_category{
+	height:40px;
+}
+#query_search{
+	height:40px;
+    
+}
+#search_button {
+	height:40px;
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: arial;
+}
+
+#submitteer{
+	width: 83%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+    
+}
+
+#title_ncbut{
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+#ncbut{
+	font-weight: bold;
+    font-size: 18pt;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    float: left;
+}
+#title{
+	text-align: center;
+    margin-top: 20px;
+	margin-bottom: 15px;
+    color: white;
+    font-size: 48pt;
+}
+
+/* Search Table */
+
+#searchTable {
+    background-color: white;
+}
+
+#searchTable_filter {
+    visibility: hidden;
+}
+
+.c1 {
+    background-color: #9AADBF;
+}
+
+.c2 {
+    background-color: #D3B99F;
+}
+
+.c3 {
+    background-color: #C17767;
+}
+
+c4 {
+    background-color: #6D98BA;
+}
+
+#background {
+    padding: 0vw 10vw 0vw 10vw;
+}
+
+#backgroundImageDiv {
+    background-image: url("content/william-daigneault-733670-unsplash-edit.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+#inputRowDiv {
+    padding: 0px 0px 0px 0px;
+}
+
+#submit_button_cust_only {
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: arial;
+}
+
+#submit_button_cust_vehicle {
+    font-weight: bold;
+    font-size: 14pt;
+    font-family: arial;
+}
+
+@media only screen and (max-width : 768px){
+    #submit_button_cust_only {
+        margin-bottom: 15px;
+    }
+}

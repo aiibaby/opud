@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <title>Vehicle Check-in</title>
+        <link href='/css/checkin.css' type='text/css' rel='stylesheet'/>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+        <!-- DataTables API -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        
+        <!-- Own Scripts -->
+        <script src="/scripts/requiredFields.js"></script>
+        <script src="/scripts/rejexValidator.js"></script>
+        <script src="/scripts/getmenu.js"></script>
+        <script src="/scripts/checkInSubmit.js"></script>
+        <script src="/scripts/search_overlay.js"></script>
+        
+        
+    </head>
+    
+<body>
+<div id="backgroundImageDiv"></div>   
+    <div class="row" id="firstRow">
+        <!--
+        <a href="https://www.bcit.ca/transportation/">
+                    <div id="logoDiv"></div>
+                </a>
+        -->
+        <div id="menuPosition"></div>
+    </div>
+    <div id="searchPosition"></div> 
+    <div class="container-fluid" id="container">
+        
+        <div class="row"> <div class="col-sm-12" id="headerDiv"> Vehicle Check-in</div></div>
+
+            <div class="row paddingu">
+                <div class="col-sm-6">
+                    <div id="buttonsDiv">
+                        <div id="searchButDiv" class="col-sm-8">
+                            <button id="searchBut" type="button" class="btn btn-warning btn-lg">EXISTING CUSTOMER</button>
+                        </div>
+                        <div id="clearTableDiv" class="col-sm-4">
+                            <button id="clearForm" type="button" class="btn btn-primary btn-lg">Clear Form</button>
+                        </div>
+                    </div>
+
+
+                    <form class="form" id="customerInfo">
+                        <div class="row">
+                            <div id="boxHeader" class="col-sm-9">Customer Information</div>
+                            <div class="requiredText col-sm-3"><font color="red">*</font>required</div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="lnInp" class="col-sm-3 col-form-label">Last Name<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lnInp" required placeholder="Last Name or Company Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fnInp" class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="fnInp" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="hpInp" class="col-sm-3 col-form-label">Home Phone</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="hpInp" placeholder="eg. 6041231234 or 604 123 1234" maxlength="12">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cpInp" class="col-sm-3 col-form-label">Cell Phone</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="cpInp" placeholder="eg. 6041231234 or 604 123 1234" maxlength="12">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="stInp" class="col-sm-3 col-form-label">Street</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="stInp" placeholder="Street">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="ctInp" class="col-sm-3 col-form-label">City</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="ctInp" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pcInp" class="col-sm-3 col-form-label">Postal Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="pcInp" placeholder="eg. A1A 1A1 or A1A1A1" maxlength="7">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <form class="form" id="vehicleInfo">
+                        <div class="row">
+                            <div id="boxHeader" class="col-sm-9">Vehicle Information</div>
+                            <div class="requiredText col-sm-3"><font color="red">*</font>required</div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="vinInp" class="col-sm-3 col-form-label">VIN<font color="red">*</font></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="vinInp" placeholder="eg. 4S4BP60C787362794" maxlength="17">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="yrInp" class="col-sm-3 col-form-label">Year</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="yrInp" placeholder="eg. 1998" maxlength="4">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="makeInp" class="col-sm-3 col-form-label">Make</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="makeInp" placeholder="Make">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="modelInp" class="col-sm-3 col-form-label">Model</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="modelInp" placeholder="Model">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lpInp" class="col-sm-3 col-form-label">License Plate</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lpInp" placeholder="eg. 111aaa or EBR123">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="oiInp" class="col-sm-3 col-form-label">Odometer</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="oiInp" placeholder="Odometer">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="oiInp" class="col-sm-3 col-form-label">Date Promised</label>
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control" id="dtInp">
+                            </div>
+                            <div class="col-sm-4" id="timeInpDiv">
+                                <select id="timeHour">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select id="timeMin">
+                                    <option value="00">00</option>
+                                    <option value="15">15</option>
+                                    <option value="30">30</option>
+                                    <option value="45">45</option>
+                                </select>
+                                <select id="timeAmPm">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vnInp">Vehicle Notes</label>
+                            <textarea class="form-control" id="vnInp" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row paddingu">
+                <div class="col-sm-12">
+                    <form class="form" id="serviceRequests">
+                        <div id="boxHeader">Service Requests</div>
+                        <div class="col-sm-6">
+                            <table class="table" id="requestedServicesTable">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Common Service Requests</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="requestTableBody">
+                                </tbody>
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Other Requests</th>
+                                </tr>
+                                </thead>
+                                <tbody id="otherRequestTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+
+                                    <!--drop is added here that allows for user to choose common requests-->
+                                    <div class="col-sm-10" id="dropDownAppended">
+                                    </div>
+
+                                    <div class="col-sm-2" id="butDiv">
+                                        <button id="addBut" type="button" class="btn btn-primary btn-sm">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                 <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="otherRequestsInp" rows="3" placeholder="Other Requests"></textarea>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button id="OtherServiceReqBut" type="button" class="btn btn-primary btn-sm">Add</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12" id="submitDiv">
+                                <button id="submitBut" type="button" class="btn btn-warning btn-lg">Submit</button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    </body>
+    <script>
+    </script>
+</html>

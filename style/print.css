@@ -1,0 +1,105 @@
+@media print {
+    @page {
+        margin: 0;
+    }
+    body {
+        margin: 0;
+    }
+    #wrap {
+        page-break-inside: avoid;
+    }
+    #printTasks {
+        display: block;
+        page-break-inside: avoid;
+    }
+    #footer {
+        display: block;
+        page-break-inside: avoid;
+    }
+}
+
+#printable {
+    position: absolute;
+    width: 1063px;
+    height: 1375px;
+}
+
+#header {
+    width: 941px;
+    height: 150px;
+    margin: 61px 61px 0px 61px;
+    border-bottom: double;
+    display: block;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+#topRight {
+    float: right;
+    font-size: 20px;
+}
+
+#customerInfo {
+    width: 941px;
+    height: 110px;
+    margin: 0px 61px 0px 61px;
+    background-color: white;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo1 {
+    width: 470px;
+    height: 140px;
+    margin: 0px 0px 0px 61px;
+    float: left;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo2 {
+    width: 471px;
+    height: 140px;
+    margin: 0px 61px 0px 0px;
+    float: right;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo3 {
+    display: inline-block;
+    width: 941px;
+    overflow-y: auto;
+    margin: 0px 61px 0px 61px;
+    padding: 0px 0px 20px 0px;
+    font-size: 16px;
+    border-bottom: double;
+    page-break-before: avoid;
+}
+
+#tasksRequested {
+    float: none;
+    display: block;
+    width: 941px;
+    margin: 15px 61px 0px 61px;
+    padding: 0px 0px 20px 0px;
+    font-size: 16px;
+}
+
+#footer {
+    float: none;
+    display: block;
+    width: 941px;
+    margin: 0px 61px 0px 61px;
+    padding: 0px 0px 0px 0px;
+    font-size: 16px;
+}
+
+#mileageOut {
+    
+}
+

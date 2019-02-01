@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		#right_side_1 {
+			right: 0%;
+			position: absolute;
+			width: 35%;
+		}
+		#left_side_1 {
+			position: absolute;
+			left: 0%;
+		}
+		#left_side_2{
+			position: absolute;
+			left: 0%;
+			width: 35%;
+			bottom: 3%;
+		}
+		#info_div{
+			top: 80%;
+			position: absolute;
+			width: 98%;
+			border-bottom: 4px double;
+			height: 180px;
+		}
+		#main_order{
+			top: 20%;
+			position: absolute;
+			width: 97%;
+		}
+		.work_order{
+			margin-bottom: 4%;
+		}
+		.work_order_skip{
+			margin-bottom: 15%;
+		}
+		.text_field{
+			width: 100%;
+			margin-top: 3.3%;
+		}
+		#img1 {
+			width: 100%;
+			height: 100%;
+		}
+		#logo {
+			position: absolute;
+			left: 1%;
+			width: 11%;
+			height: 65%;
+		}
+		.checkbox {
+			width: 3%;
+			height: 17px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="pageHeader-first">
+			{{!-- Do not touch the img src because it might disrupt the image --}}
+			<div id="logo">
+				<img src="{{logo}}" id="img1"/>
+			</div>
+			<div id="right_side_1">
+				<div>Repair Order: {{ro_id}}</div>
+				<div>Promised Time: {{promised_time}}</div>
+			</div>
+
+			<div id="info_div">
+				<div id="left_side_1">
+					<div>Customer Name: {{last_name}}, {{first_name}}</div>
+					<div>Home Phone Number: {{home_phone}}</div>
+					<div>Cell Phone Number: {{cell_phone}}</div>
+				</div>
+
+				<div id="left_side_2">
+					<div>VIN: {{vin}}</div>
+					<div>Year: {{year}}</div>
+					<div>Make: {{make}}</div>
+					<div>Model: {{model}}</div>
+					<div>License Plate: {{license_plate}}</div>
+				</div>
+			
+			</div>
+		</div>
+		<div id="pageHeader">
+			<div id="logo">
+				<img src="{{logo}}" id="img1"/>
+			</div>
+			<div id="right_side_1">
+				<div>Repair Order: {{ro_id}}</div>
+				<div>Promised Time: {{promised_time}}</div>
+			</div>
+		</div>
+		<div id="main_order">
+			<div style="margin-bottom: 20px">Work Requested:</div>
+			{{#each tasks_info}}
+			<div class={{setStack @index}}>
+				<input type="checkbox" class="checkbox">{{this.task_name}}<br>
+				<hr class="text_field">
+				<hr class="text_field">
+				<hr class="text_field">
+				<hr class="text_field">
+			</div>
+			{{/each}}
+		</div>
+		<div id="pageFooter">Sponsored by: BCIT</div>
+		<div id="pageFooter-last">
+			<div>Mileage Out: _______________________________</div>
+			<br>
+			<div>If Wheels Removed/Wheels Torqued</div>
+			<div>To:________________ By:______________________</div>	
+		</div>
+		
+	</body>
+</html>

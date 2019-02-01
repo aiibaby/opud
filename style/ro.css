@@ -1,0 +1,206 @@
+
+#container {
+    
+    height: 100vh;
+}
+
+#backgroundImage {
+    background-image: url("content/ro_background.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+/*
+#headerDiv{
+   
+}
+*/
+
+#SOptionsDropdown {
+    width: 100%;
+}
+
+#ROOptionsDropdown {
+    width: 100%;
+}
+
+#searchROBut {
+    width: 100%;
+    font-family: arial;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+#resultsDiv {
+    margin-top: 10px;
+}
+
+#resultsTable {
+    background-color: white;
+    border-radius: 7px;
+}
+
+#resultsTable_filter {
+    visibility: hidden;
+}
+
+.form {
+    overflow:auto;
+}
+
+/*
+* Repair Order Popup 
+*/
+
+.popup{
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.popupContent {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*
+* Repair Order Details 
+*/
+
+#roLogo {
+    background-image: url(content/bcit.png);
+    background-size: contain;
+    width: 75px;
+    height: 75px;
+    float: left;
+}
+
+#roNumTitle{
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+#roNum{
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+#promiseDate{
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+
+#roTitle{
+    font-weight: bold;
+}
+
+#roHeader{
+    font-weight: bold;
+}
+
+.roAlignBot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.logoRow {
+      position: relative;
+  }
+
+.taskLine{
+    border-style: solid;
+    border-color: black;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 80%;
+}
+
+.lineBreak{
+    height: 1.5px;
+    border: none;
+    background-color: black;
+    margin-left: 0px;
+    margin-top: 0px;s
+    margin-bottom: 10px;
+}
+
+.roSelect{
+    font-size:10px;
+}
+
+
+
+.timeInp {
+    padding: 0 0 0 0;
+}
+
+
+select {
+    margin: 50px;
+    width: 150px;
+    padding: 5px 35px 5px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 34px;
+    background-color: #eee;
+}
+
+/*-----Nov 23-----*/
+
+.background {
+    padding: 0vw 10vw 0vw 10vw;
+}
+
+@media only screen and (max-width : 768px){
+    .background {
+        padding: 0px 0px 0px 0px;
+    }
+}
+
+#SOptionsDropdown {
+    font-family: arial;
+    font-size: 12pt;
+}
+
+#roSearchInp {
+    font-family: arial;
+    font-size: 12pt;
+}
+
+#ROOptionsDropdown {
+    font-family: arial;
+    font-size: 12pt;
+}
+
+

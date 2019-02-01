@@ -1,0 +1,33 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+}
+
+#aboutBackground {
+    background-color: black;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+#aboutSubHead{
+    margin-bottom: 15px;
+    font-size: 18pt;
+    font-family: arial;
+    font-weight: bold;
+    color: white;
+}
+
+#aboutBody{
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+    
+}
