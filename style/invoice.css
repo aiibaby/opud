@@ -1,0 +1,30 @@
+@media print {
+    @page {
+        margin: 0;
+    }
+    body {
+        margin: 0;
+    }
+    #wrap {
+        page-break-inside: avoid;
+    }
+    #printTasks {
+        display: block;
+        page-break-inside: avoid;
+    }
+    #footer {
+        display: block;
+        page-break-inside: avoid;
+    }
+}
+
+#calc {
+    position: absolute;
+    left: 300px;
+}
+
+#container {
+    position: absolute;
+    display: inline-block;
+    width: 300px;
+}
