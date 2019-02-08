@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+What to do about checkin selected values (problem around line 146)
+    - can pull them from DB (More dynamic, longer to load)
+    - or hardCode them from start (less load time, not expecting them to change)
+    - If we dynamically update we need to change getServiceRequestID (can be reused for other additions)
+
+
+Missing body style color from html

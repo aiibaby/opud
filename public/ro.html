@@ -130,12 +130,112 @@
                         </div>
                         <br>
                         <br>
+                        <!-- Work Requested Section -->
                         <div class="row">
                             <div class="col-md-6 ml-auto" id="roHeader">Work Requested</div>   
                         </div>
+                        <i class="down pull-right"></i>
                         <ol id="roTask">
                         </ol>
+                        <textarea class="form-control" id="comments123" disabled="" rows="5" style="margin-bottom: 10px; margin-top: 10px">Job Comment</textarea>
+                        <div class="col-md-6 ml-auto" id="roHeader">Part Section</div>   
                         <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           
+                            <div class="row">
+                            <div class="col-sm-12">
+                            <table id="searchTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="searchTable_info" style="width: 999px;">
+                                <thead>
+                                    <tr role="row">
+                                    <th scope="col" class="sorting_asc" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Last Name: activate to sort column descending" style="width: 114px;">Part #</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 117px;">Description</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Cell Phone: activate to sort column ascending" style="width: 50px;">Quantity</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Model: activate to sort column ascending" style="width: 50px;">Unit price</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="License Plate #: activate to sort column ascending" style="width: 50px;">EXT</th>
+                                </thead>
+                                <tbody id="search_result_row">
+                                    
+                                <tr role="row" class="odd">
+                                <td class="sorting_1">2651620</td>
+                                <td>Sway bar links Front</td>
+                                <td>2.00</td>
+                                <td>10</td>
+                                <td>20</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                <td class="sorting_1">SS7741X</td>
+                                <td>Brake pads front premium</td>
+                                <td>1.00</td>
+                                <td>20</td>
+                                <td>25</td>
+                                </tr>
+                                <tr role="row" class="odd">
+                                <td class="sorting_1">27060MP</td>
+                                <td>Oil filter pro select master</td>
+                                <td>1.00</td>
+                                <td>25</td>
+                                <td>30</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary pull-right" id="addPart">Add Part</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary pull-right" id="removePart">Remove Part</button>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            </div>
+                            </div>
+
+                            <!-- Work Requested Section -->
+                            <div class="col-md-6 ml-auto" id="roHeader">Labour Section</div>   
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           
+                            <div class="row">
+                            <div class="col-sm-12">
+                            <table id="searchTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="searchTable_info" style="width: 999px;">
+                                <thead>
+                                    <tr role="row">
+                                    <th scope="col" class="sorting_asc" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Last Name: activate to sort column descending" style="width: 114px;">Tech #</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 117px;">Name</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Cell Phone: activate to sort column ascending" style="width: 50px;">Hours</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Model: activate to sort column ascending" style="width: 50px;">Rate</th>
+                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="License Plate #: activate to sort column ascending" style="width: 50px;">Total ($)</th>
+                                </thead>
+                                <tbody id="search_result_row">
+                                    
+                                <tr role="row" class="odd">
+                                <td class="sorting_1">1234</td>
+                                <td>Owen</td>
+                                <td>2.50</td>
+                                <td>17</td>
+                                <td>42.5</td>
+                                </tr>
+                                <tr role="row" class="even">
+                                <td class="sorting_1">3456</td>
+                                <td>Travis</td>
+                                <td>1.50</td>
+                                <td>20</td>
+                                <td>30</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary pull-right" id="addLabour">Add Labour</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary pull-right" id="removeLabour">Remove Labour</button>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            </div>
+                            </div>
+
                             <!-- Button to open printable version of the repair order -->
                             <div class="col-sm-6">
                                 <button class="btn btn-primary pull-left" id="openPDF">Print</button>
@@ -149,6 +249,7 @@
                     </div>
                 </div>
             </div>
+            
             <!-- End of repair order popup window -->
             <!-- Repair order search and display using datatable -->
             <div class="row">

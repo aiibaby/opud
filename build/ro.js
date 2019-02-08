@@ -212,7 +212,7 @@ $(document).ready(function() {
             var taskDiv = document.createElement("div");
 
             taskDiv.appendChild(taskEntry);
-            taskDiv.appendChild(editTask);
+            // taskDiv.appendChild(editTask);
             
             //Add Parts Button -- currently not implemented
             //taskDiv.appendChild(addPartBut);
