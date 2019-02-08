@@ -40,6 +40,7 @@ $(document).ready(function() {
     
     // print repair order
     var openPDF = document.getElementById("openPDF");
+    var openInvoice = document.getElementById("openInvoice");
     var vehicle_info = null;
     
     
@@ -115,6 +116,18 @@ $(document).ready(function() {
             }
         });
     }
+
+    openInvoice.onclick = function(){
+        $.ajax({
+            url: "/print/createPrint",
+            type: "post",
+            data: vehicle_info,
+            success: function(data){
+                //window.location = "/print";
+                window.open("/printInvoice");
+            }
+        });
+    }
     
     // this function populates the popup repair order screen with the selected repair order information
     function populateRO(rowData){
@@ -183,6 +196,9 @@ $(document).ready(function() {
             var taskName = data[i].task_name; 
             var taskEntry = document.createElement('li');
             var editTask = document.createElement("textarea");
+            var newDiv = document.createElement("div");
+            newDiv.className = 'row'
+            taskEntry.className = 'pull-left col-sm-8'
             editTask.className = 'form-control';
             editTask.id = 'comments' + data[i].worktask_id;
             editTask.disabled = true;
@@ -194,24 +210,25 @@ $(document).ready(function() {
             }else{
                 editTask.value = comment;
             }
-            /*
+            
             //Add Parts Button -- currently not implemented
             var addPartBut = document.createElement("button");
-            addPartBut.className = "btn btn-default";
+            addPartBut.className = "btn btn-default pull-right col-sm-4";
             addPartBut.innerHTML = "Add Part";
             addPartBut.style.marginBottom = "15px";
-            //addPartBut.id = task_id;
+            addPartBut.style.marginRight = "15px";
+            addPartBut.id = task_id;
             addPartBut.onclick = function(task_id){
                 return function(){
                     addPartButFunc(task_id);
                 };
             }(task_id);
-            */
             taskEntry.appendChild(document.createTextNode(taskName));
 
             var taskDiv = document.createElement("div");
-
-            taskDiv.appendChild(taskEntry);
+            newDiv.appendChild(taskEntry);
+            newDiv.appendChild(addPartBut);
+            taskDiv.appendChild(newDiv);
             taskDiv.appendChild(editTask);
             
             //Add Parts Button -- currently not implemented
@@ -289,24 +306,30 @@ $(document).ready(function() {
         partsDiv.className = "row";
         partsDiv.style.marginBottom = "15px";
         var partNoInp = document.createElement("input");
-        partNoInp.className = "col-sm-2";
+        partNoInp.className = "col-sm-1";
         partNoInp.placeholder = "Part Number";
         //partNoInp.id = "partNoInp"
         var partDescInp = document.createElement("input");
         partDescInp.className = "col-sm-2";
         partDescInp.placeholder = "Description";
         var partQtyInp = document.createElement("input");
-        partQtyInp.className = "col-sm-2";
-        partQtyInp.placeholder = "Quantity";
+        partQtyInp.className = "col-sm-1";
+        partQtyInp.placeholder = "Quy";
         var partUnitPriceInp = document.createElement("input");
-        partUnitPriceInp.className = "col-sm-2";
+        partUnitPriceInp.className = "col-sm-1";
         partUnitPriceInp.placeholder = "Unit Price";
         var partSellPriceInp = document.createElement("input");
-        partSellPriceInp.className = "col-sm-2";
+        partSellPriceInp.className = "col-sm-1";
         partSellPriceInp.placeholder = "Sell Price"
         var partSupplierNameInp = document.createElement("input");
         partSupplierNameInp.className = "col-sm-2";
         partSupplierNameInp.placeholder = "Supplier"
+        var editBut = document.createElement("button");
+        editBut.className = "col-sm-1";
+        editBut.innerHTML = "Edit"
+        var DeleteBut = document.createElement("button");
+        DeleteBut.className = "col-sm-1";
+        DeleteBut.innerHTML = "Delete"
         
         partsDiv.appendChild(partNoInp);
         partsDiv.appendChild(partDescInp);
@@ -314,6 +337,8 @@ $(document).ready(function() {
         partsDiv.appendChild(partUnitPriceInp);
         partsDiv.appendChild(partSellPriceInp);
         partsDiv.appendChild(partSupplierNameInp);
+        partsDiv.appendChild(editBut);
+        partsDiv.appendChild(DeleteBut);
         
         document.getElementById("taskNum"+worktask_id).appendChild(partsDiv);
     }

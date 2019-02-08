@@ -57,6 +57,9 @@ app.get("/orders", function(req, resp){
 app.get("/print", function(req, resp){
     resp.sendFile(pF+"/roprint.html")
 });
+app.get("/printInvoice", function(req, resp){
+    resp.sendFile(pF+"/roprint.html")
+});
 
 app.get("/about", function(req,resp){
     resp.sendFile(pF+"/about.html")
