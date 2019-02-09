@@ -177,12 +177,8 @@ $(document).ready(function() {
                     disableInputs();
                     saveComments(data);
                     updateRO(saveComments(data), odometerOut.value, rowData.ro_id, openclose.value);
-                    
-                    
-                }                        
-
+                    }                        
                 }
-
             }
         }); 
     }
@@ -198,7 +194,7 @@ $(document).ready(function() {
             var editTask = document.createElement("textarea");
             var newDiv = document.createElement("div");
             newDiv.className = 'row'
-            taskEntry.className = 'pull-left col-sm-8'
+            taskEntry.className = 'pull-left col-sm-6'
             editTask.className = 'form-control';
             editTask.id = 'comments' + data[i].worktask_id;
             editTask.disabled = true;
@@ -210,19 +206,146 @@ $(document).ready(function() {
             }else{
                 editTask.value = comment;
             }
-            
+            //add part header
+            var partHead = document.createElement('div');
+            partHead.className = 'col-12 ml-auto';
+            partHead.innerHTML = "<b>Part Section</b>";
+            //add parts table
+            var div1 = document.createElement('div');
+            var partTable = document.createElement('table');
+            partTable.id = "searchTable";
+            partTable.className = "table table-striped table-bordered dataTable no-footer";
+            partTable.setAttribute = ('role','grid');
+            partTable.setAttribute = ('aria-describedby','searchTable_info');
+            var partTR = document.createElement('tr');
+            partTR.setAttribute = ('role','row');
+            var partTH1 = document.createElement('th');
+            partTH1.className = "sorting_asc"
+            partTH1.setAttribute('scope','col');
+            partTH1.setAttribute('tabindex','0');
+            partTH1.setAttribute('aria-controls','searchTable');
+            partTH1.setAttribute('rowspan','1');
+            partTH1.setAttribute('colspan','1');
+            partTH1.innerHTML = "Part#";
+
+            var partTH2 = document.createElement('th');
+            partTH2.className = "sorting"
+            partTH2.setAttribute('scope','col');
+            partTH2.setAttribute('tabindex','0');
+            partTH2.setAttribute('aria-controls','searchTable');
+            partTH2.setAttribute('rowspan','1');
+            partTH2.setAttribute('colspan','1');
+            partTH2.innerHTML = "Discription";
+
+            var partTH3 = document.createElement('th');
+            partTH3.className = "sorting"
+            partTH3.setAttribute('scope','col');
+            partTH3.setAttribute('tabindex','0');
+            partTH3.setAttribute('aria-controls','searchTable');
+            partTH3.setAttribute('rowspan','1');
+            partTH3.setAttribute('colspan','1');
+            partTH3.innerHTML = "Quantity";
+
+            var partTH4 = document.createElement('th');
+            partTH4.className = "sorting"
+            partTH4.setAttribute('scope','col');
+            partTH4.setAttribute('tabindex','0');
+            partTH4.setAttribute('aria-controls','searchTable');
+            partTH4.setAttribute('rowspan','1');
+            partTH4.setAttribute('colspan','1');
+            partTH4.innerHTML = "Unit price";
+
+            var partTH5 = document.createElement('th');
+            partTH5.className = "sorting"
+            partTH5.setAttribute('scope','col');
+            partTH5.setAttribute('tabindex','0');
+            partTH5.setAttribute('aria-controls','searchTable');
+            partTH5.setAttribute('rowspan','1');
+            partTH5.setAttribute('colspan','1');
+            partTH5.innerHTML = "EXT";
+
+            partTR.appendChild(partTH1);
+            partTR.appendChild(partTH2);
+            partTR.appendChild(partTH3);
+            partTR.appendChild(partTH4);
+            partTR.appendChild(partTH5);
+            partTable.appendChild(partTR);
+            div1.appendChild(partTable)
+            //add labour headder
+            var labourHead = document.createElement('div');
+            labourHead.className = 'col-12 ml-auto';
+            labourHead.innerHTML = "<b>Labour Section</b>";
+            //add labour table
+            var LabourTable = document.createElement('table');
+            LabourTable.id = "searchTable";
+            LabourTable.className = "table table-striped table-bordered dataTable no-footer";
+            LabourTable.setAttribute = ('role','grid');
+            LabourTable.setAttribute = ('aria-describedby','searchTable_info');
+            var LabourTR = document.createElement('tr');
+            LabourTR.setAttribute = ('role','row');
+            var LabourTH1 = document.createElement('th');
+            LabourTH1.className = "sorting_asc"
+            LabourTH1.setAttribute('scope','col');
+            LabourTH1.setAttribute('tabindex','0');
+            LabourTH1.setAttribute('aria-controls','searchTable');
+            LabourTH1.setAttribute('rowspan','1');
+            LabourTH1.setAttribute('colspan','1');
+            LabourTH1.innerHTML = "Technition #";
+
+            var LabourTH2 = document.createElement('th');
+            LabourTH2.className = "sorting"
+            LabourTH2.setAttribute('scope','col');
+            LabourTH2.setAttribute('tabindex','0');
+            LabourTH2.setAttribute('aria-controls','searchTable');
+            LabourTH2.setAttribute('rowspan','1');
+            LabourTH2.setAttribute('colspan','1');
+            LabourTH2.innerHTML = "Name";
+
+            var LabourTH3 = document.createElement('th');
+            LabourTH3.className = "sorting"
+            LabourTH3.setAttribute('scope','col');
+            LabourTH3.setAttribute('tabindex','0');
+            LabourTH3.setAttribute('aria-controls','searchTable');
+            LabourTH3.setAttribute('rowspan','1');
+            LabourTH3.setAttribute('colspan','1');
+            LabourTH3.innerHTML = "Hours";
+
+            var LabourTH4 = document.createElement('th');
+            LabourTH4.className = "sorting"
+            LabourTH4.setAttribute('scope','col');
+            LabourTH4.setAttribute('tabindex','0');
+            LabourTH4.setAttribute('aria-controls','searchTable');
+            LabourTH4.setAttribute('rowspan','1');
+            LabourTH4.setAttribute('colspan','1');
+            LabourTH4.innerHTML = "Rate";
+
+            var LabourTH5 = document.createElement('th');
+            LabourTH5.className = "sorting"
+            LabourTH5.setAttribute('scope','col');
+            LabourTH5.setAttribute('tabindex','0');
+            LabourTH5.setAttribute('aria-controls','searchTable');
+            LabourTH5.setAttribute('rowspan','1');
+            LabourTH5.setAttribute('colspan','1');
+            LabourTH5.innerHTML = "Total";
+
+            LabourTR.appendChild(LabourTH1);
+            LabourTR.appendChild(LabourTH2);
+            LabourTR.appendChild(LabourTH3);
+            LabourTR.appendChild(LabourTH4);
+            LabourTR.appendChild(LabourTH5);
+            LabourTable.appendChild(LabourTR);
             //Add Parts Button -- currently not implemented
             var addPartBut = document.createElement("button");
-            addPartBut.className = "btn btn-default pull-right col-sm-4";
+            addPartBut.className = "partbut btn btn-default pull-right col-sm-4 invisible";
             addPartBut.innerHTML = "Add Part";
             addPartBut.style.marginBottom = "15px";
             addPartBut.style.marginRight = "15px";
             addPartBut.id = task_id;
-            addPartBut.onclick = function(task_id){
-                return function(){
-                    addPartButFunc(task_id);
-                };
-            }(task_id);
+            // addPartBut.onclick = function(task_id){
+            //     return function(){
+            //         addPartButFunc(task_id);
+            //     };
+            // }(task_id);
             taskEntry.appendChild(document.createTextNode(taskName));
 
             var taskDiv = document.createElement("div");
@@ -230,6 +353,10 @@ $(document).ready(function() {
             newDiv.appendChild(addPartBut);
             taskDiv.appendChild(newDiv);
             taskDiv.appendChild(editTask);
+            taskDiv.appendChild(partHead);
+            taskDiv.appendChild(div1);
+            taskDiv.appendChild(labourHead);
+            taskDiv.appendChild(LabourTable);
             
             //Add Parts Button -- currently not implemented
             //taskDiv.appendChild(addPartBut);
@@ -270,7 +397,6 @@ $(document).ready(function() {
             success:function(data){
                 if (data){
                     console.log(data);
-                    window.location.reload(); 
                 }
             }
          });
@@ -291,7 +417,7 @@ $(document).ready(function() {
         for(var j = 0; j<data.length; j++){
             document.getElementById('comments' + data[j].worktask_id).disabled = false;
         }
-        
+         
         saveRO.className = "btn btn-default pull-right visible";
         editRO.className = "btn btn-default pull-right invisible";
         odometerOut.disabled = false;
