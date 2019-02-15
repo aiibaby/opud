@@ -60,235 +60,37 @@
                 </a>
                 -->
             <div id="menuPosition">
-            </div>           
-            <div id="roPopup" class="popup">
-                <div class="container-fluid" id="roContainer">
-                    <div class="popupContent">
-                        <span class="close">&times;</span>
-                        
-                        <div class="row">
-                            <div class="col-md-2" id="roNumTitle">Repair Order #:</div>
-                            <div class="col-md-5" id="roNum"></div>
-                            <div class="col-md-2" id="roNumTitle">Status:</div>
-                            <div class="col-md-2">
-                                <select id="openclose">
-                                  <option value="false">Open</option>
-                                  <option value="true">Close</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <p></p>
-                        <div class="row">
-                            <div class="col-md-2" id="roNumTitle">Promised Time:</div>
-                            <div class="col-md-6" id="promiseDate"></div>    
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 pull-right">     
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Customer Information</div>   
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roCustName"></div>  
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roTel"></div>  
-                        </div>
-                         <div class="row">
-                            <div class="col-md-6 ml-auto" id="roCell"></div>  
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Vehicle Information</div>   
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">VIN:</div>
-                            <div class="col-md-3" id="roVIN"></div>
-                            
-                            <div class="col-md-2" id="roFieldTitle">Model:</div>
-                            <div class="col-md-2" id="roModel"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">License Plate:</div>
-                            <div class="col-md-3" id="roLicense"></div>
-                            
-                            <div class="col-md-2" id="roFieldTitle">Odometer In:</div>
-                            <div class="col-md-2" id="roOdometerIn"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">Year:</div>
-                            <div class="col-md-3" id="roYear"></div>
-                            
-                            <div class="col-md-2" id="roFieldTitle">Odometer Out:</div>
-                            <div class="col-md-2" id="roOdometerOut"><input class='form-control input-sm' id='odometerOut'></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">Make:</div>
-                            <div class="col-md-3" id="roMake"></div>
-                            
-                            <div class="col-md-2" id="roFieldTitle">Vehicle Notes:</div>
-                            <div class="col-md-5" id="roNotes"></div>
-                        </div>
-                        <div class="row">
-                            
-                        </div>
-                        <br>
-                        <br>
-                        <!-- Work Requested Section -->
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Work Requested</div>   
-                        </div>
-                        <i class="down pull-right"></i>
-                        <ol id="roTask">
-                        </ol>
-                        <textarea class="form-control" id="comments123" disabled="" rows="5" style="margin-bottom: 10px; margin-top: 10px">Job Comment</textarea>
-                        <div class="col-md-6 ml-auto" id="roHeader">Part Section</div>   
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           
-                            <div class="row">
-                            <div class="col-sm-12">
-                            <table id="searchTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="searchTable_info" style="width: 999px;">
-                                <thead>
-                                    <tr role="row">
-                                    <th scope="col" class="sorting_asc" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Last Name: activate to sort column descending" style="width: 114px;">Part #</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 117px;">Description</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Cell Phone: activate to sort column ascending" style="width: 50px;">Quantity</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Model: activate to sort column ascending" style="width: 50px;">Unit price</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="License Plate #: activate to sort column ascending" style="width: 50px;">EXT</th>
-                                </thead>
-                                <tbody id="search_result_row">
-                                    
-                                <tr role="row" class="odd">
-                                <td class="sorting_1">2651620</td>
-                                <td>Sway bar links Front</td>
-                                <td>2.00</td>
-                                <td>10</td>
-                                <td>20</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                <td class="sorting_1">SS7741X</td>
-                                <td>Brake pads front premium</td>
-                                <td>1.00</td>
-                                <td>20</td>
-                                <td>25</td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                <td class="sorting_1">27060MP</td>
-                                <td>Oil filter pro select master</td>
-                                <td>1.00</td>
-                                <td>25</td>
-                                <td>30</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary pull-right" id="addPart">Add Part</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary pull-right" id="removePart">Remove Part</button>
-                            </div>
-                            </div>
-                            </div>
-                            
-                            </div>
-                            </div>
-
-                            <!-- Work Requested Section -->
-                            <div class="col-md-6 ml-auto" id="roHeader">Labour Section</div>   
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           
-                            <div class="row">
-                            <div class="col-sm-12">
-                            <table id="searchTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="searchTable_info" style="width: 999px;">
-                                <thead>
-                                    <tr role="row">
-                                    <th scope="col" class="sorting_asc" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Last Name: activate to sort column descending" style="width: 114px;">Tech #</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 117px;">Name</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Cell Phone: activate to sort column ascending" style="width: 50px;">Hours</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="Model: activate to sort column ascending" style="width: 50px;">Rate</th>
-                                    <th scope="col" class="sorting" tabindex="0" aria-controls="searchTable" rowspan="1" colspan="1" aria-label="License Plate #: activate to sort column ascending" style="width: 50px;">Total ($)</th>
-                                </thead>
-                                <tbody id="search_result_row">
-                                    
-                                <tr role="row" class="odd">
-                                <td class="sorting_1">1234</td>
-                                <td>Owen</td>
-                                <td>2.50</td>
-                                <td>17</td>
-                                <td>42.5</td>
-                                </tr>
-                                <tr role="row" class="even">
-                                <td class="sorting_1">3456</td>
-                                <td>Travis</td>
-                                <td>1.50</td>
-                                <td>20</td>
-                                <td>30</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary pull-right" id="addLabour">Add Labour</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary pull-right" id="removeLabour">Remove Labour</button>
-                            </div>
-                            </div>
-                            </div>
-                            
-                            </div>
-                            </div>
-
-                            <!-- Button to open printable version of the repair order -->
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary pull-left" id="openPDF">Print</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <!-- Button to edit and save repair order -->
-                                <button class="btn btn-default pull-right" id="editRO">Edit</button>
-                                <button class="btn btn-default pull-right invisible" id="saveRO">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            <!-- End of repair order popup window -->
-            <!-- Repair order search and display using datatable -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <form class="form" id="searchDiv">
-                        <div class="col-sm-2">
-                            <select class="form-control" id="SOptionsDropdown">
-                                <option value="last_name">Last Name</option>
-                                <option value="license_plate">License Plate </option>
-                                <option value="ro_id">RO#</option>
-                            </select>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="roSearchInp" >
-                        </div>
-                        
-                        <div class="col-sm-2">
-                            <select class="form-control" id="ROOptionsDropdown">
-                                <option value="false">Open ROs</option>
-                                <option value="true">Closed ROs</option>
-                                <option value="all">All ROs</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-2">
-                            <button id="searchROBut" type="button" class="btn btn-warning btn-s">Search</button>
-                        </div>
-                    </form>
-                    <form class="form" id="resultsDiv">
-                        <div class="col-sm-12">
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <form class="form" id="searchDiv">
+                    <div class="col-sm-2">
+                        <select class="form-control" id="SOptionsDropdown">
+                            <option value="last_name">Last Name</option>
+                            <option value="license_plate">License Plate </option>
+                            <option value="ro_id">RO#</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="roSearchInp">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <select class="form-control" id="ROOptionsDropdown">
+                            <option value="false">Open ROs</option>
+                            <option value="true">Closed ROs</option>
+                            <option value="all">All ROs</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button id="searchROBut" type="button" class="btn btn-warning btn-s">Search</button>
+                    </div>
+                </form>
+                <form class="form" id="resultsDiv">
+                    <div class="col-sm-12">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered responsive nowrap" id="resultsTable">
                                 <thead>
