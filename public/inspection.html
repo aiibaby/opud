@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inspection Form</title>
+        <link href='../style/inspection.css' type='text/css' rel='stylesheet'/>
+        <link href='../style/menu.css' type='text/css' rel='stylesheet'/>
+        <!-- Latest compiled and minified CSS -->
+        
+        <!-- jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- Data Tables, buttons, response -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+        
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        <!-- JavaScript -->
+        <script src="/scripts/ro.js"></script>
+        <script src="../build/getmenu.js"></script>
+        
+       
+    </head>
+    
+    <body>
+        <div id="backgroundImage"></div>
+        <nav class="navbar navbar-inverse" id="menuNav"> 
+            <div class="container-fluid">
+                <div id="logoDiv"></div>
+                <div class="navbar-header">
+                    <a class="navbar-brand"></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right align-items-end" >
+                    <li class="align-bottom" id="menuItems"><a href="/">Vehicle Check-In</a></li>
+                    <li id="menuItems"><a href="/orders">Repair Order</a></li>
+                    <li id="menuItems"><a href="/about" >About</a></li>
+                </ul>
+  
+            </div>
+        </nav>
+        
+        <div class="background">
+            <div class="row" id="headerRow">
+                <div class="col-sm-12" id="headerDiv">
+                    Inspection Form
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <form class="form" id="listDiv">
+                
+                <div class="col-sm-2 inspections"> Tires Pressure: </div>
+                <div class="col-sm-4">
+                    <div class="row" >
+                        <div class="col-sm-5 list_col"> Fronts: </div>
+                        <div class="col-sm-2 list_col">
+                            <input type="text" class="form-control" id="roSearchInp" />
+                        </div>
+                        <div class="col-sm-5 list_col_end">/32 PSI</div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-5 list_col"> Rears: </div>
+                            <div class="col-sm-2 list_col">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end">/32 PSI</div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-5 list_col"> Spare: </div>
+                            <div class="col-sm-2 list_col">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end">/32 PSI</div>
+                    </div>
+                   
+                </div>
+                <div class="col-sm-2 inspections"> Tires Depth: </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-5 list_col"> Fronts: </div>
+                        <div class="col-sm-2 list_col">
+                            <input type="text" class="form-control" id="roSearchInp" />
+                        </div>
+                        <div class="col-sm-5 list_col_end">/32nds</div>
+                    </div>
+                    <div class="row" class="list_row">
+                            <div class="col-sm-5 list_col"> Rears: </div>
+                            <div class="col-sm-2 list_col">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end">/32nds</div>
+                    </div>
+                    <div class="row">
+                            <div class="col-sm-5 list_col"> Spare: </div>
+                            <div class="col-sm-2 list_col">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end">/32nds</div>
+                    </div>
+                       
+                </div>
+
+                <div class="col-sm-12">
+                    <hr>
+                    <div class="col-sm-2 inspections"> Brake: </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-5 list_col_break"> Front Pads: </div>
+                            <div class="col-sm-2 list_col_break">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end_break">mm</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5 list_col_break"> Rear Pads: </div>
+                            <div class="col-sm-2 list_col_break">
+                                <input type="text" class="form-control" id="roSearchInp" />
+                            </div>
+                            <div class="col-sm-5 list_col_end_break">mm</div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-sm-2 inspections"> Comments: </div>
+                    <div class="col-sm-4">
+                        <textarea class="form-control" id="comments123" rows="5" style="margin-bottom: 5px; margin-top: 5px"></textarea>
+                    </div>
+                   
+                    
+                </div>
+                
+            </form>
+        </div>
+        <div id="submitteer">
+                
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="submit_button_inspection" class="btn btn-primary submit_button">Save Inspection Form</button>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <button id="cancel_button_inspection" class="btn btn-primary submit_button">Clear Inspection Form</button>
+            </div>
+            
+        </div>
+    </body>
+</html>
+
+           
