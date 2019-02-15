@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+}
+
+#loginBackground {
+    background-image: url("content/fancycrave-252351-unsplash.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+#loginSection {
+    height: 50vh;
+    width: 50vw;
+}
+
+#loginInp {
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+}

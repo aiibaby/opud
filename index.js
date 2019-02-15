@@ -62,6 +62,10 @@ app.get("/about", function(req,resp){
     resp.sendFile(pF+"/about.html")
 });
 
+app.get("/login", function(req,resp){
+    resp.sendFile(pF+"/login.html")
+});
+
 
 app.use("/data",dbFunctions);
 app.use("/rosearch", roFunctions);
