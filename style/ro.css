@@ -44,6 +44,12 @@
     background-color: white;
     border-radius: 7px;
 }
+#Table {
+    background-color: white;
+    border-radius: 7px;
+    list-style-type: disc;
+    border-collapse: collapse;
+}
 
 #resultsTable_filter {
     visibility: hidden;
@@ -58,24 +64,16 @@
 */
 
 .popup{
-    display: none; 
-    position: fixed; 
+    display: block; 
     z-index: 1000; 
-    left: 0;
-    top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    overflow: auto;
 }
 
 .popupContent {
     background-color: #fefefe;
-    margin: 5% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+    padding: 20px; 
     overflow: auto;
 }
 
@@ -165,7 +163,10 @@
 .timeInp {
     padding: 0 0 0 0;
 }
-
+#menuPosition{
+    position: relative;
+    width:90vw;
+}
 
 select {
     margin: 50px;
@@ -203,7 +204,6 @@ select {
     font-family: arial;
     font-size: 12pt;
 }
-
 #addPart {
     position: absolute;
     bottom: 6em;
@@ -242,3 +242,6 @@ i {
     padding: 3px;
     right: 0;
   }
+.invis{
+	display:none;
+}
