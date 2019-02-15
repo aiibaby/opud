@@ -7,7 +7,7 @@ body {
 }
 
 #aboutBackground {
-    background-color: black;
+    background-image: url("content/Big-Info-exterior-e1489792981964.jpg");
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -30,4 +30,16 @@ body {
     font-size: 12pt;
     color: white;
     
+}
+
+#darkcover {
+    background-color: black;
+    background-size: cover; 
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -5;
+    opacity: .8;
 }

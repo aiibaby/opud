@@ -186,6 +186,21 @@ var getInfo =(taskID) =>{
 
 }
 
+var insertParts = (info) => {
+    return new Promise((resolve, reject) => {
+        const query = {
+            // give the query a unique name
+            name: 'insertParts',
+            text: 'INSERT INTO parts (part_id, part_no, part_desc, qty, supplier_name, unit_price, sell_price, tax) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) returning part_id',
+            values: [info[0].part_id, parseInt(info[0].part_no), info[0].part_desc, info[0].qty, info[0].supplier_name, info[0].unit_price, info[0].sell_price, info[0].tax]
+        };
+
+        pool.query(query)
+            .then(result => resolve({partID: result.rows[0].part_id}))
+            .catch(err => reject(err))
+    })
+}
+
 
 
 
@@ -215,5 +230,6 @@ module.exports = {
     getInfo,
     createWorkTaskCommon,
     closeDBConnection,
-    connectToPool
+    connectToPool,
+    insertParts
 };
