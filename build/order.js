@@ -84,7 +84,7 @@ $(document).ready(function() {
     
     
     // ajax that sends the (ro_id) to get all the service requested information (worktask_id, comments, task_name)
-    function searchTask(roID, rowData){
+    function searchTask(roID){
         $.ajax({
             url:"/rosearch/taskSearch",
             type:"post",
@@ -93,7 +93,8 @@ $(document).ready(function() {
             },
             success:function(data){
             if (data){
-                vehicle_info['tasks_info'] = data;
+                console.log(data)
+                vehicle_info = data;
                 roTask.innerHTML="";
 
                 // populates tasks and comments for the repair order
@@ -108,12 +109,14 @@ $(document).ready(function() {
                 saveRO.onclick = function(){
                     disableInputs();
                     saveComments(data);
-                    updateRO(saveComments(data), odometerOut.value, rowData.ro_id, openclose.value);
+                    //updateRO(saveComments(data), odometerOut.value, rowData.ro_id, openclose.value);
                     }                        
                 }
             }
         }); 
     }
+    searchTask(roNum.innerHTML)
+    disableInputs()
     
     
     // this function populates the tasks and comments for each repair order 
@@ -145,9 +148,11 @@ $(document).ready(function() {
             //add parts table
             var div1 = document.createElement('div');
             var partTable = document.createElement('table');
-            partTable.id = "searchTable";
+            var ptHead = document.createElement('thead');
+            partTable.id = "Table";
             partTable.className = "table table-striped table-bordered dataTable no-footer";
             partTable.setAttribute = ('role','grid');
+            partTable.setAttribute = ('border','1');
             partTable.setAttribute = ('aria-describedby','searchTable_info');
             var partTR = document.createElement('tr');
             partTR.setAttribute = ('role','row');
@@ -201,7 +206,8 @@ $(document).ready(function() {
             partTR.appendChild(partTH3);
             partTR.appendChild(partTH4);
             partTR.appendChild(partTH5);
-            partTable.appendChild(partTR);
+            ptHead.appendChild(partTR)
+            partTable.appendChild(ptHead);
             div1.appendChild(partTable)
             //add labour headder
             var labourHead = document.createElement('div');
@@ -209,6 +215,7 @@ $(document).ready(function() {
             labourHead.innerHTML = "<b>Labour Section</b>";
             //add labour table
             var LabourTable = document.createElement('table');
+            var lbHead = document.createElement('thead')
             LabourTable.id = "searchTable";
             LabourTable.className = "table table-striped table-bordered dataTable no-footer";
             LabourTable.setAttribute = ('role','grid');
@@ -265,7 +272,8 @@ $(document).ready(function() {
             LabourTR.appendChild(LabourTH3);
             LabourTR.appendChild(LabourTH4);
             LabourTR.appendChild(LabourTH5);
-            LabourTable.appendChild(LabourTR);
+            lbHead.appendChild(LabourTR);
+            LabourTable.appendChild(lbHead);
             //Add Parts Button -- currently not implemented
             var addPartBut = document.createElement("button");
             addPartBut.className = "partbut btn btn-default pull-right col-sm-4 invisible";

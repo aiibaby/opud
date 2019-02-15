@@ -91,6 +91,8 @@ app.post("/order", (req,res)=>{
         roCell: req.body.roCell,
         roVIN: req.body.roVIN,
         roMake: req.body.roMake,
+        roYear: req.body.roYear,
+        roLicense: req.body.roLicense,
         roModel: req.body.roModel,
         roOdometerIn: req.body.roOdometerIn,
         odometerOut: req.body.odometerOut,

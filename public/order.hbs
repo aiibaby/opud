@@ -15,7 +15,7 @@
 
     <!-- Data Tables, buttons, response -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <!--link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"-->
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
 
@@ -32,17 +32,18 @@
     <script src="/scripts/getmenu.js"></script>
 </head>
 <body>
+    <div id="menuPosition">
+    </div>
     <div id="roPopup" class="popup">
         <div class="container-fluid" id="roContainer">
             <div class="popupContent">
-                <span class="close">&times;</span>
 
                 <div class="row">
                     <div class="col-md-2" id="roNumTitle">Repair Order #:</div>
                     <div class="col-md-5" id="roNum">{{roNum}}</div>
                     <div class="col-md-2" id="roNumTitle">Status:</div>
                     <div class="col-md-2">
-                        <select id="openclose">
+                        <select id="openclose" >
                             <option value="false">Open</option>
                             <option value="true">Close</option>
                         </select>
@@ -86,14 +87,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">License Plate:</div>
-                    <div class="col-md-3" id="roLicense"></div>
+                    <div class="col-md-3" id="roLicense">{{roLicense}}</div>
 
                     <div class="col-md-2" id="roFieldTitle">Odometer In:</div>
                     <div class="col-md-2" id="roOdometerIn">{{roOdometerIn}}</div>
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">Year:</div>
-                    <div class="col-md-3" id="roYear"></div>
+                    <div class="col-md-3" id="roYear">{{roYear}}</div>
 
                     <div class="col-md-2" id="roFieldTitle">Odometer Out:</div>
                     <div class="col-md-2" id="roOdometerOut">{{odometerOut}}<input class='form-control input-sm'

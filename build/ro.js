@@ -102,31 +102,6 @@ $(document).ready(function() {
         });
     }
     
-    
-    openPDF.onclick = function(){
-        $.ajax({
-            url: "/print/createPrint",
-            type: "post",
-            data: vehicle_info,
-            success: function(data){
-                //window.location = "/print";
-                window.open("/print");
-            }
-        });
-    }
-
-    openInvoice.onclick = function(){
-        $.ajax({
-            url: "/print/createPrint",
-            type: "post",
-            data: vehicle_info,
-            success: function(data){
-                //window.location = "/print";
-                window.open("/printInvoice");
-            }
-        });
-    }
-    
     // this function populates the popup repair order screen with the selected repair order information
     function populateRO(rowData){
         console.log(roNum.value)
