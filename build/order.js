@@ -143,13 +143,24 @@ $(document).ready(function() {
             }
             //add part header
             var partHead = document.createElement('div');
-            partHead.className = 'col-12 ml-auto';
+            partHead.className = 'col-2 ml-auto';
+            partHead.style.marginBottom = '5px';
+            partHead.style.marginTop = '5px';
             partHead.innerHTML = "<b>Part Section</b>";
+            var partBut = document.createElement("button");
+            partBut.className = 'col-10 ml-auto but';
+            partBut.id = `PBut${i}`
+            partBut.style.display = 'none';
+            partBut.style.left = '12vw';
+            partBut.style.marginBottom = '10px';
+            partBut.style.marginTop = '-30px';
+            partBut.style.position = 'relative';
+            partBut.innerHTML = 'Add Part'
             //add parts table
             var div1 = document.createElement('div');
             var partTable = document.createElement('table');
             var ptHead = document.createElement('thead');
-            partTable.id = "Table";
+            partTable.id = `PTable${i}`;
             partTable.className = "table table-striped table-bordered dataTable no-footer";
             partTable.setAttribute = ('role','grid');
             partTable.setAttribute = ('border','1');
@@ -208,15 +219,25 @@ $(document).ready(function() {
             partTR.appendChild(partTH5);
             ptHead.appendChild(partTR)
             partTable.appendChild(ptHead);
-            div1.appendChild(partTable)
             //add labour headder
             var labourHead = document.createElement('div');
             labourHead.className = 'col-12 ml-auto';
+            labourHead.style.marginBottom = '5px';
+            labourHead.style.marginTop = '5px';
             labourHead.innerHTML = "<b>Labour Section</b>";
+            var partBut2 = document.createElement("button");
+            partBut2.className = 'col-10 ml-auto but';
+            partBut2.id = `PBut${i}`
+            partBut2.style.display = 'none';
+            partBut2.style.left = '12vw';
+            partBut2.style.marginBottom = '10px';
+            partBut2.style.marginTop = '-30px';
+            partBut2.style.position = 'relative';
+            partBut2.innerHTML = 'Add Labour'
             //add labour table
             var LabourTable = document.createElement('table');
             var lbHead = document.createElement('thead')
-            LabourTable.id = "searchTable";
+            LabourTable.id = `LTable${i}`;
             LabourTable.className = "table table-striped table-bordered dataTable no-footer";
             LabourTable.setAttribute = ('role','grid');
             LabourTable.setAttribute = ('aria-describedby','searchTable_info');
@@ -274,28 +295,24 @@ $(document).ready(function() {
             LabourTR.appendChild(LabourTH5);
             lbHead.appendChild(LabourTR);
             LabourTable.appendChild(lbHead);
-            //Add Parts Button -- currently not implemented
-            var addPartBut = document.createElement("button");
-            addPartBut.className = "partbut btn btn-default pull-right col-sm-4 invisible";
-            addPartBut.innerHTML = "Add Part";
-            addPartBut.style.marginBottom = "15px";
-            addPartBut.style.marginRight = "15px";
-            addPartBut.id = task_id;
-            // addPartBut.onclick = function(task_id){
-            //     return function(){
-            //         addPartButFunc(task_id);
-            //     };
-            // }(task_id);
+            
             taskEntry.appendChild(document.createTextNode(taskName));
 
             var taskDiv = document.createElement("div");
+            var div2 = document.createElement("div");
+            div2.className = "row"
+            var div1 = document.createElement("div");
+            div1.className = "row"
             newDiv.appendChild(taskEntry);
-            newDiv.appendChild(addPartBut);
             taskDiv.appendChild(newDiv);
             taskDiv.appendChild(editTask);
-            taskDiv.appendChild(partHead);
-            taskDiv.appendChild(div1);
-            taskDiv.appendChild(labourHead);
+            div2.appendChild(partHead);
+            div2.appendChild(partBut);
+            taskDiv.appendChild(div2);
+            taskDiv.appendChild(partTable);
+            div1.appendChild(labourHead);
+            div1.appendChild(partBut2);
+            taskDiv.appendChild(div1)
             taskDiv.appendChild(LabourTable);
             
             //Add Parts Button -- currently not implemented
@@ -346,6 +363,10 @@ $(document).ready(function() {
     function disableInputs(){
         saveRO.className = "btn btn-default pull-right invisible";
         editRO.className = "btn btn-default pull-right visible";
+        var buts = document.getElementsByClassName('but')
+        for(x=0;x<buts.length;x++){
+            buts[x].style.display = 'none'
+        }
         odometerOut.disabled = true;
         openclose.disabled = true;
         openclose.style.backgroundColor = "#eee";
@@ -360,6 +381,10 @@ $(document).ready(function() {
          
         saveRO.className = "btn btn-default pull-right visible";
         editRO.className = "btn btn-default pull-right invisible";
+        var buts = document.getElementsByClassName('but')
+        for(x=0;x<buts.length;x++){
+            buts[x].style.display = 'block'
+        }
         odometerOut.disabled = false;
         openclose.disabled = false;
         openclose.style.backgroundColor = "#fff";
