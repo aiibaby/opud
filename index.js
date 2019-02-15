@@ -16,6 +16,7 @@ const seaFunctions = require('./routes/searchFunctions.js');
 const vinFunctions = require('./routes/checkVIN.js');
 var dbFunctions = require("./routes/dbFunctions");
 var roFunctions = require("./routes/roFunctions");
+const auth = require("./routes/loginCheck");
 //const pdfFunctions = require("./pdf/repordpdf")
 const printableFunctions = require('./routes/printableFunctions.js');
 
@@ -87,6 +88,15 @@ app.post("/cVIN", (request,response)=>{
 	}).catch((result)=>{
         response.send(result);
     });
+});
+
+app.post('/login', (request, response) => {
+    auth.login(request.body.id, request.body.password)
+        .then(() => {
+            response.redirect('/')
+        }).catch((err) => {
+            console.log(err)
+        })
 });
 
 app.post("/setVariables",function (req,resp) {
