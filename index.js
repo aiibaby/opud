@@ -60,6 +60,9 @@ app.get("/print", function(req, resp){
 app.get("/printInvoice", function(req, resp){
     resp.sendFile(pF+"/roprint.html")
 });
+app.get("/test", function(req, resp){
+    resp.sendFile(pF+"/order.html")
+});
 
 app.get("/about", function(req,resp){
     resp.sendFile(pF+"/about.html")
@@ -78,6 +81,23 @@ app.post("/search", (request,response)=>{
 	}).catch((result)=>{
         response.send(result);
     });
+});
+app.post("/order", (req,res)=>{
+    console.log(req.body)
+    res.render(pF+"/order.hbs",{
+        roNum: req.body.roNum,
+        roCustName: req.body.roCustName,
+        roTel: req.body.roTel,
+        roCell: req.body.roCell,
+        roVIN: req.body.roVIN,
+        roMake: req.body.roMake,
+        roModel: req.body.roModel,
+        roOdometerIn: req.body.roOdometerIn,
+        odometerOut: req.body.odometerOut,
+        roNotes: req.body.roNotes,
+        openclose: req.body.openclose,
+        promiseDate: req.body.promiseDate,        
+	})
 });
 
 app.post("/cVIN", (request,response)=>{

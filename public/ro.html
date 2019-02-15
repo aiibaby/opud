@@ -36,6 +36,22 @@
     <div id="backgroundImage"></div>
     <!-- Repair order popup window -->
     <div class="container-fluid" id="container">
+            <form action='/order' id='roInfo' method='post'>
+                <input class='invis' name='roNum' id='roNum' type='text' value=''>
+                <input class='invis' name='roCustName' id='roCustName' type='text' value=''>
+                <input class='invis' name='roTel' id='roTel' type='text' value=''>
+                <input class='invis' name='roCell' id='roCell' type='text' value=''>
+                <input class='invis' name='roVIN' id='roVIN' type='text' value=''>
+                <input class='invis' name='roLicense' id='roLicense' type='text' value=''>
+                <input class='invis' name='roYear' id='roYear' type='text' value=''>
+                <input class='invis' name='roMake' id='roMake' type='text' value=''>
+                <input class='invis' name='roModel' id='roModel' type='text' value=''>
+                <input class='invis' name='roOdometerIn' id='roOdometerIn' type='text' value=''>
+                <input class='invis' name='odometerOut' id='odometerOut' type='text' value=''>
+                <input class='invis' name='roNotes' id='roNotes' type='text' value=''>
+                <input class='invis' name='openclose' id='openclose' type='text' value=''>
+                <input class='invis' name='promiseDate' id='promiseDate' type='text' value=''>
+            </form>
 
         <div class="row" id="firstRow">
             <!--
@@ -46,119 +62,7 @@
             <div id="menuPosition">
             </div>
         </div>
-        <div class="background">
-            <div class="row" id="headerRow">
-                <div class="col-sm-12" id="headerDiv">
-                    Repair Orders
-                </div>
-            </div>
 
-            <div id="roPopup" class="popup">
-                <div class="container-fluid" id="roContainer">
-                    <div class="popupContent">
-                        <span class="close">&times;</span>
-
-                        <div class="row">
-                            <div class="col-md-2" id="roNumTitle">Repair Order #:</div>
-                            <div class="col-md-5" id="roNum"></div>
-                            <div class="col-md-2" id="roNumTitle">Status:</div>
-                            <div class="col-md-2">
-                                <select id="openclose">
-                                    <option value="false">Open</option>
-                                    <option value="true">Close</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <p></p>
-                        <div class="row">
-                            <div class="col-md-2" id="roNumTitle">Promised Time:</div>
-                            <div class="col-md-6" id="promiseDate"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2 pull-right">
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Customer Information</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roCustName"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roTel"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roCell"></div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Vehicle Information</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">VIN:</div>
-                            <div class="col-md-3" id="roVIN"></div>
-
-                            <div class="col-md-2" id="roFieldTitle">Model:</div>
-                            <div class="col-md-2" id="roModel"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">License Plate:</div>
-                            <div class="col-md-3" id="roLicense"></div>
-
-                            <div class="col-md-2" id="roFieldTitle">Odometer In:</div>
-                            <div class="col-md-2" id="roOdometerIn"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">Year:</div>
-                            <div class="col-md-3" id="roYear"></div>
-
-                            <div class="col-md-2" id="roFieldTitle">Odometer Out:</div>
-                            <div class="col-md-2" id="roOdometerOut"><input class='form-control input-sm'
-                                    id='odometerOut'></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2" id="roFieldTitle">Make:</div>
-                            <div class="col-md-3" id="roMake"></div>
-
-                            <div class="col-md-2" id="roFieldTitle">Vehicle Notes:</div>
-                            <div class="col-md-5" id="roNotes"></div>
-                        </div>
-                        <div class="row">
-
-                        </div>
-                        <br>
-                        <br>
-                        <!-- Work Requested Section -->
-                        <div class="row">
-                            <div class="col-md-6 ml-auto" id="roHeader">Work Requested</div>
-                        </div>
-                        <i class="down pull-right"></i>
-                        <ol id="roTask">
-                            <!--text, parts and labor go here-->
-                        </ol>
-                                                <!-- Button to open printable version of the repair order -->
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary pull-left" id="openPDF">Print RO</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <button class="btn btn-primary pull-left" id="openInvoice">Print Invoice</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- Button to edit and save repair order -->
-                            <button class="btn btn-default pull-right" id="editRO">Edit</button>
-                            <button class="btn btn-default pull-right invisible" id="saveRO">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- End of repair order popup window -->
-        <!-- Repair order search and display using datatable -->
         <div class="row">
             <div class="col-sm-12">
                 <form class="form" id="searchDiv">
