@@ -23,7 +23,7 @@ const login = async (id, pass) => {
     if (user.password == pass) {
         return true
     } else {
-        throw `Username or Password does not match.`
+        throw `ID or Password does not match.`
     }
 }
 
@@ -32,7 +32,7 @@ const retrieveUser = async (id) => {
     if (match.rows.length != 0) {
         return match.rows[0]
     } else {
-        throw `${id} does not exist!`
+        throw `No account with ID: ${id} `
     }
 }
 
