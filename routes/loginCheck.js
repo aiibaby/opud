@@ -20,7 +20,7 @@ const runQuery = async (query, param) => {
 
 const login = async (id, pass) => {
     const user = await retrieveUser(id);
-    if (user.password = pass) {
+    if (user.password == pass) {
         return true
     } else {
         throw `Username or Password does not match.`
