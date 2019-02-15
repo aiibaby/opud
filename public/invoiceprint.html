@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html moznomarginboxes mozdisallowselectionprint>
+    <head>
+        <title>Printable Repair Order</title>
+        <link href='/css/invoice.css' type='text/css' rel='stylesheet'/>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- Own Scripts -->
+        <script src='/scripts/printable.js'></script>
+    </head>
+    
+    <body>
+        
+        <div id="printable">
+            <div id="wrap">
+                <div id="header">
+                    <img id="logo" src="../css/content/bcit.png"/>
+                    <div id="topRight"></div>
+                </div>
+                <div id="customerInfo"></div>
+                <div id="vehicleInfo1"></div>
+                <div id="vehicleInfo2"></div>
+                <div id="vehicleInfo3"></div>
+            </div>
+            <div id="tasksRequested"></div>
+            <div id="footer">
+                <div id='container'>
+                    <h2 id="title">Job: </h2>
+                    <div id="customerRequest">Customer Request:  </div>
+                    <h3>Tech Description</h3>
+                    <text id="techDescription">Report Notes:</text>
+                    <br>
+                    <br>
+    
+                    <text id="techNum">Tech num:</text>
+                    <text id="techID">ID num:</text>
+                    <text id="techHours">Hours:</text>
+                    <text id="techRate">Rate:</text>
+                    <text id="techTotal">$Total</text>
+                    <br>
+                    <text id="partNum">Part num:</text>
+                    <text id="partDesc">Description:</text>
+                    <text id="partQty">QTY:</text>
+                    <text id="partSellPrice">Sell Price:</text>
+                    <text id="partExt">Ext:</text>
+                </div>
+                
+                <div id='calc'>
+                    <h2 id="total">Job Total</h2>
+                    <text id="pl">Parts and Labour: </text>
+                    <text id="discount">Discounted: </text>
+                    <text id="extra">Extra: </text>
+                    <text id="subtotal">Subtotal: </text>
+                    <text id="pst">PST: </text>
+                    <text id="gst">GST: </text>
+                    <text id="grandTotal">Total:</text>
+                </div>
+                
+
+
+
+
+            </div>
+        </div>
+    </body>
+</html>
