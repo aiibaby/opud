@@ -109,7 +109,7 @@ $(document).ready(function() {
                 saveRO.onclick = function(){
                     disableInputs();
                     saveComments(data);
-                    //updateRO(saveComments(data), odometerOut.value, rowData.ro_id, openclose.value);
+                    updateRO(saveComments(data), odometerOut.value, roID, openclose.value);
                     }                        
                 }
             }
@@ -183,7 +183,7 @@ $(document).ready(function() {
             partTH2.setAttribute('aria-controls','searchTable');
             partTH2.setAttribute('rowspan','1');
             partTH2.setAttribute('colspan','1');
-            partTH2.innerHTML = "Discription";
+            partTH2.innerHTML = "Description";
 
             var partTH3 = document.createElement('th');
             partTH3.className = "sorting"
@@ -250,7 +250,7 @@ $(document).ready(function() {
             LabourTH1.setAttribute('aria-controls','searchTable');
             LabourTH1.setAttribute('rowspan','1');
             LabourTH1.setAttribute('colspan','1');
-            LabourTH1.innerHTML = "Technition #";
+            LabourTH1.innerHTML = "Technician #";
 
             var LabourTH2 = document.createElement('th');
             LabourTH2.className = "sorting"
