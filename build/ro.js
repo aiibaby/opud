@@ -130,7 +130,7 @@ $(document).ready(function() {
             }
         }); 
     }
-    
+   
         
     // This function prevents refreshes on enter on #roSearchInp
     $(window).keydown(function(event){

@@ -204,6 +204,44 @@ select {
     font-family: arial;
     font-size: 12pt;
 }
+#addPart {
+    position: absolute;
+    bottom: 6em;
+    right: -40em;
+    margin-left: 4em;
+}
+
+#removePart {
+    position: absolute;
+    bottom: 1em;
+    right: 0em;
+}
+
+#addLabour {
+    position: absolute;
+    bottom: 6em;
+    right: -40em;
+}
+
+#removeLabour {
+    position: absolute;
+    bottom: 1em;
+    right: 0em;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+i {
+    position: relative;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    right: 0;
+  }
 .invis{
 	display:none;
 }
