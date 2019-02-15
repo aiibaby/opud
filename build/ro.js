@@ -8,15 +8,6 @@ $(document).ready(function() {
     
     // buttons
     var searchROBut = document.getElementById("searchROBut");
-    var popupClose = document.getElementById("popupClose");
-    var editRO = document.getElementById("editRO");
-    var saveRO = document.getElementById("saveRO");
-    
-    // repair order popup
-    var roPopup = document.getElementById("roPopup");
-    var popupContent = document.getElementById("popupContent");
-    var popupClose = document.getElementsByClassName("close")[0];
-    var roContainer = document.getElementById("roContainer");
     
     // repair order fields
     var roNum = document.getElementById("roNum");
@@ -140,40 +131,6 @@ $(document).ready(function() {
         }); 
     }
     
-    // function to save the comments textarea fields into an array and disable the comment textarea fields
-    function saveComments(data){
-        var array = [{}];
-        
-        for(var k = 0; k<data.length; k++){
-            document.getElementById('comments' + data[k].worktask_id).disabled = true;
-
-            array.push({
-                'worktask_id': data[k].worktask_id,
-                'comments': (document.getElementById('comments' + data[k].worktask_id).value)
-            })
-
-        }
-        return array;
-    }
-    
-    // ajax to send the input field values
-    function updateRO(worktaskIDcomments, odometerOut, roID, openClose){
-        $.ajax({
-            url:"/rosearch/updateRO",
-            type:"post",
-            data:{
-                worktaskIDComments:worktaskIDcomments,
-                odometerOut:(odometerOut),
-                roID:roID,
-                openClose:(openClose)
-            },
-            success:function(data){
-                if (data){
-                    console.log(data);
-                }
-            }
-         });
-    }
         
     // This function prevents refreshes on enter on #roSearchInp
     $(window).keydown(function(event){

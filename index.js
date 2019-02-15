@@ -83,7 +83,6 @@ app.post("/search", (request,response)=>{
     });
 });
 app.post("/order", (req,res)=>{
-    console.log(req.body)
     res.render(pF+"/order.hbs",{
         roNum: req.body.roNum,
         roCustName: req.body.roCustName,
