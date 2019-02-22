@@ -35,6 +35,8 @@ $(document).ready(function() {
     var openInvoice = document.getElementById("openInvoice");
     var vehicle_info = null;
     
+    // open inspection sheet
+    var openInspection = document.getElementById("openInspection")
     
     openPDF.onclick = function(){
         $.ajax({
