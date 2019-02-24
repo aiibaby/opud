@@ -106,6 +106,12 @@ app.post("/order", (req,res)=>{
 	})
 });
 
+app.post("/inspection", (req,res)=> {
+    res.render(pF+"/inspection.hbs", {
+        roNum: req.body.roNum,
+    })
+})
+
 app.post("/cVIN", (request,response)=>{
 	vinFunctions.checkVIN(request.body.vin).then((result)=>{
 		response.send(result);
