@@ -34,7 +34,6 @@ app.use(session({
 }));
 
 const sessionCheck = (req, res, next) => {
-    console.log(req.session.user);
     if (req.session.user) {
         next();
     } else {
@@ -82,6 +81,10 @@ app.get("/login", function(req,resp){
     resp.sendFile(pF+"/login.html")
 });
 
+app.get("/manage", sessionCheck, function(req,resp){
+    resp.sendFile(pF+"/manage.html")
+});
+
 
 app.use("/data",dbFunctions);
 app.use("/rosearch", roFunctions);
@@ -114,6 +117,15 @@ app.post('/login', (request, response) => {
             console.log(err)
         })
 });
+
+app.post('/manage', (request, response) => {
+    auth.signup(request.body.aID, request.body.pass, request.body.pass_check)
+        .then(() => {
+            response.redirect('/')
+        }).catch((err) => {
+            console.log(err)
+        })
+})
 
 app.post("/setVariables", function (req,resp) {
     //req.session.status in index.js determines the scenario:
