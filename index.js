@@ -121,7 +121,7 @@ app.post('/login', (request, response) => {
 app.post('/manage', (request, response) => {
     auth.signup(request.body.aID, request.body.pass, request.body.pass_check)
         .then(() => {
-            response.redirect('/')
+            response.redirect('/manage')
         }).catch((err) => {
             console.log(err)
         })
