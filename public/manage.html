@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Management</title>
+        <link href='/css/management.css' type='text/css' rel='stylesheet'/>
+        <!-- Latest compiled and minified CSS -->
+        
+        <!-- jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- Data Tables, buttons, response -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+        
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js">
+        </script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        
+        <!-- JavaScript-->
+        <script src="/scripts/getmenu.js"></script>
+    </head>
+    
+    <body>
+        <div id="manageBackground"></div>
+        <div class="container-fluid" id="container">
+
+            <div class="row" id="firstRow">
+                <div id="menuPosition"></div>
+            </div>
+
+            <form id="manageSection" action="/manage" method="post">
+                <div class="modal-body mx-3" id="manageInp">
+                    <div class="md-form mb-4">
+                        <label>Student Number:</label>
+                        <input type="text" placeholder="A00000000" name="aID" id="aID" required>
+                    </div>
+                    <div class="md-form mb-4">
+                        <label>Password:</label>
+                        <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+                    </div>
+                    <div class="md-form mb-4">
+                        <label>Repeat Password:</label>
+                        <input type="password" placeholder="Repeat Password" name="pass_check" id="pass_check" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="clearbtn" class="btn btn-primary">Clear</button>
+                    <button type="submit" id="createbtn" class="btn btn-primary">Create Account</button>
+                </div>
+
+            </form>
+            
+        </div>
+    </body>
+</html>

@@ -28,4 +28,6 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
     }); 
 
+    document.getElementsByClassName("logoutBut")[0].onClick = function(){ document.getElementById('logoutForm').onsubmit()}
+
 });
