@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 7
+
 const { Pool, Client } = require('pg');
 
 var dbURL = process.env.DATABASE_URL || "postgres://postgres:password@localhost:5432/sot"; //Change According to Database Requirements
@@ -20,7 +23,8 @@ const runQuery = async (query, param) => {
 
 const login = async (id, pass) => {
     const user = await retrieveUser(id);
-    if (user.password == pass) {
+    const match = await bcrypt.compare(pass, user.password);
+    if (match) {
         return true
     } else {
         throw `ID or Password does not match.`
@@ -60,9 +64,20 @@ const signup = async (aID, password, passwordConfirm) => {
     } else if (password != passwordConfirm) {
         throw `Passwords do not match.`
     } else {
-        addStudent(aID, password)
+        let hashed = await makeHash(password)
+        addStudent(aID, hashed)
         return `${aID} added`
     }
+}
+
+const makeHash = async (password) => {
+    const hashPass = await new Promise((resolve, reject) => {
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if (err) reject(err)
+            resolve(hash)
+        })
+    })
+    return hashPass
 }
 
 module.exports = {
