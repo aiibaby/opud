@@ -7,7 +7,7 @@ const port = process.env.PORT || 10000;
 const path = require("path");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
-
+const session = require("client-sessions");
 
 // had to change button Id of second add button for the other request option
 
@@ -28,6 +28,20 @@ var app = exp();
 //create a new server for socket, but combine it with express functions
 const server = require("http").createServer(app);
 
+app.use(session({
+    cookieName: 'session',
+    secret: "something",
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}));
+
+const sessionCheck = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
 
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -51,13 +65,13 @@ app.use(bodyParser.urlencoded({
     extended:true
 }));
 
-app.get("/", function(req, resp){
+app.get("/", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/checkin.html")
 });
-app.get("/orders", function(req, resp){
+app.get("/orders", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/ro.html")
 });
-app.get("/print", function(req, resp){
+app.get("/print", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/roprint.html")
 });
 app.get("/printInvoice", function(req, resp){
@@ -67,12 +81,16 @@ app.get("/test", function(req, resp){
     resp.sendFile(pF+"/order.html")
 });
 
-app.get("/about", function(req,resp){
+app.get("/about", sessionCheck, function(req,resp){
     resp.sendFile(pF+"/about.html")
 });
 
 app.get("/login", function(req,resp){
     resp.sendFile(pF+"/login.html")
+});
+
+app.get("/manage", sessionCheck, function(req,resp){
+    resp.sendFile(pF+"/manage.html")
 });
 
 
@@ -328,13 +346,23 @@ app.post("/cVIN", (request,response)=>{
 app.post('/login', (request, response) => {
     auth.login(request.body.id, request.body.password)
         .then(() => {
+            request.session.user = request.body.id
             response.redirect('/')
         }).catch((err) => {
             console.log(err)
         })
 });
 
-app.post("/setVariables",function (req,resp) {
+app.post('/manage', (request, response) => {
+    auth.signup(request.body.aID, request.body.pass, request.body.pass_check)
+        .then(() => {
+            response.redirect('/manage')
+        }).catch((err) => {
+            console.log(err)
+        })
+})
+
+app.post("/setVariables", function (req,resp) {
     //req.session.status in index.js determines the scenario:
     //Status 0: New Customer, New Vehicle
     //Status 1: Old Customer, New Vehicle
@@ -357,6 +385,11 @@ app.post("/getVariables",function (req,resp) {
         cust_id: req.session.cust_id,
         vehicle_id: req.session.vehicle_id
     });
+})
+
+app.post('/logout', (request, response) => {
+    request.session.reset()
+    response.redirect('/login')
 })
 
 server.listen(10000, function(err){
