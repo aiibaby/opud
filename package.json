@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/HomyChen/ACIT3900#readme",
   "dependencies": {
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
+    "client-sessions": "^0.8.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "handlebars": "^4.0.12",
