@@ -112,6 +112,74 @@ router.post("/taskSearch", function (req,resp){
     })
 });
 
+router.post("/PartSearch", function (req,resp){
+    //console.log("taskSearch ajax");
+    
+    var ID = req.body.id;
+    
+    console.log(ID);
+    
+    var data = [ID];
+    
+    var taskQuery = 'SELECT * FROM parts WHERE worktask_id = $1';
+    
+    pool.connect(function (err, client, done){
+        if (err) {
+            console.log("(PartsSearch - Unable to connect to the database: " + err );
+        }
+        else{
+            //console.log("PartsSearch - Successfully login to database!")
+            client.query(taskQuery, data, function(err, result){
+                done();
+                if(err){
+                    console.log(err.message);
+                    resp.send(null);
+                }
+                else{
+                    console.log(result.rows);
+                    resp.send(result.rows);
+                }
+            })
+        }
+        
+        
+    })
+});
+
+router.post("/LabourSearch", function (req,resp){
+    //console.log("taskSearch ajax");
+    
+    var ID = req.body.id;
+    
+    //console.log(roID);
+    
+    var data = [ID];
+    
+    var taskQuery = 'SELECT * FROM labour WHERE worktask_id = $1';
+    
+    pool.connect(function (err, client, done){
+        if (err) {
+            console.log("(LabourSearch - Unable to connect to the database: " + err );
+        }
+        else{
+            //console.log("LabourSearch - Successfully login to database!")
+            client.query(taskQuery, data, function(err, result){
+                done();
+                if(err){
+                    console.log(err.message);
+                    resp.send(null);
+                }
+                else{
+                    //console.log(result.rows);
+                    resp.send(result.rows);
+                }
+            })
+        }
+        
+        
+    })
+});
+
 // this function is neccessary to update the task comments correctly 
 async function updateTaskCommentsLoop(arraytaskIDComments){
     
@@ -231,12 +299,21 @@ router.post("/updateParts", function (req,resp){
     temp.push(parseFloat(req.body.row[3]))
     temp.push(parseFloat(req.body.row[4]))
     temp.push(parseInt(req.body.row[5]))
-    temp.push(parseInt(req.body.id))
+    
     
     console.log(temp)
-        
-    var updateOdoQuery = 'INSERT INTO parts (part_no, part_desc, qty, unit_price, sell_price, supplier_name, worktask_id) VALUES ($1,$2,$5,$4,$6,$3,$7)';
-    
+    console.log(req.body.id)
+    console.log("type")
+    console.log(req.body.type)
+    if(req.body.type == "new"){
+        temp.push(parseInt(req.body.id))
+        var updateOdoQuery = 'INSERT INTO parts (part_no, part_desc, qty, unit_price, sell_price, supplier_name, worktask_id) VALUES ($1,$2,$5,$4,$6,$3,$7)';
+    }
+    else{
+        temp.push(parseInt(req.body.type))
+        var updateOdoQuery = 'Update parts Set part_no = $1, part_desc = $2, qty=$5, unit_price=$4, sell_price=$6, supplier_name=$3 where part_id = $7';
+    }
+    console.log(temp)
     pool.connect(function (err, client, done){
             if (err) {
                 console.log("(updateParts - Unable to connect to the database: " + err );
@@ -266,11 +343,18 @@ router.post("/updateLabour", function (req,resp){
     temp.push(req.body.row[1])
     temp.push(parseFloat(req.body.row[2]))
     temp.push(parseFloat(req.body.row[3]))
-    temp.push(parseInt(req.body.id))
     
+    console.log(req.body.type)
+    if(req.body.type == "new"){
+        temp.push(parseInt(req.body.id))
+        var updateOdoQuery = 'INSERT INTO labour (tech_no , tech_name , hours , rate , worktask_id) VALUES ($1,$2,$3,$4,$5)';
+    }
+    else{
+        temp.push(parseInt(req.body.type))
+        var updateOdoQuery = 'Update labour Set tech_no = $1 , tech_name =$2 , hours =$3 , rate =$4 where labour_id = $5';
+    }
     console.log(temp)
-        
-    var updateOdoQuery = 'INSERT INTO labour (tech_no , tech_name , hours , rate , worktask_id) VALUES ($1,$2,$3,$4,$5)';
+    
     
     pool.connect(function (err, client, done){
             if (err) {
