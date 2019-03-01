@@ -258,37 +258,39 @@ app.post("/inspectionSave", (req,res)=> {
         req.body.SpareTread, req.body.LFPads,
         req.body.RFPads, req.body.LRPads, req.body.RRPads, req.body.InspectionComment, req.body.roNum)
         .then((result) => {
-            res.render(pF+"/order.hbs",{
-                roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,  
-                LFPres: result.lfpres,
-                RFPres: result.rfpres,
-                LRPres: result.lrpres,
-                RRPres: result.rrpres,
-                SparePres: result.sparepres,
-                LFTread: result.lftread,
-                RFTread: result.rftread,
-                LRTread: result.lrtread,
-                RRTread: result.rrtread,
-                SpareTread: result.sparetread,
-                LFPads: result.lfpads,
-                RFPads: result.rfpads,
-                LRPads: result.lrpads,
-                RRPads: result.rrpads,
-                InspectionComment: result.inspectioncomment,      
-            });
+            setTimeout(() => {
+                res.render(pF+"/order.hbs",{
+                    roNum: req.body.roNum,
+                    roCustName: req.body.roCustName,
+                    roTel: req.body.roTel,
+                    roCell: req.body.roCell,
+                    roVIN: req.body.roVIN,
+                    roMake: req.body.roMake,
+                    roYear: req.body.roYear,
+                    roLicense: req.body.roLicense,
+                    roModel: req.body.roModel,
+                    roOdometerIn: req.body.roOdometerIn,
+                    odometerOut: req.body.odometerOut,
+                    roNotes: req.body.roNotes,
+                    openclose: req.body.openclose,
+                    promiseDate: req.body.promiseDate,  
+                    LFPres: result.lfpres,
+                    RFPres: result.rfpres,
+                    LRPres: result.lrpres,
+                    RRPres: result.rrpres,
+                    SparePres: result.sparepres,
+                    LFTread: result.lftread,
+                    RFTread: result.rftread,
+                    LRTread: result.lrtread,
+                    RRTread: result.rrtread,
+                    SpareTread: result.sparetread,
+                    LFPads: result.lfpads,
+                    RFPads: result.rfpads,
+                    LRPads: result.lrpads,
+                    RRPads: result.rrpads,
+                    InspectionComment: result.inspectioncomment,      
+                });
+            }, 2000);
         }).catch((err) => {
             console.log(err)
         })
@@ -364,6 +366,9 @@ app.post("/inspectionCancel", (req,res)=> {
                 InspectionComment: "", 
             })
         }
+    
+    }).catch((err) => {
+        console.log(err)
     });
    
 
