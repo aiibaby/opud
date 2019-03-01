@@ -27,21 +27,21 @@
     margin: 20px 0px 20px 0px;
     color: white;
     text-shadow: 2px 2px #000000;
-    line-height: 200%;
+    vertical-align: 50%;
 }
 
 .list_col {
     text-align: center;
     line-height: 200%;
     padding: 1.5% 5%;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 .list_col_end {
     text-align: left;
     line-height: 200%;
     padding: 1.5% 5%;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 hr { 
@@ -80,16 +80,6 @@ text-align: center;
     font-family: arial;
 }
 
-.list_col_break {
-    text-align: center;
-    padding: 1.5% 5%;
-    font-size: 1.3em;
-    line-height: 200%;
-}
-
-.list_col_end_break {
-    text-align: left;
-    line-height: 200%;
-    padding: 1.5% 5%;
-    font-size: 1.3em;
+.invis{
+	display:none;
 }

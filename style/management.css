@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 12pt;
+    color: black;
+}
+
+#manageBackground {
+    background-image: url("content/nathan-dumlao-572047-unsplash.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+#manageSection {
+    height: 50vh;
+    width: 50vw;
+}
+
+#manageInp {
+    font-family: arial;
+    font-size: 12pt;
+    color: black;
+}
