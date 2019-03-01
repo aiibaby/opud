@@ -26,8 +26,8 @@ function closeDBConnection() {
 
 var insertCustomer = (req) => {
     return new Promise((resolve, reject) => {
-
-
+        console.log('cust')
+        console.log(req)
         var data = [req.body.firstName, req.body.lastName, req.body.homePhone, req.body.cellPhone, req.body.street, req.body.city, req.body.postalCode, req.body.date];
         const query = {
             // give the query a unique name
@@ -44,6 +44,8 @@ var insertCustomer = (req) => {
 }
 
 var insertVehicles = (info) => {
+    console.log('car')
+    console.log(info)
     return new Promise((resolve, reject) => {
         const query = {
             // give the query a unique name
@@ -59,6 +61,8 @@ var insertVehicles = (info) => {
 }
 
 var insertUnCommonTasks = (info) => {
+    console.log('uncommon')
+    console.log(info)
     return new Promise((resolve, reject) => {
 
         var variablesNeeded = [];
@@ -79,6 +83,8 @@ var insertUnCommonTasks = (info) => {
 
 
 var createRepairOrder = (dataGram) =>{
+    console.log('dataGram')
+    console.log(dataGram)
     return new Promise((resolve,reject) =>{
         var repairOrderData = [dataGram[0].vehicleNotes, parseFloat(dataGram[0].odometer), dataGram[2],dataGram[1].vehicleID,dataGram[0].datePromised];
 
