@@ -4,30 +4,15 @@ $(document).ready(function() {
     // buttons
     var editRO = document.getElementById("editRO");
     var saveRO = document.getElementById("saveRO");
-    
-    // repair order popup
-    var roPopup = document.getElementById("roPopup");
-    var popupContent = document.getElementById("popupContent");
-    var roContainer = document.getElementById("roContainer");
+
     
     // repair order fields
     var roNum = document.getElementById("roNum");
-    var roCustName = document.getElementById("roCustName");
-    var roTel = document.getElementById("roTel");
-    var roCell = document.getElementById("roCell");
-    var roVIN = document.getElementById("roVIN");
-    var roLicense = document.getElementById("roLicense");
-    var roYear = document.getElementById("roYear");
-    var roMake = document.getElementById("roMake");
-    var roModel = document.getElementById("roModel");
-    var roOdometerIn = document.getElementById("roOdometerIn");
-    var roOdometerOut = document.getElementById("roOdometerOut");
-    var roNotes = document.getElementById("roNotes");
+
     
     // repair order updatable fields
     var roTask = document.getElementById("roTask");
     var odometerOut= document.getElementById("odometerOut");
-    var promiseDate = document.getElementById("promiseDate");
     var openclose = document.getElementById("openclose");
     
     // print repair order
@@ -59,28 +44,7 @@ $(document).ready(function() {
             }
         });
     }
-    
-    // this function populates the popup repair order screen with the selected repair order information
 
-    function populateRO(rowData){
-        roPopup.style.display = "block";
-        roNum.innerHTML = rowData.ro_id;
-        roCustName.innerHTML = rowData.last_name + ", " + rowData.first_name;
-        roTel.innerHTML = rowData.home_phone;
-        roCell.innerHTML = rowData.cell_phone;
-        roVIN.innerHTML = rowData.vin;
-        roLicense.innerHTML = rowData.license_plate;
-        roMake.innerHTML = rowData.make;
-        roModel.innerHTML = rowData.model;
-        roYear.innerHTML = rowData.year;
-        roOdometerIn.innerHTML = rowData.odometer_in;
-        odometerOut.value = rowData.odometer_out;
-        roNotes.innerHTML = rowData.vehicle_notes;
-        openclose.value = rowData.status;
-
-        var promiseData = new Date(rowData.promised_time);
-        promiseDate.innerHTML = promiseData.getFullYear() + '-' + promiseData.getMonth() + '-' + promiseData.getDate() + ' ' + promiseData.getHours() + ':' + (promiseData.getMinutes()<10?'0':'') +  promiseData.getMinutes();
-    }
     
     
     // ajax that sends the (ro_id) to get all the service requested information (worktask_id, comments, task_name)
@@ -93,7 +57,7 @@ $(document).ready(function() {
             },
             success:function(data){
             if (data){
-                console.log(data)
+                //console.log(data)
                 vehicle_info = data;
                 roTask.innerHTML="";
 
@@ -109,16 +73,115 @@ $(document).ready(function() {
                 saveRO.onclick = function(){
                     disableInputs();
                     saveComments(data);
+                    //console.log(document.getElementsByClassName('parts')[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0].value)
+                    updateLabour(document.getElementsByClassName('labour'), roNum.innerHTML)
+                    updateParts(document.getElementsByClassName('parts'), roNum.innerHTML)
                     updateRO(saveComments(data), odometerOut.value, roID, openclose.value);
                     }                        
                 }
             }
         }); 
     }
+    function updateLabour(data, ID){
+        var temp = []
+        for(Element in data){
+            if(Element.length < 4){
+                //console.log(data[Element].childNodes[0].childNodes)
+                for(row in data[Element].childNodes[0].childNodes){
+                    if(row.length < 4 && parseInt(row) > 0){
+                        temp = []
+                        for(item in data[Element].childNodes[0].childNodes[row].childNodes){
+                            if(item.length < 4 && parseInt(item) < 4){
+                                temp.push(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
+                                console.log(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
+                            }
+                        }
+                        $.ajax({
+                            url:"/rosearch/updateLabour",
+                            type:"post",
+                            data:{
+                                row:temp,
+                                id: ID
+                            },
+                            success:function(res){
+                                if (res){
+                                    console.log(res);
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    }
+    function updateParts(data, ID){
+        var temp = []
+        for(Element in data){
+            if(Element.length < 4){
+                //console.log(data[Element].childNodes[0].childNodes)
+                for(row in data[Element].childNodes[0].childNodes){
+                    if(row.length < 4 && parseInt(row) > 0){
+                        temp = []
+                        for(item in data[Element].childNodes[0].childNodes[row].childNodes){
+                            if(item.length < 4 && parseInt(item) < 6){
+                                temp.push(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
+                                console.log(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
+                            }
+                        }
+                        $.ajax({
+                            url:"/rosearch/updateParts",
+                            type:"post",
+                            data:{
+                                row:temp,
+                                id: ID
+                            },
+                            success:function(res){
+                                if (res){
+                                    console.log(res);
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    }
     searchTask(roNum.innerHTML)
     disableInputs()
-    
-    
+    populate(document.getElementById('roNum').innerHTML)
+    function populate(id){
+        $.ajax({
+            url:"/rosearch/AroSearch",
+            type:"post",
+            data:{
+                roSearchWord:id,
+                roSearchBy:'ro_id',
+                roStatus:'all',  
+            },
+            success:function(data){
+                if (data){
+                    // var is not defined for resultsTable as it will cause a bug where the datatable will not read the data correctly 
+                    //console.log(data[0]) 
+                    // this function display a popup screen that display relevant repair order information
+                    document.getElementById('promiseDate').innerHTML=`${data[0].promised_time.substring(11,16)} on ${data[0].promised_time.substring(0,10)} `
+                    document.getElementById('roCustName').innerHTML=`${data[0].first_name} ${data[0].last_name}`
+                    document.getElementById('roTel').innerHTML=`${data[0].home_phone}`
+                    document.getElementById('roCell').innerHTML=`${data[0].cell_phone}`
+                    document.getElementById('roVIN').innerHTML=`${data[0].vin}`
+                    document.getElementById('roModel').innerHTML=`${data[0].model}`
+                    document.getElementById('roLicense').innerHTML=`${data[0].license_plate}`
+                    document.getElementById('roYear').innerHTML=`${data[0].year}`
+                    document.getElementById('roOdometerIn').innerHTML=`${data[0].odometer_in}`
+                    document.getElementById('odometerOut').value=`${data[0].odometer_out}`
+                    document.getElementById('roMake').innerHTML=`${data[0].make}`
+                    document.getElementById('roNotes').innerHTML=`${data[0].vehicle_notes}`
+                }
+                else{
+                    alert("Error! taskSearch");
+                }
+            }  
+        });
+    }
     // this function populates the tasks and comments for each repair order 
     function populateTasksComments(data){
         for(var i = 0; i<data.length; i++){
@@ -161,7 +224,7 @@ $(document).ready(function() {
             var partTable = document.createElement('table');
             var ptHead = document.createElement('thead');
             partTable.id = `PTable${i}`;
-            partTable.className = "table table-striped table-bordered dataTable no-footer";
+            partTable.className = "parts table table-striped table-bordered dataTable no-footer";
             partTable.setAttribute = ('role','grid');
             partTable.setAttribute = ('border','1');
             partTable.setAttribute = ('aria-describedby','searchTable_info');
@@ -184,6 +247,24 @@ $(document).ready(function() {
             partTH2.setAttribute('rowspan','1');
             partTH2.setAttribute('colspan','1');
             partTH2.innerHTML = "Description";
+
+            var partTH6 = document.createElement('th');
+            partTH6.className = "sorting"
+            partTH6.setAttribute('scope','col');
+            partTH6.setAttribute('tabindex','0');
+            partTH6.setAttribute('aria-controls','searchTable');
+            partTH6.setAttribute('rowspan','1');
+            partTH6.setAttribute('colspan','1');
+            partTH6.innerHTML = "Supplier Name";
+
+            var partTH7 = document.createElement('th');
+            partTH7.className = "sorting"
+            partTH7.setAttribute('scope','col');
+            partTH7.setAttribute('tabindex','0');
+            partTH7.setAttribute('aria-controls','searchTable');
+            partTH7.setAttribute('rowspan','1');
+            partTH7.setAttribute('colspan','1');
+            partTH7.innerHTML = "Sale price";
 
             var partTH3 = document.createElement('th');
             partTH3.className = "sorting"
@@ -210,15 +291,66 @@ $(document).ready(function() {
             partTH5.setAttribute('aria-controls','searchTable');
             partTH5.setAttribute('rowspan','1');
             partTH5.setAttribute('colspan','1');
-            partTH5.innerHTML = "EXT";
+            partTH5.innerHTML = "Extended Amount";
 
             partTR.appendChild(partTH1);
             partTR.appendChild(partTH2);
-            partTR.appendChild(partTH3);
+            partTR.appendChild(partTH6);
             partTR.appendChild(partTH4);
+            partTR.appendChild(partTH3);
+            partTR.appendChild(partTH7);
             partTR.appendChild(partTH5);
             ptHead.appendChild(partTR)
             partTable.appendChild(ptHead);
+
+            partBut.onclick = function() {
+                //console.log(event.target.id.substring(4))
+                var row = document.getElementById(`PTable${event.target.id.substring(4)}`).insertRow(-1);
+                  
+                // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                
+
+                // Add some text to the new cells:
+                var inp1= document.createElement('textarea')
+                inp1.className = 'inp'
+                inp1.style.height='auto'
+                inp1.style.width='-webkit-fill-available'
+                var inp2= document.createElement('textarea')
+                inp2.className = 'inp'
+                inp2.style.height='auto'
+                inp2.style.width='-webkit-fill-available'
+                var inp3= document.createElement('textarea')
+                inp3.className = 'inp'
+                inp3.style.height='auto'
+                inp3.style.width='-webkit-fill-available'
+                var inp4= document.createElement('textarea')
+                inp4.className = 'inp'
+                inp4.style.height='auto'
+                inp4.style.width='-webkit-fill-available'
+                var inp5= document.createElement('textarea')
+                inp5.className = 'inp'
+                inp5.style.height='auto'
+                inp5.style.width='-webkit-fill-available'
+                var inp6= document.createElement('textarea')
+                inp6.className = 'inp'
+                inp6.style.height='auto'
+                inp6.style.width='-webkit-fill-available'
+                cell1.appendChild(inp1);
+                cell2.appendChild(inp2);
+                cell3.appendChild(inp3);
+                cell4.appendChild(inp4);
+                cell5.appendChild(inp5);
+                cell6.appendChild(inp6);
+                cell7.innerHTML='Price * Quantity';
+            }
+            //////
             //add labour headder
             var labourHead = document.createElement('div');
             labourHead.className = 'col-12 ml-auto';
@@ -227,7 +359,7 @@ $(document).ready(function() {
             labourHead.innerHTML = "<b>Labour Section</b>";
             var partBut2 = document.createElement("button");
             partBut2.className = 'col-10 ml-auto but';
-            partBut2.id = `PBut${i}`
+            partBut2.id = `LBut${i}`
             partBut2.style.display = 'none';
             partBut2.style.left = '12vw';
             partBut2.style.marginBottom = '10px';
@@ -238,7 +370,7 @@ $(document).ready(function() {
             var LabourTable = document.createElement('table');
             var lbHead = document.createElement('thead')
             LabourTable.id = `LTable${i}`;
-            LabourTable.className = "table table-striped table-bordered dataTable no-footer";
+            LabourTable.className = "labour table table-striped table-bordered dataTable no-footer";
             LabourTable.setAttribute = ('role','grid');
             LabourTable.setAttribute = ('aria-describedby','searchTable_info');
             var LabourTR = document.createElement('tr');
@@ -295,6 +427,45 @@ $(document).ready(function() {
             LabourTR.appendChild(LabourTH5);
             lbHead.appendChild(LabourTR);
             LabourTable.appendChild(lbHead);
+
+            partBut2.onclick = function() {
+                //console.log(event.target.id.substring(4))
+                var row = document.getElementById(`LTable${event.target.id.substring(4)}`).insertRow(-1);
+                  
+                // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                var cell21 = row.insertCell(0);
+                var cell22 = row.insertCell(1);
+                var cell23 = row.insertCell(2);
+                var cell24 = row.insertCell(3);
+                var cell25 = row.insertCell(4);
+
+                // Add some text to the new cells:
+                var inp1= document.createElement('textarea')
+                inp1.className = 'inp'
+                inp1.style.height='auto'
+                inp1.style.width='-webkit-fill-available'
+                var inp2= document.createElement('textarea')
+                inp2.className = 'inp'
+                inp2.style.height='auto'
+                inp2.style.width='-webkit-fill-available'
+                var inp3= document.createElement('textarea')
+                inp3.className = 'inp'
+                inp3.style.height='auto'
+                inp3.style.width='-webkit-fill-available'
+                var inp4= document.createElement('textarea')
+                inp4.className = 'inp'
+                inp4.style.height='auto'
+                inp4.style.width='-webkit-fill-available'
+                var inp5= document.createElement('textarea')
+                inp5.className = 'inp'
+                inp5.style.height='auto'
+                inp5.style.width='-webkit-fill-available'
+                cell21.appendChild(inp1);
+                cell22.appendChild(inp2);
+                cell23.appendChild(inp3);
+                cell24.appendChild(inp4);
+                cell25.innerHTML="Hours * rate";
+            }
             
             taskEntry.appendChild(document.createTextNode(taskName));
 
@@ -339,7 +510,10 @@ $(document).ready(function() {
         }
         return array;
     }
+
     
+
+
     // ajax to send the input field values
     function updateRO(worktaskIDcomments, odometerOut, roID, openClose){
         $.ajax({
@@ -353,10 +527,11 @@ $(document).ready(function() {
             },
             success:function(data){
                 if (data){
-                    console.log(data);
+                    //console.log(data);
                 }
             }
          });
+         
     }
     
     // this function disable the updatable input fields 
@@ -366,6 +541,10 @@ $(document).ready(function() {
         var buts = document.getElementsByClassName('but')
         for(x=0;x<buts.length;x++){
             buts[x].style.display = 'none'
+        }
+        var buts = document.getElementsByClassName('inp')
+        for(x=0;x<buts.length;x++){
+            buts[x].disabled = true
         }
         odometerOut.disabled = true;
         openclose.disabled = true;
@@ -384,6 +563,10 @@ $(document).ready(function() {
         var buts = document.getElementsByClassName('but')
         for(x=0;x<buts.length;x++){
             buts[x].style.display = 'block'
+        }
+        var buts = document.getElementsByClassName('inp')
+        for(x=0;x<buts.length;x++){
+            buts[x].disabled = false
         }
         odometerOut.disabled = false;
         openclose.disabled = false;

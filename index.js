@@ -89,20 +89,7 @@ app.post("/search", (request,response)=>{
 });
 app.post("/order", (req,res)=>{
     res.render(pF+"/order.hbs",{
-        roNum: req.body.roNum,
-        roCustName: req.body.roCustName,
-        roTel: req.body.roTel,
-        roCell: req.body.roCell,
-        roVIN: req.body.roVIN,
-        roMake: req.body.roMake,
-        roYear: req.body.roYear,
-        roLicense: req.body.roLicense,
-        roModel: req.body.roModel,
-        roOdometerIn: req.body.roOdometerIn,
-        odometerOut: req.body.odometerOut,
-        roNotes: req.body.roNotes,
-        openclose: req.body.openclose,
-        promiseDate: req.body.promiseDate,        
+        roNum: req.body.roNum,       
 	})
 });
 

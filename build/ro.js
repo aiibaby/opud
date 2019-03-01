@@ -25,14 +25,7 @@ $(document).ready(function() {
     // repair order updatable fields
     var odometerOut= document.getElementById("odometerOut");
     var promiseDate = document.getElementById("promiseDate");
-    var openclose = document.getElementById("openclose");
-    
-    // print repair order
-    var openPDF = document.getElementById("openPDF");
-    var openInvoice = document.getElementById("openInvoice");
-    var vehicle_info = null;
-    
-    
+    var openclose = document.getElementById("openclose");    
     
     // this function populates the DataTable with the returned query result
     searchROBut.onclick = function() {
@@ -97,23 +90,23 @@ $(document).ready(function() {
     function populateRO(rowData){
         console.log(roNum.value)
         roNum.value = rowData.ro_id;
-        console.log(roNum.value)
-        roCustName.value = rowData.last_name + ", " + rowData.first_name;
-        console.log(roCustName.value)
-        roTel.value = rowData.home_phone;
-        roCell.value = rowData.cell_phone;
-        roVIN.value = rowData.vin;
-        roLicense.value = rowData.license_plate;
-        roMake.value = rowData.make;
-        roModel.value = rowData.model;
-        roYear.value = rowData.year;
-        roOdometerIn.value = rowData.odometer_in;
-        odometerOut.value = rowData.odometer_out;
-        roNotes.value = rowData.vehicle_notes;
-        openclose.value = rowData.status;
+        //console.log(roNum.value)
+        //roCustName.value = rowData.last_name + ", " + rowData.first_name;
+        //console.log(roCustName.value)
+        // roTel.value = rowData.home_phone;
+        // roCell.value = rowData.cell_phone;
+        // roVIN.value = rowData.vin;
+        // roLicense.value = rowData.license_plate;
+        // roMake.value = rowData.make;
+        // roModel.value = rowData.model;
+        // roYear.value = rowData.year;
+        // roOdometerIn.value = rowData.odometer_in;
+        // odometerOut.value = rowData.odometer_out;
+        // roNotes.value = rowData.vehicle_notes;
+        // openclose.value = rowData.status;
 
-        var promiseData = new Date(rowData.promised_time);
-        promiseDate.value = promiseData.getFullYear() + '-' + promiseData.getMonth() + '-' + promiseData.getDate() + ' ' + promiseData.getHours() + ':' + (promiseData.getMinutes()<10?'0':'') +  promiseData.getMinutes();
+        // var promiseData = new Date(rowData.promised_time);
+        // promiseDate.value = promiseData.getFullYear() + '-' + promiseData.getMonth() + '-' + promiseData.getDate() + ' ' + promiseData.getHours() + ':' + (promiseData.getMinutes()<10?'0':'') +  promiseData.getMinutes();
         document.getElementById("roInfo").submit();
     }
     
