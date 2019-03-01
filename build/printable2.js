@@ -36,7 +36,23 @@ $(document).ready(function(){
                     success: function(data){
                         
                         fillTasksRequestedHTML(data);
-                        window.print();
+                        console.log(data)
+                        // $.ajax({
+                        //     url:"/rosearch/PartSearch",
+                        //     type:"post",
+                        //     data:{
+                        //         id:data[0].worktask_id 
+                        //     },
+                        //     success:function(data){
+                        //         console.log(data)
+                        //         for(row in data){
+                        //             var pheader = document.createElement("div");
+                        //             pheader.innerHTML = "Parts:"
+                        //             document.getElementById(`printTasks${data[row].worktask_id}`).appendChild(pheader)
+                        //         }
+                        //     }
+                        // })
+                        //window.print();
                     }
                 });
             }
@@ -46,7 +62,7 @@ $(document).ready(function(){
     
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data){
-        console.log(data);
+        //console.log(data);
         if(data.first_name == ""){
             var customerName = data.last_name
         }else{
@@ -81,7 +97,7 @@ $(document).ready(function(){
         };
         
         //Format displayed date and time
-        console.log(data.promised_time)
+        //console.log(data.promised_time)
         var promised_date = data.promised_time.substring(0, 10);
         var promised_time = data.promised_time.substring(11, 16);
         
@@ -118,21 +134,23 @@ $(document).ready(function(){
     
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array){
+        console.log(array)
         var lastindex = 0;
         for(let i = 0; i < array.length; i++){
             var taskName = array[i].task_name;
             var taskDiv = document.createElement("div");
-            for(var j = 0; j < 10; j++){
+            for(var j = 0; j < 3; j++){
                 taskName += '<hr>';
             }
-            taskDiv.id = "printTasks";
-            
+            taskDiv.id = `printTasks${array[i].worktask_id}`;
+            var pheader = document.createElement("div");
+            pheader.innerHTML = "Parts:"
+            taskDiv.appendChild(pheader)
             //If index is 3 or divisible by 5 afterwards, add a top padding equal to the top margin of the document
             if(i === 3 || ((i - 3) % 5) === 0 ){
                 taskDiv.style.paddingTop = topPadding;
             }
-            
-            taskDiv.innerHTML = "&#10063; "+taskName;
+            taskDiv.innerHTML = `${i+1}. ${taskName}`;
             tasksRequested.appendChild(taskDiv);   
             lastindex++;
         }

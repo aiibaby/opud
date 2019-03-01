@@ -34,15 +34,16 @@ $(document).ready(function() {
     }
 
     openInvoice.onclick = function(){
-        $.ajax({
-            url: "/print/createPrint",
-            type: "post",
-            data: vehicle_info,
-            success: function(data){
-                //window.location = "/print";
-                window.open("/printInvoice");
-            }
-        });
+        document.getElementById("roInfo2").submit();
+        // $.ajax({
+        //     url: "/print/createPrint",
+        //     type: "post",
+        //     data: vehicle_info,
+        //     success: function(data){
+        //         //window.location = "/print";
+        //         window.open("/printInvoice");
+        //     }
+        // });
     }
 
     

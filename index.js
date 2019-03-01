@@ -76,7 +76,7 @@ app.get("/print", sessionCheck, function(req, resp){
 });
 
 app.get("/printInvoice", function(req, resp){
-    resp.sendFile(pF+"/roprint.html")
+    resp.sendFile(pF+"/invoiceprint.html")
 });
 app.get("/test", function(req, resp){
     resp.sendFile(pF+"/order.html")
@@ -111,6 +111,12 @@ app.post("/search", (request,response)=>{
 
 app.post("/print", sessionCheck, function(req, resp){
     resp.render(pF+"/roprint.hbs",{
+        roNum: req.body.roNum,
+    })
+});
+
+app.post("/printInvoice", sessionCheck, function(req, resp){
+    resp.render(pF+"/invoiceprint.hbs",{
         roNum: req.body.roNum,
     })
 });
