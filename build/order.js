@@ -21,15 +21,16 @@ $(document).ready(function() {
     var vehicle_info = null;
     
     openPDF.onclick = function(){
-        $.ajax({
-            url: "/print/createPrint",
-            type: "post",
-            data: vehicle_info,
-            success: function(data){
-                //window.location = "/print";
-                window.open("/print");
-            }
-        });
+        document.getElementById("roInfo").submit();
+        // $.ajax({
+        //     url: "/print/createPrint",
+        //     type: "post",
+        //     data: vehicle_info,
+        //     success: function(data){
+        //         //window.location = "/print";
+        //         window.open("/print");
+        //     }
+        // });
     }
 
     openInvoice.onclick = function(){

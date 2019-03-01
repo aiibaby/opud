@@ -17,12 +17,27 @@ $(document).ready(function(){
     
     //Run when page is loaded. Ajax call to grab RO data from session
     function getROData(){
+        var id = document.getElementById("ID").innerHTML
         $.ajax({
-            url: "/print/getROInfo",
-            type: "post",
+            url:"/rosearch/AroSearch",
+            type:"post",
+            data:{
+                roSearchWord : id,
+                roSearchBy : "ro_id",
+                roStatus :"all"
+            },success: function(data){
+                fillPageData(data[0]);
+            }
+        });
+        $.ajax({
+            url:"/rosearch/taskSearch",
+            type:"post",
+            data:{
+                roID:id
+            },
             success: function(data){
-                console.log(data);
-                fillPageData(data);
+                
+                fillTasksRequestedHTML(data);
                 window.print();
             }
         });
@@ -30,7 +45,7 @@ $(document).ready(function(){
     
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data){
-
+        console.log(data);
         if(data.first_name == ""){
             var customerName = data.last_name
         }else{
@@ -65,6 +80,7 @@ $(document).ready(function(){
         };
         
         //Format displayed date and time
+        console.log(data.promised_time)
         var promised_date = data.promised_time.substring(0, 10);
         var promised_time = data.promised_time.substring(11, 16);
         
@@ -78,7 +94,7 @@ $(document).ready(function(){
         vehicleInfo3.innerHTML = fillInfoDiv(vehicleData3);
         
         //Loop through the task array and generate divs
-        fillTasksRequestedHTML(data.tasks_info);
+        
     };
     
     //Function used to set whether a label has a line break before it or not
