@@ -164,7 +164,6 @@ var connectDBTaskComments = (worktask_id, comments) => {
 
 // this function update the odometer out and repair order status 
 router.post("/updateRO", function (req,resp){
-    
     var arraytaskIDComments = req.body.worktaskIDComments;
     
     updateTaskCommentsLoop(arraytaskIDComments)
@@ -221,6 +220,77 @@ router.post("/updateRO", function (req,resp){
             })
         })
     
+});
+
+router.post("/updateParts", function (req,resp){
+    var temp = []
+    
+    temp.push(req.body.row[0])
+    temp.push(req.body.row[1])
+    temp.push(req.body.row[2])
+    temp.push(parseFloat(req.body.row[3]))
+    temp.push(parseFloat(req.body.row[4]))
+    temp.push(parseInt(req.body.row[5]))
+    temp.push(parseInt(req.body.id))
+    
+    console.log(temp)
+        
+    var updateOdoQuery = 'INSERT INTO parts (part_no, part_desc, qty, unit_price, sell_price, supplier_name, worktask_id) VALUES ($1,$2,$5,$4,$6,$3,$7)';
+    
+    pool.connect(function (err, client, done){
+            if (err) {
+                console.log("(updateParts - Unable to connect to the database: " + err );
+            }
+            else{
+                console.log("updateParts - Successfully login to database!")
+            }
+
+            client.query(updateOdoQuery, temp, function(err, result){
+                if(err){
+                    console.log(err);
+                    
+                }
+                else{
+                    console.log("Updated Parts");
+                    resp.send('Updated Parts');
+                }
+            })
+        })
+    
+});
+
+router.post("/updateLabour", function (req,resp){
+    var temp = []
+    
+    temp.push(parseFloat(req.body.row[0]))
+    temp.push(req.body.row[1])
+    temp.push(parseFloat(req.body.row[2]))
+    temp.push(parseFloat(req.body.row[3]))
+    temp.push(parseInt(req.body.id))
+    
+    console.log(temp)
+        
+    var updateOdoQuery = 'INSERT INTO labour (tech_no , tech_name , hours , rate , worktask_id) VALUES ($1,$2,$3,$4,$5)';
+    
+    pool.connect(function (err, client, done){
+            if (err) {
+                console.log("(updateLabour - Unable to connect to the database: " + err );
+            }
+            else{
+                console.log("updateLabour - Successfully login to database!")
+            }
+
+            client.query(updateOdoQuery, temp, function(err, result){
+                if(err){
+                    console.log(err);
+                    
+                }
+                else{
+                    console.log("Updated Labour");
+                    resp.send('Updated Labour');
+                }
+            })
+        })
 });
 
 module.exports = router;

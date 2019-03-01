@@ -37,9 +37,8 @@
     </div>
     <div id="roPopup" class="popup">
         <form action='/order' id='roInfo' method='post'>
-            <input class='invis' name='
-            
-            ' type='text' value='{{roNum}}'>
+
+            <input class='invis' name='roNum' type='text' value='{{roNum}}'>
             <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
             <input class='invis' name='roTel' type='text' value='{{roTel}}'>
             <input class='invis' name='roCell' type='text' value='{{roCell}}'>
@@ -53,6 +52,7 @@
             <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
             <input class='invis' name='openclose' type='text' value='{{openclose}}'>
             <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+
         </form>
         <div class="container-fluid" id="roContainer">
             <div class="popupContent">
@@ -72,7 +72,7 @@
                 <p></p>
                 <div class="row">
                     <div class="col-md-2" id="roNumTitle">Promised Time:</div>
-                    <div class="col-md-6" id="promiseDate">{{promiseDate}}</div>
+                    <div class="col-md-6" id="promiseDate"></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2 pull-right">
@@ -84,13 +84,13 @@
                     <div class="col-md-6 ml-auto" id="roHeader">Customer Information</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 ml-auto" id="roCustName">{{roCustName}}</div>
+                    <div class="col-md-6 ml-auto" id="roCustName"></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 ml-auto" id="roTel">{{roTel}}</div>
+                    <div class="col-md-6 ml-auto" id="roTel"></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 ml-auto" id="roCell">{{roCell}}</div>
+                    <div class="col-md-6 ml-auto" id="roCell"></div>
                 </div>
                 <br>
                 <br>
@@ -99,32 +99,32 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">VIN:</div>
-                    <div class="col-md-3" id="roVIN">{{roVIN}}</div>
+                    <div class="col-md-3" id="roVIN"></div>
 
                     <div class="col-md-2" id="roFieldTitle">Model:</div>
-                    <div class="col-md-2" id="roModel">{{roModel}}</div>
+                    <div class="col-md-2" id="roModel"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">License Plate:</div>
-                    <div class="col-md-3" id="roLicense">{{roLicense}}</div>
+                    <div class="col-md-3" id="roLicense"></div>
 
                     <div class="col-md-2" id="roFieldTitle">Odometer In:</div>
-                    <div class="col-md-2" id="roOdometerIn">{{roOdometerIn}}</div>
+                    <div class="col-md-2" id="roOdometerIn"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">Year:</div>
-                    <div class="col-md-3" id="roYear">{{roYear}}</div>
+                    <div class="col-md-3" id="roYear"></div>
 
                     <div class="col-md-2" id="roFieldTitle">Odometer Out:</div>
                     <div class="col-md-2" id="roOdometerOut"><input class='form-control input-sm'
-                            id='odometerOut' value="{{odometerOut}}"></div>
+                            id='odometerOut' value=""></div>
                 </div>
                 <div class="row">
                     <div class="col-md-2" id="roFieldTitle">Make:</div>
-                    <div class="col-md-3" id="roMake">{{roMake}}</div>
+                    <div class="col-md-3" id="roMake"></div>
 
                     <div class="col-md-2" id="roFieldTitle">Vehicle Notes:</div>
-                    <div class="col-md-5" id="roNotes">{{roNotes}}</div>
+                    <div class="col-md-5" id="roNotes"></div>
                 </div>
                 <div class="row">
 
