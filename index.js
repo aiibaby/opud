@@ -17,6 +17,8 @@ const vinFunctions = require('./routes/checkVIN.js');
 var dbFunctions = require("./routes/dbFunctions");
 var roFunctions = require("./routes/roFunctions");
 const auth = require("./routes/loginCheck");
+const inspectionFunctions = require("./routes/createInspection.js")
+
 //const pdfFunctions = require("./pdf/repordpdf")
 const printableFunctions = require('./routes/printableFunctions.js');
 
@@ -88,28 +90,231 @@ app.post("/search", (request,response)=>{
     });
 });
 app.post("/order", (req,res)=>{
-    res.render(pF+"/order.hbs",{
-        roNum: req.body.roNum,
-        roCustName: req.body.roCustName,
-        roTel: req.body.roTel,
-        roCell: req.body.roCell,
-        roVIN: req.body.roVIN,
-        roMake: req.body.roMake,
-        roYear: req.body.roYear,
-        roLicense: req.body.roLicense,
-        roModel: req.body.roModel,
-        roOdometerIn: req.body.roOdometerIn,
-        odometerOut: req.body.odometerOut,
-        roNotes: req.body.roNotes,
-        openclose: req.body.openclose,
-        promiseDate: req.body.promiseDate,        
+    inspectionFunctions.selectInspection_init(req.body.roNum)
+    .then((result) => {
+        if (result.length != 0) {
+            result = result[0]
+            res.render(pF+"/order.hbs",{
+                roNum: req.body.roNum,
+                roCustName: req.body.roCustName,
+                roTel: req.body.roTel,
+                roCell: req.body.roCell,
+                roVIN: req.body.roVIN,
+                roMake: req.body.roMake,
+                roYear: req.body.roYear,
+                roLicense: req.body.roLicense,
+                roModel: req.body.roModel,
+                roOdometerIn: req.body.roOdometerIn,
+                odometerOut: req.body.odometerOut,
+                roNotes: req.body.roNotes,
+                openclose: req.body.openclose,
+                promiseDate: req.body.promiseDate,
+                LFPres: result.lfpres,
+                RFPres: result.rfpres,
+                LRPres: result.lrpres,
+                RRPres: result.rrpres,
+                SparePres: result.sparepres,
+                LFTread: result.lftread,
+                RFTread: result.rftread,
+                LRTread: result.lrtread,
+                RRTread: result.rrtread,
+                SpareTread: result.sparetread,
+                LFPads: result.lfpads,
+                RFPads: result.rfpads,
+                LRPads: result.lrpads,
+                RRPads: result.rrpads,
+                InspectionComment: result.inspectioncomment, 
+            })
+        } else {
+            res.render(pF+"/order.hbs",{
+                roNum: req.body.roNum,
+                roCustName: req.body.roCustName,
+                roTel: req.body.roTel,
+                roCell: req.body.roCell,
+                roVIN: req.body.roVIN,
+                roMake: req.body.roMake,
+                roYear: req.body.roYear,
+                roLicense: req.body.roLicense,
+                roModel: req.body.roModel,
+                roOdometerIn: req.body.roOdometerIn,
+                odometerOut: req.body.odometerOut,
+                roNotes: req.body.roNotes,
+                openclose: req.body.openclose,
+                promiseDate: req.body.promiseDate,
+                LFPres: "",
+                RFPres: "",
+                LRPres: "",
+                RRPres: "",
+                SparePres: "",
+                LFTread: "",
+                RFTread: "",
+                LRTread: "",
+                RRTread: "",
+                SpareTread: "",
+                LFPads: "",
+                RFPads: "",
+                LRPads: "",
+                RRPads: "",
+                InspectionComment: "", 
+            })
+        }
+              
 	})
 });
 
 app.post("/inspection", (req,res)=> {
-    res.render(pF+"/inspection.hbs", {
-        roNum: req.body.roNum,
+    inspectionFunctions.selectInspection_init(req.body.roNum)
+    .then((result) => {
+        if (result.length != 0) {
+            result = result[0]
+            res.render(pF+"/inspection.hbs",{
+                roNum: req.body.roNum,
+                roCustName: req.body.roCustName,
+                roTel: req.body.roTel,
+                roCell: req.body.roCell,
+                roVIN: req.body.roVIN,
+                roMake: req.body.roMake,
+                roYear: req.body.roYear,
+                roLicense: req.body.roLicense,
+                roModel: req.body.roModel,
+                roOdometerIn: req.body.roOdometerIn,
+                odometerOut: req.body.odometerOut,
+                roNotes: req.body.roNotes,
+                openclose: req.body.openclose,
+                promiseDate: req.body.promiseDate,
+                LFPres: result.lfpres,
+                RFPres: result.rfpres,
+                LRPres: result.lrpres,
+                RRPres: result.rrpres,
+                SparePres: result.sparepres,
+                LFTread: result.lftread,
+                RFTread: result.rftread,
+                LRTread: result.lrtread,
+                RRTread: result.rrtread,
+                SpareTread: result.sparetread,
+                LFPads: result.lfpads,
+                RFPads: result.rfpads,
+                LRPads: result.lrpads,
+                RRPads: result.rrpads,
+                InspectionComment: result.inspectioncomment, 
+            })
+        } else {
+            res.render(pF+"/inspection.hbs",{
+                roNum: req.body.roNum,
+                roCustName: req.body.roCustName,
+                roTel: req.body.roTel,
+                roCell: req.body.roCell,
+                roVIN: req.body.roVIN,
+                roMake: req.body.roMake,
+                roYear: req.body.roYear,
+                roLicense: req.body.roLicense,
+                roModel: req.body.roModel,
+                roOdometerIn: req.body.roOdometerIn,
+                odometerOut: req.body.odometerOut,
+                roNotes: req.body.roNotes,
+                openclose: req.body.openclose,
+                promiseDate: req.body.promiseDate,
+                LFPres: "",
+                RFPres: "",
+                LRPres: "",
+                RRPres: "",
+                SparePres: "",
+                LFTread: "",
+                RFTread: "",
+                LRTread: "",
+                RRTread: "",
+                SpareTread: "",
+                LFPads: "",
+                RFPads: "",
+                LRPads: "",
+                RRPads: "",
+                InspectionComment: "", 
+            })
+        }
     })
+})
+
+app.post("/inspectionSave", (req,res)=> {
+    inspectionFunctions.insertInspection(req.body.LFPres,req.body.RFPres,req.body.RFPres,req.body.RRPres,
+        req.body.SparePres,req.body.LFTread, req.body.RFTread, req.body.LRTread, req.body.RRTread, 
+        req.body.SpareTread, req.body.LFPads,
+        req.body.RFPads, req.body.LRPads, req.body.RRPads, req.body.InspectionComment, req.body.roNum)
+        .then((result) => {
+            res.render(pF+"/order.hbs",{
+                roNum: req.body.roNum,
+                roCustName: req.body.roCustName,
+                roTel: req.body.roTel,
+                roCell: req.body.roCell,
+                roVIN: req.body.roVIN,
+                roMake: req.body.roMake,
+                roYear: req.body.roYear,
+                roLicense: req.body.roLicense,
+                roModel: req.body.roModel,
+                roOdometerIn: req.body.roOdometerIn,
+                odometerOut: req.body.odometerOut,
+                roNotes: req.body.roNotes,
+                openclose: req.body.openclose,
+                promiseDate: req.body.promiseDate,  
+                LFPres: result.lfpres,
+                RFPres: result.rfpres,
+                LRPres: result.lrpres,
+                RRPres: result.rrpres,
+                SparePres: result.sparepres,
+                LFTread: result.lftread,
+                RFTread: result.rftread,
+                LRTread: result.lrtread,
+                RRTread: result.rrtread,
+                SpareTread: result.sparetread,
+                LFPads: result.lfpads,
+                RFPads: result.rfpads,
+                LRPads: result.lrpads,
+                RRPads: result.rrpads,
+                InspectionComment: result.inspectioncomment,      
+            });
+        }).catch((err) => {
+            console.log(err)
+        })
+    
+})
+
+app.post("/inspectionCancel", (req,res)=> {
+    inspectionFunctions.selectInspection(req.body.roNum)
+    .then((result) => {
+        result = result[0]
+        res.render(pF+"/order.hbs",{
+            roNum: req.body.roNum,
+            roCustName: req.body.roCustName,
+            roTel: req.body.roTel,
+            roCell: req.body.roCell,
+            roVIN: req.body.roVIN,
+            roMake: req.body.roMake,
+            roYear: req.body.roYear,
+            roLicense: req.body.roLicense,
+            roModel: req.body.roModel,
+            roOdometerIn: req.body.roOdometerIn,
+            odometerOut: req.body.odometerOut,
+            roNotes: req.body.roNotes,
+            openclose: req.body.openclose,
+            promiseDate: req.body.promiseDate,
+            LFPres: result.lfpres,
+            RFPres: result.rfpres,
+            LRPres: result.lrpres,
+            RRPres: result.rrpres,
+            SparePres: result.sparepres,
+            LFTread: result.lftread,
+            RFTread: result.rftread,
+            LRTread: result.lrtread,
+            RRTread: result.rrtread,
+            SpareTread: result.sparetread,
+            LFPads: result.lfpads,
+            RFPads: result.rfpads,
+            LRPads: result.lrpads,
+            RRPads: result.rrpads,
+            InspectionComment: result.inspectioncomment,      
+        });
+    });
+   
+
 })
 
 app.post("/cVIN", (request,response)=>{
@@ -168,3 +373,5 @@ server.listen(10000, function(err){
     resp.sendFile(pF+"/menu.html")
 });
 */
+
+

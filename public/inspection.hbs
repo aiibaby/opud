@@ -41,145 +41,175 @@
         <div class="background">
             <div class="row" id="headerRow">
                 <div class="col-sm-12" id="headerDiv">
-                    Inspection Form
+                    Inspection Form RO# {{roNum}}
                 </div>
             </div>
         </div>
+        
         <div class="col-sm-12">
-            <form class="form" id="listDiv">
-                
+            <form class="form" id="listDiv" action="/inspectionSave" method="post">
                 <div class="col-sm-2 inspections"> Tires Pressure </div>
-                <div class="col-sm-4">
-                    <div class="row" >
-                        <div class="col-sm-3 list_col">LF:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="LFPres" />
-                            </div>
-                            <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4">
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">LF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LFPres" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">RF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RFPres" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">LR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input id="LRPres" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">RR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RRPres" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">Spare:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="SparePres" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        
                     </div>
-                    <div class="row" >
-                        <div class="col-sm-3 list_col">RF:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="RFPres" />
-                            </div>
-                            <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-2 inspections"> Tires Depth </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-3 list_col">LF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LFTread" type="text" maxlength="4" class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">RF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RFTread" type="text" maxlength="4" class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">LR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LRTread" type="text" maxlength="4" class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">RR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RRTread" type="text" maxlength="4" class="form-control"  >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">Spare:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="SpareTread" type="text" maxlength="4" class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                            
                     </div>
-                    <div class="row" >
-                        <div class="col-sm-3 list_col">LR:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="LRPres" />
-                            </div>
-                            <div class="col-sm-4 list_col_end">/32 PSI</div>
-                    </div>
-                    <div class="row" >
-                        <div class="col-sm-3 list_col">RR:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="RRPres" />
-                            </div>
-                            <div class="col-sm-4 list_col_end">/32 PSI</div>
-                    </div>
-                    <div class="row" >
-                        <div class="col-sm-3 list_col">Spare:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="SparePres" />
-                            </div>
-                            <div class="col-sm-4 list_col_end">/32 PSI</div>
-                    </div>
-                   
-                </div>
-                <div class="col-sm-2 inspections"> Tires Depth </div>
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-sm-3 list_col">LF:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="LFTread"/>
-                            </div>
-                        <div class="col-sm-4 list_col_end">/32 nds</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 list_col">RF:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="RFTread" />
-                            </div>
-                        <div class="col-sm-4 list_col_end">/32 nds</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 list_col">LR:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="LRTread" />
-                            </div>
-                        <div class="col-sm-4 list_col_end">/32 nds</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 list_col">RR:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="RRTread" />
-                            </div>
-                        <div class="col-sm-4 list_col_end">/32 nds</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 list_col">Spare:</div>
-                            <div class="col-sm-4 list_col">
-                                    <input type="text" maxlength="4" class="form-control" id="SparePres" />
-                            </div>
-                        <div class="col-sm-4 list_col_end">/32 nds</div>
-                    </div>
-                       
-                </div>
 
-                <div class="col-sm-12">
-                    <hr>
-                    <div class="col-sm-2 inspections"> Brake </div>
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <div class="col-sm-3 list_col"> LF: </div>
-                            <div class="col-sm-4 list_col">
-                                <input type="text" maxlength="4" class="form-control" id="LFPads" />
+                    <div class="col-sm-12">
+                        <hr>
+                        <div class="col-sm-2 inspections"> Brake </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> LF: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="LFPads" type="text" maxlength="4" class="form-control"  >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
                             </div>
-                            <div class="col-sm-4 list_col_end">mm</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3 list_col"> RF: </div>
-                            <div class="col-sm-4 list_col">
-                                <input type="text" maxlength="4" class="form-control" id="RFPads" />
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> RF: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="RFPads" type="text" maxlength="4" class="form-control"  >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
                             </div>
-                            <div class="col-sm-4 list_col_end">mm</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3 list_col"> LR: </div>
-                            <div class="col-sm-4 list_col">
-                                <input type="text" maxlength="4" class="form-control" id="LRPads" />
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> LR: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="LRPads" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
                             </div>
-                            <div class="col-sm-4 list_col_end">mm</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3 list_col"> RR: </div>
-                            <div class="col-sm-4 list_col">
-                                <input type="text" maxlength="4" class="form-control" id="RRPads" />
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> RR: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="RRPads" type="text" maxlength="4" class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
                             </div>
-                            <div class="col-sm-4 list_col_end">mm</div>
+                            
                         </div>
-                       
+                        <div class="col-sm-2 inspections"> Comments </div>
+                        <div class="col-sm-4">
+                            <textarea name="InspectionComment" class="form-control" rows="10" style="margin-bottom: 5px; margin-top: 5px"></textarea>
+                        </div>
+                        
+                        
                     </div>
-                    <div class="col-sm-2 inspections"> Comments </div>
-                    <div class="col-sm-4">
-                        <textarea class="form-control" maxlength="4" id="InspectionComment" rows="10" style="margin-bottom: 5px; margin-top: 5px"></textarea>
-                    </div>
-                   
                     
                 </div>
-                
-            </form>
-        </div>
-        <div id="submitteer">
-                
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <button id="submit_button_inspection" class="btn btn-primary submit_button">Save Inspection Form</button>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <button id="cancel_button_inspection" class="btn btn-primary submit_button">Clear Inspection Form</button>
-            </div>
             
+                <div id="submitteer">
+                    <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                    <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                    <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                    <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                    <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                    <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                    <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                    <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                    <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                    <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                    <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                    <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                    <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                    <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <button type="submit" id="submit_button_inspection" class="btn btn-primary submit_button">Save</button>
+                    </div>
+            </form>     
+                    <form id="listDiv" action="/inspectionCancel" method="post">
+                    <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                    <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                    <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                    <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                    <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                    <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                    <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                    <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                    <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                    <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                    <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                    <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                    <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                    <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <button type = "submit" id="cancel_button_inspection" class="btn btn-primary submit_button">Cancel</button>
+                    </div>
+                    </form>
+                </div>
         </div>
     </body>
 </html>
