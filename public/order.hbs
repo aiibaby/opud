@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Repair Orders</title>
+    <link href='/css/ro.css' type='text/css' rel='stylesheet' />
+    <!-- Latest compiled and minified CSS -->
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Data Tables, buttons, response -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js">
+    </script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="/scripts/order.js"></script>
+    <script src="/scripts/getmenu.js"></script>
+</head>
+<body>
+    
+    <div id="menuPosition">
+    </div>
+    <div id="roPopup" class="popup">
+        <form action='/order' id='roInfo' method='post'>
+            <input class='invis' name='
+            
+            ' type='text' value='{{roNum}}'>
+            <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+            <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+            <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+            <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+            <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+            <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+            <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+            <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+            <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+            <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+            <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+            <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+            <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+        </form>
+        <div class="container-fluid" id="roContainer">
+            <div class="popupContent">
+
+                <div class="row">
+                    <div class="col-md-2" id="roNumTitle">Repair Order #:</div>
+                    <div class="col-md-5" id="roNum">{{roNum}}</div>
+                    <div class="col-md-2" id="roNumTitle">Status:</div>
+                    <div class="col-md-2">
+                        <select id="openclose" >
+                            <option value="false">Open</option>
+                            <option value="true">Close</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p></p>
+                <div class="row">
+                    <div class="col-md-2" id="roNumTitle">Promised Time:</div>
+                    <div class="col-md-6" id="promiseDate">{{promiseDate}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 pull-right">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roHeader">Customer Information</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roCustName">{{roCustName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roTel">{{roTel}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roCell">{{roCell}}</div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roHeader">Vehicle Information</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" id="roFieldTitle">VIN:</div>
+                    <div class="col-md-3" id="roVIN">{{roVIN}}</div>
+
+                    <div class="col-md-2" id="roFieldTitle">Model:</div>
+                    <div class="col-md-2" id="roModel">{{roModel}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" id="roFieldTitle">License Plate:</div>
+                    <div class="col-md-3" id="roLicense">{{roLicense}}</div>
+
+                    <div class="col-md-2" id="roFieldTitle">Odometer In:</div>
+                    <div class="col-md-2" id="roOdometerIn">{{roOdometerIn}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" id="roFieldTitle">Year:</div>
+                    <div class="col-md-3" id="roYear">{{roYear}}</div>
+
+                    <div class="col-md-2" id="roFieldTitle">Odometer Out:</div>
+                    <div class="col-md-2" id="roOdometerOut"><input class='form-control input-sm'
+                            id='odometerOut' value="{{odometerOut}}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2" id="roFieldTitle">Make:</div>
+                    <div class="col-md-3" id="roMake">{{roMake}}</div>
+
+                    <div class="col-md-2" id="roFieldTitle">Vehicle Notes:</div>
+                    <div class="col-md-5" id="roNotes">{{roNotes}}</div>
+                </div>
+                <div class="row">
+
+                </div>
+                <br>
+                <br>
+                <!-- Work Requested Section -->
+                <div class="row">
+                    <div class="col-md-6 ml-auto" id="roHeader">Work Requested</div>
+                </div>
+                <i class="down pull-right"></i>
+                <ol id="roTask">
+                    <!--text, parts and labor go here-->
+                </ol>
+                <div class="col-md-6 ml-auto" id="roHeader">Inspection Information</div>
+                <textarea class="form-control" id="comments2" disabled="" rows="10" style="margin-bottom: 10px;">
+                    Tire Pressure 
+                    Left Front: {{LFPres}} PSI
+                    Right Front: {{RFPres}} PSI
+                    Left Rear: {{LRPres}} PSI
+                    Right Rear: {{RRPres}} PSI
+                    Spare Tire: {{SparePres}} PSI  
+                    
+                    Tire Tread 
+                    Left Front: {{LFTread}} nds
+                    Right Front: {{RFTread}} nds
+                    Left Rear: {{LRTread}} nds
+                    Right Rear: {{RRTread}} nds
+                    Spare Tire: {{SpareTread}} nds
+
+                    Brake
+                    Left Front: {{LFPads}} mm
+                    Right Front: {{RFPads}} mm
+                    Left Rear: {{LRPads}} mm
+                    Right Rear: {{RRPads}} mm
+
+                    Comment: {{InspectionComment}}
+                </textarea>
+                                        <!-- Button to open printable version of the repair order -->
+                <div class="col-sm-2">
+                    <button class="btn btn-primary pull-left" id="openPDF">Print RO</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary pull-left" id="openInvoice">Print Invoice</button>
+                </div>
+                <div class="col-sm-2">
+                    <form action='/inspection' id='inspectionButt' method='post'>
+                        <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                        <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                        <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                        <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                        <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                        <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                        <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                        <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                        <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                        <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                        <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                        <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                        <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                        <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                        <button type="submit" class="btn btn-primary pull-left" id="openInspection">Add / Edit Inspection Sheet</button>
+                    </form>
+                </div>
+                
+                <div class="col-sm-6">
+                    <!-- Button to edit and save repair order -->
+                    <button class="btn btn-default pull-right" id="editRO">Edit</button>
+                    <button class="btn btn-default pull-right invisible" id="saveRO">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

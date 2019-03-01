@@ -1,0 +1,14 @@
+document.getElementById("lnInp").value = "smith";
+document.getElementById("fnInp").value = "david"
+document.getElementById("hpInp").value = "6045231234"
+document.getElementById("cpInp").value = "7788958315"
+document.getElementById("stInp").value = "East Hastings"
+document.getElementById("ctInp").value = "Vancouver"
+document.getElementById("pcInp").value = "V3S 2C3"
+document.getElementById("vinInp").value = 12345678901234567
+document.getElementById("yrInp").value  = 2012
+document.getElementById("makeInp").value = "Tesla"
+document.getElementById("modelInp").value = "Model X"
+document.getElementById("lpInp").value    = "GetMoney"
+document.getElementById("oiInp").value  = "98765"
+document.getElementById("vnInp").innerHTML  = "Bad car bad shape"
