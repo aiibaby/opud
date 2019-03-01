@@ -20,39 +20,6 @@ const runQuery = async (query, param) => {
 }
 
 
-// var insertCustomer = (req) => {
-//     return new Promise((resolve, reject) => {
-
-
-//         var data = [req.body.firstName, req.body.lastName, req.body.homePhone, req.body.cellPhone, req.body.street, req.body.city, req.body.postalCode, req.body.date];
-//         const query = {
-//             // give the query a unique name
-//             name: 'insertCustomer',
-//             text: insertCustomerQuery,
-//             values: data
-//         };
-
-//         pool.query(query)
-//             .then(result => resolve({customerID: result.rows[0]}))
-//             .catch(err => reject(err))
-
-//     })
-// }
-
-// var insertVehicles = (info) => {
-//     return new Promise((resolve, reject) => {
-//         const query = {
-//             // give the query a unique name
-//             name: 'insertVehicle',
-//             text: insetVehicleQuery,
-//             values: [info[0].vin, parseInt(info[0].year), info[0].license, info[0].make, info[0].model, info[0].color, info[2], info[1].cust_id]
-//         };
-
-//         pool.query(query)
-//             .then(result => resolve({vehicleID: result.rows[0].vehicle_id}))
-//             .catch(err => reject(err))
-//     })
-// }
 
 const insertInspection = async (LFPres, RFPres, LRPres, RRPres, SparePres, LFTread, RFTread, LRTread, RRTread, SpareTread, LFPads, RFPads, LRPads, RRPads, InspectionComment, roNum) => {
     const checkresult = await runQuery('SELECT RO_ID FROM Inspection WHERE RO_ID = $1', [roNum]).catch((err) => console.log(err));
