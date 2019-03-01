@@ -43,7 +43,22 @@
     </div>
     <div id="roPopup" class="popup">
         <form action='/order' id='roInfo' method='post'>
+
             <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+            <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+            <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+            <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+            <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+            <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+            <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+            <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+            <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+            <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+            <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+            <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+            <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+            <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+
         </form>
         <div class="container-fluid" id="roContainer">
             <div class="popupContent">
@@ -130,13 +145,57 @@
                 <ol id="roTask">
                     <!--text, parts and labor go here-->
                 </ol>
+                <div class="col-md-6 ml-auto" id="roHeader">Inspection Information</div>
+                <textarea class="form-control" id="comments2" disabled="" rows="10" style="margin-bottom: 10px;">
+                    Tire Pressure 
+                    Left Front: {{LFPres}} PSI
+                    Right Front: {{RFPres}} PSI
+                    Left Rear: {{LRPres}} PSI
+                    Right Rear: {{RRPres}} PSI
+                    Spare Tire: {{SparePres}} PSI  
+                    
+                    Tire Tread 
+                    Left Front: {{LFTread}} nds
+                    Right Front: {{RFTread}} nds
+                    Left Rear: {{LRTread}} nds
+                    Right Rear: {{RRTread}} nds
+                    Spare Tire: {{SpareTread}} nds
+
+                    Brake
+                    Left Front: {{LFPads}} mm
+                    Right Front: {{RFPads}} mm
+                    Left Rear: {{LRPads}} mm
+                    Right Rear: {{RRPads}} mm
+
+                    Comment: {{InspectionComment}}
+                </textarea>
                                         <!-- Button to open printable version of the repair order -->
                 <div class="col-sm-2">
                     <button class="btn btn-primary pull-left" id="openPDF">Print RO</button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <button class="btn btn-primary pull-left" id="openInvoice">Print Invoice</button>
                 </div>
+                <div class="col-sm-2">
+                    <form action='/inspection' id='inspectionButt' method='post'>
+                        <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                        <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                        <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                        <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                        <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                        <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                        <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                        <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                        <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                        <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                        <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                        <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                        <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                        <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                        <button type="submit" class="btn btn-primary pull-left" id="openInspection">Add / Edit Inspection Sheet</button>
+                    </form>
+                </div>
+                
                 <div class="col-sm-6">
                     <!-- Button to edit and save repair order -->
                     <button class="btn btn-default pull-right" id="editRO">Edit</button>

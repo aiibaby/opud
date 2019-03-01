@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inspection Form</title>
+        <link href='/css/menu.css' type='text/css' rel='stylesheet'/>
+        <link href='/css/inspection.css' type='text/css' rel='stylesheet'/>
+        <!-- Latest compiled and minified CSS -->
+        
+        <!-- jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- Data Tables, buttons, response -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+        
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        
+        <!-- JavaScript -->
+        <script src="/scripts/ro.js"></script>
+        <script src="/scripts/getmenu.js"></script>
+        
+       
+    </head>
+    
+    <body>
+        <div id="backgroundImage"></div>
+        <div id="menuPosition">
+        </div>
+        
+        <div class="background">
+            <div class="row" id="headerRow">
+                <div class="col-sm-12" id="headerDiv">
+                    Inspection Form RO# {{roNum}}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-12">
+            <form class="form" id="listDiv" action="/inspectionSave" method="post">
+                <div class="col-sm-2 inspections"> Tires Pressure </div>
+                    <div class="col-sm-4">
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">LF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LFPres" type="text" maxlength="4" required value= {{LFPres}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">RF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RFPres" type="text" maxlength="4"  required value= {{RFPres}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">LR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input id="LRPres" type="text" maxlength="4"  required value= {{LRPres}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">RR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RRPres" type="text" maxlength="4" required value= {{RRPres}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-3 list_col">Spare:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="SparePres" type="text" maxlength="4" required value= {{SparePres}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">/32 PSI</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-2 inspections"> Tires Depth </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-3 list_col">LF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LFTread" type="text" maxlength="4" required value= {{LFTread}} class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">RF:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RFTread" type="text" maxlength="4" required value={{RFTread}} class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">LR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="LRTread" type="text" maxlength="4" required value={{LRTread}} class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">RR:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="RRTread" type="text" maxlength="4" required value={{RRTread}} class="form-control"  >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 list_col">Spare:</div>
+                                <div class="col-sm-4 list_col">
+                                        <input name="SpareTread" type="text" maxlength="4" required value={{SpareTread}} class="form-control" >
+                                </div>
+                            <div class="col-sm-4 list_col_end">/32 nds</div>
+                        </div>
+                            
+                    </div>
+
+                    <div class="col-sm-12">
+                        <hr>
+                        <div class="col-sm-2 inspections"> Brake </div>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> LF: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="LFPads" type="text" maxlength="4" required value={{LFPads}} class="form-control"  >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> RF: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="RFPads" type="text" maxlength="4" required value={{RFPads}} class="form-control"  >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> LR: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="LRPads" type="text" maxlength="4" required value={{LRPads}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 list_col"> RR: </div>
+                                <div class="col-sm-4 list_col">
+                                    <input name="RRPads" type="text" maxlength="4" required value={{RRPads}} class="form-control" >
+                                </div>
+                                <div class="col-sm-4 list_col_end">mm</div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-sm-2 inspections"> Comments </div>
+                        <div class="col-sm-4">
+                            <textarea name="InspectionComment" class="form-control" rows="10" style="margin-bottom: 5px; margin-top: 5px">{{InspectionComment}}</textarea>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            
+                <div id="submitteer">
+                    <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                    <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                    <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                    <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                    <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                    <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                    <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                    <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                    <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                    <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                    <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                    <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                    <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                    <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <button type="submit" id="submit_button_inspection" class="btn btn-primary submit_button">Save</button>
+                    </div>
+            </form>     
+                    <form id="listDiv" action="/inspectionCancel" method="post">
+                        <input class='invis' name='roNum' type='text' value='{{roNum}}'>
+                        <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
+                        <input class='invis' name='roTel' type='text' value='{{roTel}}'>
+                        <input class='invis' name='roCell' type='text' value='{{roCell}}'>
+                        <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
+                        <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
+                        <input class='invis' name='roYear' type='text' value='{{roYear}}'>
+                        <input class='invis' name='roMake' type='text' value='{{roMake}}'>
+                        <input class='invis' name='roModel' type='text' value='{{roModel}}'>
+                        <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
+                        <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
+                        <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
+                        <input class='invis' name='openclose' type='text' value='{{openclose}}'>
+                        <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <button type = "submit" id="cancel_button_inspection" class="btn btn-primary submit_button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </body>
+</html>
+
+           

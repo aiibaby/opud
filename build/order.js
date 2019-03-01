@@ -20,7 +20,6 @@ $(document).ready(function() {
     var openInvoice = document.getElementById("openInvoice");
     var vehicle_info = null;
     
-    
     openPDF.onclick = function(){
         $.ajax({
             url: "/print/createPrint",
