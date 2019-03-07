@@ -139,30 +139,33 @@
                 <ol id="roTask">
                     <!--text, parts and labor go here-->
                 </ol>
-                <div class="col-md-6 ml-auto" id="roHeader">Inspection Information</div>
-                <textarea class="form-control" id="comments2" disabled="" rows="10" style="margin-bottom: 10px;">
-                    Tire Pressure 
-                    Left Front: {{LFPres}} PSI
-                    Right Front: {{RFPres}} PSI
-                    Left Rear: {{LRPres}} PSI
-                    Right Rear: {{RRPres}} PSI
-                    Spare Tire: {{SparePres}} PSI  
-                    
-                    Tire Tread 
-                    Left Front: {{LFTread}} nds
-                    Right Front: {{RFTread}} nds
-                    Left Rear: {{LRTread}} nds
-                    Right Rear: {{RRTread}} nds
-                    Spare Tire: {{SpareTread}} nds
-
-                    Brake
-                    Left Front: {{LFPads}} mm
-                    Right Front: {{RFPads}} mm
-                    Left Rear: {{LRPads}} mm
-                    Right Rear: {{RRPads}} mm
-
-                    Comment: {{InspectionComment}}
-                </textarea>
+                <div class="col-md-6 ml-auto" id="inspectionHeader">Inspection Information</div>
+                <div class="col-sm-12" id="inspectioncomment">
+                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
+                        Brake
+                        Left Front: {{LFPads}} mm 
+                        Right Front: {{RFPads}} mm 
+                        Left Rear: {{LRPads}} mm 
+                        Right Rear: {{RRPads}} mm                                      
+                    </textarea>
+                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
+                        Tire Pressure 
+                        Left Front: {{LFPres}} PSI
+                        Right Front: {{RFPres}} PSI
+                        Left Rear: {{LRPres}} PSI
+                        Right Rear: {{RRPres}} PSI
+                        Spare Tire: {{SparePres}} PSI                                      
+                    </textarea>
+                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
+                        Tire Tread
+                        Left Front: {{LFTread}} nds
+                        Right Front: {{RFTread}} nds
+                        Left Rear: {{LRTread}} nds
+                        Right Rear: {{RRTread}} nds
+                        Spare Tire: {{SpareTread}} nds                                 
+                    </textarea>
+                    <textarea class=" col-sm-12" disabled="" rows="3" style="margin-bottom: 1em;">Comment: {{InspectionComment}}</textarea>
+                </div>
                                         <!-- Button to open printable version of the repair order -->
                 <div class="col-sm-2">
                     <button class="btn btn-primary pull-left" id="openPDF">Print RO</button>
@@ -198,4 +201,14 @@
             </div>
         </div>
     </div>
+    <script>
+        var inspectionHeader = document.getElementById("inspectionHeader");
+        var inspectioncomment = document.getElementById("inspectioncomment");
+        if ({{checkresult}}){
+            inspectionHeader.style.display = "none";
+            inspectioncomment.style.display = "none";
+        }
+            
+    </script>
 </body>
+
