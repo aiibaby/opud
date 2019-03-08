@@ -19,6 +19,11 @@ $(document).ready(function() {
     var openPDF = document.getElementById("openPDF");
     var openInvoice = document.getElementById("openInvoice");
     var vehicle_info = null;
+
+
+
+    
+
     
     openPDF.onclick = function(){
         $.ajax({
