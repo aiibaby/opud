@@ -43,6 +43,14 @@ const sessionCheck = (req, res, next) => {
     }
 }
 
+function teacherSessionCheck(req, res, next) {
+    if (req.session.user.type == 'Teacher') {
+        next()
+    } else {
+        res.redirect('/')
+    }
+}
+
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers",
@@ -89,7 +97,7 @@ app.get("/login", function(req,resp){
     resp.sendFile(pF+"/login.html")
 });
 
-app.get("/manage", sessionCheck, function(req,resp){
+app.get("/manage", teacherSessionCheck, function(req,resp){
     resp.sendFile(pF+"/manage.html")
 });
 
@@ -385,8 +393,9 @@ app.post("/cVIN", (request,response)=>{
 
 app.post('/login', (request, response) => {
     auth.login(request.body.id, request.body.password)
-        .then(() => {
-            request.session.user = request.body.id
+        .then((info) => {
+            console.log(info)
+            request.session.user = info
             response.redirect('/')
         }).catch((err) => {
             console.log(err)
