@@ -249,13 +249,15 @@ router.post("/updateRO", function (req,resp){
     var openClose = req.body.openClose;
     
     var roID = req.body.roID;
-    
+    if(odometerOut == 'null'){
+        odometerOut = null;
+    }
     var odometerOutData = [odometerOut, roID];
-        
+    console.log(odometerOutData)
     var updateOdoQuery = 'UPDATE repair_order SET odometer_out = $1 WHERE ro_id = $2';
     
     var opencloseData = [openClose, roID];
-    
+    console.log(opencloseData)
     var updateroStatus = 'UPDATE repair_order SET status = $1 WHERE ro_id = $2';
     
     pool.connect(function (err, client, done){
@@ -267,7 +269,6 @@ router.post("/updateRO", function (req,resp){
             }
 
             client.query(updateOdoQuery, odometerOutData, function(err, result){
-                
                 if(err){
                     console.log(err);
                     
@@ -280,8 +281,8 @@ router.post("/updateRO", function (req,resp){
 
                         }
                         else{
-                            console.log("Updated Repair Order");
-                            resp.send('Updated Repair Order');
+                            console.log("Updated Repair Order status");
+                            resp.send('Updated Repair Order status');
                         }
                     });
                 }

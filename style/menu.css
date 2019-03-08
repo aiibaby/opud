@@ -59,6 +59,7 @@ body {
     background-color: rgba(0,0,0,0.7);
     border-style: none;
     float: left;
+    left:-10px;
     width: 100vw;
     padding: 10px 0px 10px 0px;
 }

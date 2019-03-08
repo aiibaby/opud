@@ -418,7 +418,7 @@ function addOldParts(data){
 
             var partTH7 = document.createElement('th');
             partTH7.className = "sorting"
-            partTH7.innerHTML = "Sale price";
+            partTH7.innerHTML = "Unit Price";
 
             var partTH3 = document.createElement('th');
             partTH3.className = "sorting"
@@ -426,7 +426,7 @@ function addOldParts(data){
 
             var partTH4 = document.createElement('th');
             partTH4.className = "sorting"
-            partTH4.innerHTML = "Unit price";
+            partTH4.innerHTML = "Cost";
 
             var partTH5 = document.createElement('th');
             partTH5.className = "sorting"
@@ -435,11 +435,11 @@ function addOldParts(data){
             
 
             partTR.appendChild(partTH1);
-            partTR.appendChild(partTH2);
             partTR.appendChild(partTH6);
+            partTR.appendChild(partTH2);
             partTR.appendChild(partTH4);
-            partTR.appendChild(partTH3);
             partTR.appendChild(partTH7);
+            partTR.appendChild(partTH3);
             partTR.appendChild(partTH5);
             ptHead.appendChild(partTR)
             
