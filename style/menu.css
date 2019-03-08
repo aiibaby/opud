@@ -21,6 +21,7 @@ body {
 #firstRow {
     padding-left: 10px;
     padding-right: 10px;
+    margin: 0;
 }
 
 #headerDiv{
@@ -59,8 +60,11 @@ body {
     background-color: rgba(0,0,0,0.7);
     border-style: none;
     float: left;
-    width: 100vw;
+    width: 95vw;
     padding: 10px 0px 10px 0px;
+    left: 2.5vw;
+    right: 2.5vw;
+    margin: auto;
 }
 
 #menuItems{

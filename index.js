@@ -174,7 +174,6 @@ app.post("/order", (req,res)=>{
                 LRPads: "",
                 RRPads: "",
                 InspectionComment: "", 
-                checkresult: true
             })
         }
               
