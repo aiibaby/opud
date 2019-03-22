@@ -196,7 +196,7 @@ $(document).ready(function() {
             }  
         });
     }
-function addOldParts(data){
+    function addOldParts(data){
 
         for(var i = 0; i<data.length; i++){
             var task_id = data[i].worktask_id;
@@ -237,13 +237,13 @@ function addOldParts(data){
                         inp2.className = 'inp'
                         inp2.style.height='auto'
                         inp2.style.width='-webkit-fill-available'
-                        inp2.value =  `${data[row].part_desc}`
+                        inp2.value =  `${data[row].supplier_name}`
                         inp2.disabled = true
                         var inp3= document.createElement('textarea')
                         inp3.className = 'inp'
                         inp3.style.height='auto'
                         inp3.style.width='-webkit-fill-available'
-                        inp3.value = `${data[row].qty}`
+                        inp3.value = `${data[row].sell_price}`
                         inp3.disabled = true
                         var inp4= document.createElement('textarea')
                         inp4.className = 'inp'
@@ -255,13 +255,13 @@ function addOldParts(data){
                         inp5.className = 'inp'
                         inp5.style.height='auto'
                         inp5.style.width='-webkit-fill-available'
-                        inp5.value = `${data[row].sell_price}`
+                        inp5.value = `${data[row].qty}`
                         inp5.disabled = true
                         var inp6= document.createElement('textarea')
                         inp6.className = 'inp'
                         inp6.style.height='auto'
                         inp6.style.width='-webkit-fill-available'
-                        inp6.value = `${data[row].supplier_name}`
+                        inp6.value = `${data[row].part_desc}`
                         inp6.disabled = true
                         partTH1.appendChild(inp1);
                         partTH2.appendChild(inp2);
@@ -431,8 +431,6 @@ function addOldParts(data){
             var partTH5 = document.createElement('th');
             partTH5.className = "sorting"
             partTH5.innerHTML = "Extended Amount";
-
-            
 
             partTR.appendChild(partTH1);
             partTR.appendChild(partTH6);
