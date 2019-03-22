@@ -82,8 +82,9 @@ app.get("/orders", sessionCheck, function(req, resp){
 app.get("/print", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/roprint.html")
 });
+
 app.get("/printInvoice", function(req, resp){
-    resp.sendFile(pF+"/roprint.html")
+    resp.sendFile(pF+"/invoiceprint.html")
 });
 app.get("/test", function(req, resp){
     resp.sendFile(pF+"/order.html")
@@ -115,6 +116,19 @@ app.post("/search", (request,response)=>{
         response.send(result);
     });
 });
+
+app.post("/print", sessionCheck, function(req, resp){
+    resp.render(pF+"/roprint.hbs",{
+        roNum: req.body.roNum,
+    })
+});
+
+app.post("/printInvoice", sessionCheck, function(req, resp){
+    resp.render(pF+"/invoiceprint.hbs",{
+        roNum: req.body.roNum,
+    })
+});
+
 app.post("/order", (req,res)=>{
     inspectionFunctions.selectInspection_init(req.body.roNum)
     .then((result) => {
@@ -122,19 +136,6 @@ app.post("/order", (req,res)=>{
             result = result[0]
             res.render(pF+"/order.hbs",{
                 roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,
                 LFPres: result.lfpres,
                 RFPres: result.rfpres,
                 LRPres: result.lrpres,
@@ -154,19 +155,6 @@ app.post("/order", (req,res)=>{
         } else {
             res.render(pF+"/order.hbs",{
                 roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,
                 LFPres: "",
                 RFPres: "",
                 LRPres: "",
@@ -195,19 +183,6 @@ app.post("/inspection", (req,res)=> {
             result = result[0]
             res.render(pF+"/inspection.hbs",{
                 roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,
                 LFPres: result.lfpres,
                 RFPres: result.rfpres,
                 LRPres: result.lrpres,
@@ -227,19 +202,6 @@ app.post("/inspection", (req,res)=> {
         } else {
             res.render(pF+"/inspection.hbs",{
                 roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,
                 LFPres: "",
                 RFPres: "",
                 LRPres: "",
@@ -312,19 +274,6 @@ app.post("/inspectionCancel", (req,res)=> {
             result = result[0]
             res.render(pF+"/order.hbs",{
                 roNum: req.body.roNum,
-                roCustName: req.body.roCustName,
-                roTel: req.body.roTel,
-                roCell: req.body.roCell,
-                roVIN: req.body.roVIN,
-                roMake: req.body.roMake,
-                roYear: req.body.roYear,
-                roLicense: req.body.roLicense,
-                roModel: req.body.roModel,
-                roOdometerIn: req.body.roOdometerIn,
-                odometerOut: req.body.odometerOut,
-                roNotes: req.body.roNotes,
-                openclose: req.body.openclose,
-                promiseDate: req.body.promiseDate,
                 LFPres: result.lfpres,
                 RFPres: result.rfpres,
                 LRPres: result.lrpres,

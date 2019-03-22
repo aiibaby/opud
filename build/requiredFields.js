@@ -1,4 +1,4 @@
-function requireValidation(last_name, vin, commonRequestNum, uncommonRequestNum, cust_id, vehicle_id){
+function requireValidation(last_name, vin, commonRequestNum, uncommonRequestNum, cust_id, vehicle_id, datePromised, dateHourPromised, dateMinPromised, dateAmPmPromised){
 	status = true
 	error = []
 	if (last_name === "" && cust_id === null){

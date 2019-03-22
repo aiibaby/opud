@@ -66,7 +66,7 @@ $(document).ready(function(){
     async function submitButtonClick() {
 
         var commonTasksSelect = document.getElementById("requestsDropdown");
-        var validate = requireValidation(lastNameInput.value, vinInput.value, numOfUnCommonRequests, numOfCommonRequests, cust_id, vehicle_id);
+        var validate = requireValidation(lastNameInput.value, vinInput.value, numOfUnCommonRequests, numOfCommonRequests, cust_id, vehicle_id, datePromised, dateHourPromised, dateMinPromised, dateAmPmPromised);
 
         if (validate.status == "true") {
             if (homephoneverif && cellphoneverif && postalcodeverif && licenseverif && yearverif && odoverif && vinverif){
@@ -102,13 +102,18 @@ $(document).ready(function(){
             } else {
                 if (validate.error.includes("Last Name Error")) {
                     lastNameInput.style.borderColor = 'red'
+                    lastNameInput.style.borderWidth = '5px'
+
                 }
                 if (validate.error.includes("VIN Error")) {
                     vinInput.style.borderColor = 'red'
+                    vinInput.style.borderWidth = '5px'
                 }
                 if (validate.error.includes("No Request")) {
                     commonTasksSelect.style.borderColor = 'red'
+                    commonTasksSelect.style.borderWidth = '5px'
                     otherSerTextArea.style.borderColor = 'red'
+                    otherSerTextArea.style.borderWidth = '5px'
                 }
             }
     }
@@ -304,9 +309,10 @@ $(document).ready(function(){
                     alert("Error")
                 }
                 else {
-                    swal({title:"Repair Order Successfully Created"}, function () {
-                            location.href = "/orders";
-                        })
+                    swal("Repair Order Successfully Created", "", "success");
+                    setTimeout(() => {
+                        location.href = "/orders";
+                    }, 1500)
 
                 }
             }
@@ -344,9 +350,10 @@ $(document).ready(function(){
                     alert("Error")
                 }
                 else {
-                    swal({title:"Repair Order Successfully Created"}, function () {
+                    swal("Repair Order Successfully Created", "", "success");
+                    setTimeout(() => {
                         location.href = "/orders";
-                    })
+                    }, 1500)
                 }
             }
         })

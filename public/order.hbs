@@ -9,6 +9,7 @@
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -30,28 +31,27 @@
     <!-- JavaScript -->
     <script src="/scripts/order.js"></script>
     <script src="/scripts/getmenu.js"></script>
+    <style>
+    body  {
+    background-image: url("https://wallpapercave.com/wp/wp2043465.jpg");
+    background-color: #cccccc;
+    }
+    </style>
 </head>
-<body>
+<body >
     
     <div id="menuPosition">
     </div>
     <div id="roPopup" class="popup">
-        <form action='/order' id='roInfo' method='post'>
+        
+        <form action='/print' id='roInfo' method='post'>
 
             <input class='invis' name='roNum' type='text' value='{{roNum}}'>
-            <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
-            <input class='invis' name='roTel' type='text' value='{{roTel}}'>
-            <input class='invis' name='roCell' type='text' value='{{roCell}}'>
-            <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
-            <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
-            <input class='invis' name='roYear' type='text' value='{{roYear}}'>
-            <input class='invis' name='roMake' type='text' value='{{roMake}}'>
-            <input class='invis' name='roModel' type='text' value='{{roModel}}'>
-            <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
-            <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
-            <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
-            <input class='invis' name='openclose' type='text' value='{{openclose}}'>
-            <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
+
+        </form>
+        <form action='/printInvoice' id='roInfo2' method='post'>
+
+            <input class='invis' name='roNum' type='text' value='{{roNum}}'>
 
         </form>
         <div class="container-fluid" id="roContainer">
