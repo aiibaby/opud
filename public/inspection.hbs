@@ -58,7 +58,7 @@
                         <input name="LFPres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{LFPres}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4 list_col_end">PSI</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">RF:</div>
@@ -66,7 +66,7 @@
                         <input name="RFPres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{RFPres}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4 list_col_end">PSI</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">LR:</div>
@@ -74,7 +74,7 @@
                         <input id="LRPres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{LRPres}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4 list_col_end">PSI</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">RR:</div>
@@ -82,7 +82,7 @@
                         <input name="RRPres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{RRPres}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4 list_col_end">PSI</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">Spare:</div>
@@ -90,7 +90,7 @@
                         <input name="SparePres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{SparePres}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 PSI</div>
+                    <div class="col-sm-4 list_col_end">PSI</div>
                 </div>
 
             </div>
@@ -102,7 +102,7 @@
                         <input name="LFTread" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{LFTread}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 nds</div>
+                    <div class="col-sm-4 list_col_end">nds</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">RF:</div>
@@ -110,7 +110,7 @@
                         <input name="RFTread" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{RFTread}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 nds</div>
+                    <div class="col-sm-4 list_col_end">nds</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">LR:</div>
@@ -118,7 +118,7 @@
                         <input name="LRTread" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{LRTread}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 nds</div>
+                    <div class="col-sm-4 list_col_end">nds</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">RR:</div>
@@ -126,7 +126,7 @@
                         <input name="RRTread" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{RRTread}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 nds</div>
+                    <div class="col-sm-4 list_col_end">nds</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 list_col">Spare:</div>
@@ -134,7 +134,7 @@
                         <input name="SpareTread" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{SpareTread}}">
                     </div>
-                    <div class="col-sm-4 list_col_end">/32 nds</div>
+                    <div class="col-sm-4 list_col_end">nds</div>
                 </div>
 
             </div>
@@ -146,7 +146,7 @@
                     <div class="row">
                         <div class="col-sm-3 list_col"> LF: </div>
                         <div class="col-sm-4 list_col">
-                            <input name="LFPads" type="number" min="0" step="0.1" required class="form-control"
+                            <input name="LFPads" type="number" min="0"  max="35" step="0.1" required class="form-control"
                                 value="{{LFPads}}">
                         </div>
                         <div class="col-sm-4 list_col_end">mm</div>
@@ -154,7 +154,7 @@
                     <div class="row">
                         <div class="col-sm-3 list_col"> RF: </div>
                         <div class="col-sm-4 list_col">
-                            <input name="RFPads" type="number" min="0" step="0.1" required class="form-control"
+                            <input name="RFPads" type="number" min="0" step="0.1" max="35" required class="form-control"
                                 value="{{RFPads}}">
                         </div>
                         <div class="col-sm-4 list_col_end">mm</div>
@@ -162,7 +162,7 @@
                     <div class="row">
                         <div class="col-sm-3 list_col"> LR: </div>
                         <div class="col-sm-4 list_col">
-                            <input name="LRPads" type="number" min="0" step="0.1" required class="form-control"
+                            <input name="LRPads" type="number" min="0" step="0.1" max="35" required class="form-control"
                                 value="{{LRPads}}">
                         </div>
                         <div class="col-sm-4 list_col_end">mm</div>
@@ -170,7 +170,7 @@
                     <div class="row">
                         <div class="col-sm-3 list_col"> RR: </div>
                         <div class="col-sm-4 list_col">
-                            <input name="RRPads" type="number" min="0" step="0.1" required class="form-control"
+                            <input name="RRPads" type="number" min="0" step="0.1" max="35" required class="form-control"
                                 value="{{RRPads}}">
                         </div>
                         <div class="col-sm-4 list_col_end">mm</div>
@@ -226,7 +226,7 @@
         </form>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <button id="cancel_button_inspection"
-                    class="btn btn-primary submit_button" onclick="swal({ icon: 'warning', title:'Leave This Page Without Save?', dangerMode: true, buttons: true, }).then( r => { if (r) document.getElementById('evilbuttontocancel').click() });">Cancel</button>
+                    class="btn btn-primary submit_button" onclick="swal({ icon: 'warning', title:'Leave This Page? Unsaved change will be discarded.', dangerMode: true, buttons: true, }).then( r => { if (r) document.getElementById('evilbuttontocancel').click() });">Cancel</button>
             </div>
     </div>
     </div>
