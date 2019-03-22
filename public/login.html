@@ -41,26 +41,27 @@
             <div class="row" id="firstRow">
                 <div id="menuPosition"></div>
             </div>
-            
-            <form id="loginSection" action="/login" method="post">
-                <div class="modal-body mx-3" id="loginInp">
-                    <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right">ID:</label>
-                        <input name="id" type="text" id="loginId" class="form-control validate" required>
+            <div id="holder">
+                <form id="loginSection" action="/login" method="post">
+                    <div class="modal-body mx-3" id="loginInp">
+                        <div class="md-form mb-5">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right">ID:</label>
+                            <input name="id" type="text" id="loginId" class="form-control validate" required>
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <i class="fas fa-lock prefix grey-text"></i>
+                            <label data-error="wrong" data-success="right">Password:</label>
+                            <input name="password" type="password" id="loginPass" class="form-control validate" required>
+                        </div>
                     </div>
 
-                    <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right">Password:</label>
-                        <input name="password" type="password" id="loginPass" class="form-control validate" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center">
-                    <button id="loginBut" type="submit" class="btn btn-primary">Login</button>
-                </div> 
-            </form>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button id="loginBut" type="submit" class="btn btn-primary">Login</button>
+                    </div> 
+                </form>
+            </div>
         </div>  
     </body>
 </html>

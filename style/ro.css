@@ -245,3 +245,7 @@ i {
 .invis{
 	display:none;
 }
+
+#inspectionHeader{
+    font-weight: bold;
+}

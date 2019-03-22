@@ -43,6 +43,14 @@ const sessionCheck = (req, res, next) => {
     }
 }
 
+function teacherSessionCheck(req, res, next) {
+    if (req.session.user.type == 'Teacher') {
+        next()
+    } else {
+        res.redirect('/')
+    }
+}
+
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers",
@@ -90,7 +98,7 @@ app.get("/login", function(req,resp){
     resp.sendFile(pF+"/login.html")
 });
 
-app.get("/manage", sessionCheck, function(req,resp){
+app.get("/manage", teacherSessionCheck, function(req,resp){
     resp.sendFile(pF+"/manage.html")
 });
 
@@ -220,24 +228,39 @@ app.post("/inspectionSave", (req,res)=> {
         req.body.SpareTread, req.body.LFPads,
         req.body.RFPads, req.body.LRPads, req.body.RRPads, req.body.InspectionComment, req.body.roNum)
         .then((result) => {
-            res.render(pF+"/order.hbs",{
-                roNum: req.body.roNum,  
-                LFPres: result.lfpres,
-                RFPres: result.rfpres,
-                LRPres: result.lrpres,
-                RRPres: result.rrpres,
-                SparePres: result.sparepres,
-                LFTread: result.lftread,
-                RFTread: result.rftread,
-                LRTread: result.lrtread,
-                RRTread: result.rrtread,
-                SpareTread: result.sparetread,
-                LFPads: result.lfpads,
-                RFPads: result.rfpads,
-                LRPads: result.lrpads,
-                RRPads: result.rrpads,
-                InspectionComment: result.inspectioncomment,      
-            });
+            setTimeout(() => {
+                res.render(pF+"/order.hbs",{
+                    roNum: req.body.roNum,
+                    roCustName: req.body.roCustName,
+                    roTel: req.body.roTel,
+                    roCell: req.body.roCell,
+                    roVIN: req.body.roVIN,
+                    roMake: req.body.roMake,
+                    roYear: req.body.roYear,
+                    roLicense: req.body.roLicense,
+                    roModel: req.body.roModel,
+                    roOdometerIn: req.body.roOdometerIn,
+                    odometerOut: req.body.odometerOut,
+                    roNotes: req.body.roNotes,
+                    openclose: req.body.openclose,
+                    promiseDate: req.body.promiseDate,  
+                    LFPres: result.lfpres,
+                    RFPres: result.rfpres,
+                    LRPres: result.lrpres,
+                    RRPres: result.rrpres,
+                    SparePres: result.sparepres,
+                    LFTread: result.lftread,
+                    RFTread: result.rftread,
+                    LRTread: result.lrtread,
+                    RRTread: result.rrtread,
+                    SpareTread: result.sparetread,
+                    LFPads: result.lfpads,
+                    RFPads: result.rfpads,
+                    LRPads: result.lrpads,
+                    RRPads: result.rrpads,
+                    InspectionComment: result.inspectioncomment,      
+                });
+            }, 2000);
         }).catch((err) => {
             console.log(err)
         })
@@ -300,6 +323,9 @@ app.post("/inspectionCancel", (req,res)=> {
                 InspectionComment: "", 
             })
         }
+    
+    }).catch((err) => {
+        console.log(err)
     });
    
 
@@ -315,8 +341,9 @@ app.post("/cVIN", (request,response)=>{
 
 app.post('/login', (request, response) => {
     auth.login(request.body.id, request.body.password)
-        .then(() => {
-            request.session.user = request.body.id
+        .then((info) => {
+            console.log(info)
+            request.session.user = info
             response.redirect('/')
         }).catch((err) => {
             console.log(err)

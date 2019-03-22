@@ -25,7 +25,7 @@ const login = async (id, pass) => {
     const user = await retrieveUser(id);
     const match = await bcrypt.compare(pass, user.password);
     if (match) {
-        return true
+        return user
     } else {
         throw `ID or Password does not match.`
     }
