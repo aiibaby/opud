@@ -75,6 +75,7 @@
     background-color: #fefefe;
     padding: 20px; 
     overflow: auto;
+    opacity: 0.90;
 }
 
 .close {
