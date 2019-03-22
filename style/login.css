@@ -19,11 +19,17 @@ body {
 
 #loginSection {
     height: 50vh;
-    width: 50vw;
+    width: 30vw;
 }
 
 #loginInp {
     font-family: arial;
     font-size: 12pt;
     color: white;
+}
+
+#holder {
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
 }
