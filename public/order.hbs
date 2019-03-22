@@ -9,6 +9,7 @@
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -30,12 +31,19 @@
     <!-- JavaScript -->
     <script src="/scripts/order.js"></script>
     <script src="/scripts/getmenu.js"></script>
+    <style>
+    body  {
+    background-image: url("https://wallpapercave.com/wp/wp2043465.jpg");
+    background-color: #cccccc;
+    }
+    </style>
 </head>
 <body >
     
     <div id="menuPosition">
     </div>
     <div id="roPopup" class="popup">
+        
         <form action='/print' id='roInfo' method='post'>
 
             <input class='invis' name='roNum' type='text' value='{{roNum}}'>

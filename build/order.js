@@ -58,7 +58,6 @@ $(document).ready(function() {
             },
             success:function(data){
             if (data){
-                //console.log(data)
                 vehicle_info = data;
                 roTask.innerHTML="";
 
@@ -75,11 +74,12 @@ $(document).ready(function() {
                 saveRO.onclick = function(){
                     disableInputs();
                     saveComments(data);
-                    //console.log(document.getElementsByClassName('parts')[0].childNodes[0].childNodes[1].childNodes[1].childNodes[0].value)
                     updateLabour(document.getElementsByClassName('labour'))
                     updateParts(document.getElementsByClassName('parts'))
                     updateRO(saveComments(data), odometerOut.value, roID, openclose.value);
-                    }                        
+                    location.reload(); 
+                    }
+                                 
                 }
             }
         }); 
@@ -92,7 +92,6 @@ $(document).ready(function() {
         for(Element in data){
             if(Element.length < 4){
                 id = data[Element].id.substring(6)
-                //console.log(data[Element].childNodes[0].childNodes)
                 for(row in data[Element].childNodes[0].childNodes){
                     if(row.length < 4 && parseInt(row) > 0){
                         c = data[Element].childNodes[0].childNodes[row].className
@@ -100,7 +99,6 @@ $(document).ready(function() {
                         for(item in data[Element].childNodes[0].childNodes[row].childNodes){
                             if(item.length < 4 && parseInt(item) < 4){
                                 temp.push(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
-                                //console.log(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
                             }
                         }
                         $.ajax({
@@ -132,13 +130,10 @@ $(document).ready(function() {
                 for(row in data[Element].childNodes[0].childNodes){
                     if(row.length < 4 && parseInt(row) > 0){
                         c = data[Element].childNodes[0].childNodes[row].className
-                        console.log(data[Element].childNodes[0].childNodes[row].className)
-                        console.log(c)
                         temp = []
                         for(item in data[Element].childNodes[0].childNodes[row].childNodes){
                             if(item.length < 4 && parseInt(item) < 6){
                                 temp.push(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
-                                //console.log(data[Element].childNodes[0].childNodes[row].childNodes[item].childNodes[0].value)
                             }
                         }
                         $.ajax({
@@ -162,7 +157,34 @@ $(document).ready(function() {
     }
     searchTask(roNum.innerHTML)
     populate(document.getElementById('roNum').innerHTML)
-    
+    function Delete(row, id, type){
+        for(e in document.getElementById(`${type}Table${id}`).childNodes[0].childNodes){
+            if(!isNaN(parseInt(e)) && e != 0){
+                if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "new"){
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = "#5064bd"
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "delnew"
+                }
+                else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "del" ){
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = ""
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = ""
+                }
+                else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "delnew"){
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = ""
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "new"
+                }
+                else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className != "del" ){
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = "#5064bd"
+                    document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "del"
+                }
+            }
+            
+        }
+        return null
+    }
     function populate(id){
         $.ajax({
             url:"/rosearch/AroSearch",
@@ -175,7 +197,6 @@ $(document).ready(function() {
             success:function(data){
                 if (data){
                     // var is not defined for resultsTable as it will cause a bug where the datatable will not read the data correctly 
-                    //console.log(data[0]) 
                     // this function display a popup screen that display relevant repair order information
                     document.getElementById('promiseDate').innerHTML=`${data[0].promised_time.substring(11,16)} on ${data[0].promised_time.substring(0,10)} `
                     document.getElementById('roCustName').innerHTML=`${data[0].first_name} ${data[0].last_name}`
@@ -208,7 +229,6 @@ $(document).ready(function() {
                 },
                 success:function(data){
                     for(row in data){
-                        console.log(data)
                         ptHead = document.getElementById(`PTable${data[row].worktask_id}`).childNodes[0]
                         var partTR = document.createElement('tr');
                         partTR.setAttribute = ('role','row');
@@ -272,11 +292,11 @@ $(document).ready(function() {
                         partTH5.innerHTML='Price * Quantity';
 
                         partTR.appendChild(partTH1);
-                        partTR.appendChild(partTH2);
                         partTR.appendChild(partTH6);
+                        partTR.appendChild(partTH2);
                         partTR.appendChild(partTH4);
-                        partTR.appendChild(partTH3);
                         partTR.appendChild(partTH7);
+                        partTR.appendChild(partTH3);
                         partTR.appendChild(partTH5);
                         ptHead.appendChild(partTR)
                     }
@@ -289,7 +309,6 @@ $(document).ready(function() {
                     id:data[i].worktask_id 
                 },
                 success:function(data){
-                    //console.log(data)
                     for(row in data){
                         LHead = document.getElementById(`LTable${data[row].worktask_id}`).childNodes[0]
                         var LabourTR = document.createElement('tr');
@@ -392,6 +411,16 @@ $(document).ready(function() {
             partBut.style.marginTop = '-30px';
             partBut.style.position = 'relative';
             partBut.innerHTML = 'Add Part'
+            var partButdel = document.createElement("button");
+            partButdel.className = 'col-10 ml-auto but';
+            partButdel.id = `PBut2${data[i].worktask_id}`
+            partButdel.style.display = 'none';
+            partButdel.style.left = '24vw';
+            partButdel.style.marginBottom = '10px';
+            partButdel.style.top = '-10px';
+            partButdel.style.marginTop = '-30px';
+            partButdel.style.position = 'relative';
+            partButdel.innerHTML = 'Remove Part'
             //add parts table
             var div1 = document.createElement('div');
             var partTable = document.createElement('table');
@@ -444,7 +473,6 @@ $(document).ready(function() {
             
             partTable.appendChild(ptHead);
             partBut.onclick = function() {
-                //console.log(event.target.id.substring(4))
                 var row = document.getElementById(`PTable${event.target.id.substring(4)}`).insertRow(-1);
                 row.className = "new";
                 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
@@ -490,6 +518,35 @@ $(document).ready(function() {
                 cell6.appendChild(inp6);
                 cell7.innerHTML='Price * Quantity';
             }
+            partButdel.onclick = function() {
+                id = event.target.id.substring(5)
+                swal({
+                    text: 'What Part do you want to remove',
+                    content: "input",
+                    button: {
+                      text: "Search!",
+                      closeModal: false,
+                    },
+                  })
+                  .then(name => {
+                    if (name == "") throw null;
+                    try{
+                        Delete(name, id, "P")
+                        swal("Part Removed / Readded");
+                    }catch(err){
+                        console.log(err)
+                        throw(err)
+                    }
+                  })
+                  .catch(err => {
+                    if (err) {
+                      swal("Oh noes!", "Part not found", "error");
+                    } else {
+                      swal.stopLoading();
+                      swal.close();
+                    }
+                  });
+            }
             //////
             //add labour headder
             var labourHead = document.createElement('div');
@@ -506,6 +563,16 @@ $(document).ready(function() {
             partBut2.style.marginTop = '-30px';
             partBut2.style.position = 'relative';
             partBut2.innerHTML = 'Add Labour'
+            var partBut2del = document.createElement("button");
+            partBut2del.className = 'col-10 ml-auto but';
+            partBut2del.id = `LBut${data[i].worktask_id}`
+            partBut2del.style.display = 'none';
+            partBut2del.style.left = '24vw';
+            partBut2del.style.marginBottom = '10px';
+            partBut2del.style.top = '-10px';
+            partBut2del.style.marginTop = '-30px';
+            partBut2del.style.position = 'relative';
+            partBut2del.innerHTML = 'Remove Labour'
             //add labour table
             var LabourTable = document.createElement('table');
             var lbHead = document.createElement('thead')
@@ -545,7 +612,6 @@ $(document).ready(function() {
             LabourTable.appendChild(lbHead);
 
             partBut2.onclick = function() {
-                //console.log(event.target.id.substring(4))
                 var row = document.getElementById(`LTable${event.target.id.substring(4)}`).insertRow(-1);
                 row.className = "new" 
                 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
@@ -582,6 +648,35 @@ $(document).ready(function() {
                 cell24.appendChild(inp4);
                 cell25.innerHTML="Hours * rate";
             }
+            partBut2del.onclick = function() {
+                id = event.target.id.substring(4)
+                swal({
+                    text: 'What Part do you want to Remove / Add Back',
+                    content: "input",
+                    button: {
+                      text: "Search!",
+                      closeModal: false,
+                    },
+                  })
+                  .then(name => {
+                    if (name == "") throw null;
+                    try{
+                        Delete(name, id, "L")
+                        swal("Part Removed / Readded");
+                    }catch(err){
+                        console.log(err)
+                        throw(err)
+                    }
+                  })
+                  .catch(err => {
+                    if (err) {
+                      swal("Oh noes!", "Part not found", "error");
+                    } else {
+                      swal.stopLoading();
+                      swal.close();
+                    }
+                  });
+            }
             
             taskEntry.appendChild(document.createTextNode(taskName));
 
@@ -595,10 +690,12 @@ $(document).ready(function() {
             taskDiv.appendChild(editTask);
             div2.appendChild(partHead);
             div2.appendChild(partBut);
+            div2.appendChild(partButdel);
             taskDiv.appendChild(div2);
             taskDiv.appendChild(partTable);
             div1.appendChild(labourHead);
             div1.appendChild(partBut2);
+            div1.appendChild(partBut2del);
             taskDiv.appendChild(div1)
             taskDiv.appendChild(LabourTable);
             
@@ -643,7 +740,6 @@ $(document).ready(function() {
             },
             success:function(data){
                 if (data){
-                    //console.log(data);
                 }
             }
          });
