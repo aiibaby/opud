@@ -13,6 +13,12 @@ $(document).ready(function () {
     var wheelTorque = document.getElementById("wheelTorque");
     var wrap = document.getElementById("wrap");
 
+    //get parts elements
+
+    var partsinfo = document.getElementById("partsinfo");
+    var tasksinfo = document.getElementById("jobHeader");
+    var jobNumber = document.getElementById("jobNumber");
+
     var topPadding = "70px";
 
     //Run when page is loaded. Ajax call to grab RO data from session
@@ -37,6 +43,8 @@ $(document).ready(function () {
                     success: function (data) {
 
                         fillTasksRequestedHTML(data);
+                        fillJobHeader(data[0]);
+                        
                         for (e in data) {
                             $.ajax({
                                 url: "/rosearch/PartSearch",
@@ -45,6 +53,7 @@ $(document).ready(function () {
                                     id: data[e].worktask_id
                                 },
                                 success: function (data) {
+                                    fillPart(data[0]);
                                     console.log(data)
                                     for (row in data) {
                                         var pheader = document.createElement("div");
@@ -61,6 +70,8 @@ $(document).ready(function () {
         });
 
     }
+
+    //----------Invoice Header Section----------
 
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data) {
@@ -133,6 +144,67 @@ $(document).ready(function () {
         }
         return returnString;
     }
+
+    //----------Invoice Header Section End----------
+
+
+
+    //----------Job Header Section----------
+
+    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
+    function fillJobHeader(data) {
+        var jobData = {
+            "Customer Request": data.task_name,
+            "Repair Comments": data.comments
+        };
+
+        tasksinfo.innerHTML = fillInfoDiv(jobData);
+        jobNumber.innerHTML = "<b>Job 1:</b>";
+    }
+    
+
+    //----------Job Header Section End----------
+
+
+
+    //----------Invoice Parts Section----------
+
+    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
+    function fillPart(data) {
+        var partData = {
+            "Part #": data.part_no,
+            "Part 1": data.part_desc,
+            "Cost": "$"+data.unit_price,
+            "Sale": data.innerHTML = "$"+data.sell_price,
+            "Quantity": data.qty,
+            "Ext. Amount": "$"+data.sell_price * data.qty
+        };
+
+        partsinfo.innerHTML = fillPartDiv(partData);
+    }
+
+    //Function used for formatting the parts section
+    function formatPartLabel(label) {
+        return ("<b>" + label + ":</b> ");
+    }
+    
+    //Returns a string with the innerHTML needed for the data it takes in
+    function fillPartDiv(divData) {
+        var returnString = "";
+        var i = 1;
+        for (item in divData) {
+            if (item === "Ext. Amount") {
+                returnString += formatPartLabel(item) + divData[item]
+            }
+            else {
+                returnString += formatPartLabel(item) + divData[item] + " | ";
+            }
+        }
+        return returnString;
+    }
+
+    //----------Invoice Parts Section End----------
+
 
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
