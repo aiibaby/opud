@@ -394,9 +394,10 @@ $(document).ready(function(){
                     swal("Error","Problems adding data")
                 }
                 else {
-                    swal({title:"Repair Order Successfully Created"}, function () {
+                    swal("Repair Order Successfully Created", "", "success");
+                    setTimeout(() => {
                         location.href = "/orders";
-                    })
+                    }, 1500)
                 }
             }
         })
