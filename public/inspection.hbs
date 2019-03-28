@@ -40,6 +40,7 @@
         <div id="menuPosition">
         </div>
     </div>
+    <!-- Title -->
     <div class="background">
         <div class="row" id="inspecitonHeaderRow">
             <div class="col-sm-12" id="inspectionHeaderDiv">
@@ -47,7 +48,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Inspection Sheet Form -->
     <div class="col-sm-12">
         <form class="form" id="listDiv" onsubmit="swal('Inspection Sheet Saved','','success')" action="/inspectionSave"
             method="post">
@@ -72,7 +73,7 @@
                 <div class="row">
                     <div class="col-sm-3 list_col">LR:</div>
                     <div class="col-sm-4 list_col">
-                        <input id="LRPres" type="number" max="32" min="0" step="0.1" required class="form-control"
+                        <input name="LRPres" type="number" max="32" min="0" step="0.1" required class="form-control"
                             value="{{LRPres}}">
                     </div>
                     <div class="col-sm-4 list_col_end">PSI</div>
@@ -188,7 +189,7 @@
             </div>
 
     </div>
-
+    <!-- Submit and Cancel Button -->
     <div id="submitteer">
         <input class='invis' name='roNum' type='text' value='{{roNum}}'>
         <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
