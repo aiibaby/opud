@@ -139,32 +139,64 @@
                 <ol id="roTask">
                     <!--text, parts and labor go here-->
                 </ol>
+                <br>
+                <br>
                 <div class="col-md-6 ml-auto" id="inspectionHeader">Inspection Information</div>
-                <div class="col-sm-12" id="inspectioncomment">
-                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
-                        Brake
-                        Left Front: {{LFPads}} mm 
-                        Right Front: {{RFPads}} mm 
-                        Left Rear: {{LRPads}} mm 
-                        Right Rear: {{RRPads}} mm                                      
-                    </textarea>
-                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
-                        Tire Pressure 
-                        Left Front: {{LFPres}} PSI
-                        Right Front: {{RFPres}} PSI
-                        Left Rear: {{LRPres}} PSI
-                        Right Rear: {{RRPres}} PSI
-                        Spare Tire: {{SparePres}} PSI                                      
-                    </textarea>
-                    <textarea class=" col-sm-4" disabled="" rows="7" style="margin-bottom: 1em; margin-top: 1em;">
-                        Tire Tread
-                        Left Front: {{LFTread}} nds
-                        Right Front: {{RFTread}} nds
-                        Left Rear: {{LRTread}} nds
-                        Right Rear: {{RRTread}} nds
-                        Spare Tire: {{SpareTread}} nds                                 
-                    </textarea>
-                    <textarea class=" col-sm-12" disabled="" rows="3" style="margin-bottom: 1em;">Comment: {{InspectionComment}}</textarea>
+                <div class="col-sm-12" id="inspectionComment">
+                    <div class="row">
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Brake</div>
+                        
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Tire Pressure</div>
+                        
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Tire Tread</div>
+                        
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{LFPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center" id="LFPRES">{{LFPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{LFTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center"></div>
+                        <div class="col-sm-2" style="text-align: center"></div>
+                        <div class="col-sm-2" style="text-align: center">Spare Tire</div>
+                        <div class="col-sm-2" style="text-align: center">{{SparePres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Spare Tire</div>
+                        <div class="col-sm-2" style="text-align: center">{{SpareTread}} nds</div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center; margin-bottom: 1.5em;">Comment</div>
+                        <div class="col-sm-10" style="margin-bottom: 1.5em;">{{InspectionComment}}</div>
+                    </div>
                 </div>
                                         <!-- Button to open printable version of the repair order -->
                 <div class="col-sm-2">
@@ -203,8 +235,9 @@
     </div>
     <script>
         var inspectionHeader = document.getElementById("inspectionHeader");
-        var inspectioncomment = document.getElementById("inspectioncomment");
-        var n = inspectioncomment.children[0].innerHTML.includes("Left Front:  mm")
+        var inspectioncheck = document.getElementById("LFPRES");
+        var inspectioncomment = document.getElementById("inspectionComment")
+        var n = inspectioncheck.innerHTML.includes("-1 PSI")
         if (n){
             inspectionHeader.style.display = "none";
             inspectioncomment.style.display = "none";
