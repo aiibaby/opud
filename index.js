@@ -155,7 +155,7 @@ app.post("/order", (req,res)=>{
         } else {
             res.render(pF+"/order.hbs",{
                 roNum: req.body.roNum,
-                LFPres: "",
+                LFPres: "-1",
                 RFPres: "",
                 LRPres: "",
                 RRPres: "",
@@ -223,7 +223,7 @@ app.post("/inspection", (req,res)=> {
 })
 
 app.post("/inspectionSave", (req,res)=> {
-    inspectionFunctions.insertInspection(req.body.LFPres,req.body.RFPres,req.body.RFPres,req.body.RRPres,
+    inspectionFunctions.insertInspection(req.body.LFPres,req.body.RFPres,req.body.LRPres,req.body.RRPres,
         req.body.SparePres,req.body.LFTread, req.body.RFTread, req.body.LRTread, req.body.RRTread, 
         req.body.SpareTread, req.body.LFPads,
         req.body.RFPads, req.body.LRPads, req.body.RRPads, req.body.InspectionComment, req.body.roNum)
