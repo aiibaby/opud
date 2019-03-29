@@ -1058,7 +1058,6 @@ The purpose of this page is to provide an electric inspection sheet for the tech
 ### Prerequisites:
 
 - This page must be accessed through the Add/Edit Inspection Sheet button in the Repair Order Page and requires session variables for the specified repair order to be set in order to generate the relevant information.
-
 - Bootstrap API script and CSS.
 
 ### Related Files:
