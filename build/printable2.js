@@ -1,17 +1,11 @@
 $(document).ready(function () {
     console.log("ready");
-
-    var printable = document.getElementById("printable");
-    var header = document.getElementById("header");
+    var x = 0;
+    var z = 0;
     var topRight = document.getElementById("topRight");
     var customerInfo = document.getElementById("customerInfo");
     var vehicleInfo1 = document.getElementById("vehicleInfo1");
     var vehicleInfo2 = document.getElementById("vehicleInfo2");
-    var tasksRequested = document.getElementById("tasksRequested");
-    var footer = document.getElementById("footer");
-    var mileageOut = document.getElementById("mileageOut");
-    var wheelTorque = document.getElementById("wheelTorque");
-    var wrap = document.getElementById("wrap");
 
     var topPadding = "70px";
 
@@ -35,7 +29,6 @@ $(document).ready(function () {
                         roID: id
                     },
                     success: function (data) {
-
                         fillTasksRequestedHTML(data);
                         for (e in data) {
                             $.ajax({
@@ -45,7 +38,6 @@ $(document).ready(function () {
                                     id: data[e].worktask_id
                                 },
                                 success: function (data) {
-                                    console.log(data)
                                     addPart(data)
 
                                 }
@@ -58,18 +50,26 @@ $(document).ready(function () {
                                 },
                                 success: function (data) {
                                     addLab(data)
-
+                                    update(data)
                                 }
                             })
                         }
-                        window.print();
+                        
                     }
                 });
             }
         });
 
     }
-
+    function update(array){
+        document.getElementById(`pl${array[data].worktask_id}`).innerHTML =  `</br> Parts and Labour: $${document.getElementById(`pltotal${array[0].worktask_id}`).value}`
+        document.getElementById(`discount${array[data].worktask_id}`).innerHTML = `</br>Discounted: $${document.getElementById(`distotal${array[0].worktask_id}`).value}`
+        document.getElementById(`subtotal${array[data].worktask_id}`).innerHTML =  `</br> Subtotal: $${document.getElementById(`sutotal${array[0].worktask_id}`).value}`
+        z++
+        if(z==x){
+            window.print()
+        }
+    }
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data) {
         //console.log(data);
@@ -100,11 +100,6 @@ $(document).ready(function () {
             "Odometer (In)": data.odometer_in,
             "Odometer (Out)": data.odometer_out,
         };
-
-        //Displayed in vehicleInfo3 div
-        // var vehicleData3 = {
-        //     "Vehicle Notes": data.vehicle_notes
-        // };
 
         //Format displayed date and time
         //console.log(data.promised_time)
@@ -142,18 +137,54 @@ $(document).ready(function () {
         return returnString;
     }
 
+    function addPart(array){
+        console.log(array)
+        for(data in array){
+            var string = `Part #: ${array[data].part_id} | Part Name: ${array[data].part_desc} | Cost: $${array[data].unit_price} | Sale: $${array[data].sell_price} | Quantity: ${array[data].qty} | Extended amount: $${array[data].qty * array[data].sell_price}`
+            document.getElementById(`pltotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value + (array[data].qty * array[data].unit_price)
+            document.getElementById(`distotal${array[data].worktask_id}`).value = document.getElementById(`distotal${array[data].worktask_id}`).value + (array[data].qty * (array[data].unit_price - array[data].sell_price))
+            document.getElementById(`subtotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value - document.getElementById(`distotal${array[data].worktask_id}`).value 
+            var div = document.createElement('div')
+            div.innerHTML = string
+            document.getElementById(`p${array[data].worktask_id}`).appendChild(div)
+        }
+    }
+    function addLab(array) {
+        console.log(array)
+        for(data in array){
+            var string = `Technician #: ${array[data].labour_id} | Hours: ${array[data].hours} | Billed Labour: $${array[data].hours * array[data].rate}`
+            document.getElementById(`pltotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) + parseFloat(array[data].hours * array[data].rate)
+            document.getElementById(`sutotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value - document.getElementById(`distotal${array[data].worktask_id}`).value 
+            var div = document.createElement('div')
+            div.innerHTML = string
+            document.getElementById(`l${array[data].worktask_id}`).appendChild(div)
+        }
+     }
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
         console.log(array)
         for (data in array) {
+            x ++;
             console.log(data)
             var job = document.createElement('div');
+            var plinp = document.createElement('input')
+            plinp.style.display = 'none'
+            plinp.id = `pltotal${array[data].worktask_id}`
+            job.appendChild(plinp)
+            var disinp = document.createElement('input')
+            disinp.style.display = 'none'
+            disinp.id = `distotal${array[data].worktask_id}`
+            job.appendChild(disinp)
+            var subinp = document.createElement('input')
+            subinp.style.display = 'none'
+            subinp.id = `sutotal${array[data].worktask_id}`
+            job.appendChild(subinp)
             var cust = document.createElement('div');
             cust.id = 'custreq';
             cust.className = 'row';
             var title = document.createElement('h2');
             title.id = 'title'
-            title.innerHTML = `Job: ${parseInt(data)+1}`
+            title.innerHTML = `Job: ${parseInt(data) + 1}`
             var reqname = document.createElement('div');
             reqname.id = 'repcoms_title'
             reqname.innerHTML = `Customer Request: ${array[data].task_name}`
@@ -171,23 +202,24 @@ $(document).ready(function () {
             pHead.className = "row"
             pHead.innerHTML = `<h4>Parts: </h4>`;
             var pspot = document.createElement('div');
+            pspot.id = `p${array[data].worktask_id}`
             var calc = document.createElement('div');
             calc.id = 'calc';
             var total = document.createElement('h2');
             total.id = 'total'
             total.innerHTML = `Job Total: `
             var pl = document.createElement('text');
-            pl.id = 'pl'
-            pl.innerHTML = `Parts and Labour: </br>`
+            pl.id = `pl${array[data].worktask_id}`
+            pl.innerHTML = ` </br> Parts and Labour:`
             var discount = document.createElement('text');
-            discount.id = 'discount'
-            discount.innerHTML = `Discounted: </br>`
+            discount.id = `discount${array[data].worktask_id}`
+            discount.innerHTML = ` </br>Discounted:`
             var extra = document.createElement('text');
             extra.id = 'extra'
-            extra.innerHTML = `Extra: </br>`
+            extra.innerHTML = ` </br>Extra:`
             var sub = document.createElement('text');
-            sub.id = 'subtotal'
-            sub.innerHTML = `Subtotal: </br>`
+            sub.id = `subtotal${array[data].worktask_id}`
+            sub.innerHTML = `</br>Subtotal: `
 
             calc.appendChild(pl)
             calc.appendChild(discount)

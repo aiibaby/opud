@@ -101,8 +101,9 @@
 
 #calc {
     position: relative;
-    left: 800px;
+    left: 750px;
     bottom: 125px;
+    width:200px;
 }
 
 
