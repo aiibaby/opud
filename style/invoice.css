@@ -18,13 +18,248 @@
     }
 }
 
-#calc {
+#printable {
     position: absolute;
-    left: 300px;
+    width: 1063px;
+    height: 1375px;
 }
 
-#container {
+#header {
+    width: 941px;
+    height: 150px;
+    margin: 61px 61px 0px 61px;
+    border-bottom: double;
+    display: block;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+#topRight {
+    float: right;
+    font-size: 20px;
+}
+
+#customerInfo {
+    width: 941px;
+    height: 110px;
+    margin: 0px 61px 0px 61px;
+    background-color: white;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo1 {
+    width: 470px;
+    height: 140px;
+    margin: 0px 0px 0px 61px;
+    float: left;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo2 {
+    width: 471px;
+    height: 140px;
+    margin: 0px 61px 0px 0px;
+    float: right;
+    font-size: 16px;
+    border-bottom: double;
+}
+
+#vehicleInfo3 {
+    display: inline-block;
+    width: 941px;
+    overflow-y: auto;
+    margin: 0px 61px 0px 61px;
+    padding: 0px 0px 20px 0px;
+    font-size: 16px;
+    border-bottom: double;
+    page-break-before: avoid;
+}
+
+#tasksRequested {
+    float: none;
+    display: block;
+    width: 941px;
+    margin: 15px 61px 0px 61px;
+    padding: 0px 0px 20px 0px;
+    font-size: 16px;
+}
+
+#footer {
+    float: none;
+    display: block;
+    width: 941px;
+    margin: 0px 61px 0px 61px;
+    padding: 0px 0px 0px 0px;
+    font-size: 16px;
+}
+
+#calc {
+    position: relative;
+    left: 800px;
+    bottom: 125px;
+}
+
+
+/** Job Info **/
+
+#custreq {
+    display: inline-block;
+    width: 550px;
+}
+
+#reqname {
+    position: relative;
+    bottom: 22px;
+    left: 144px;
+    outline: 5px black;
+}
+
+#repcoms_title {
+    bottom: 22px;
+}
+
+#repcoms {
+    position: relative;
+    bottom: 44px;
+    left: 140px;
+}
+
+/**Labour Section**/
+
+#labourheader {
     position: absolute;
     display: inline-block;
-    width: 300px;
+    width: 550px;
+    bottom: 705px;
+    left: 100px;
+}
+
+#labourinfo {
+    position: absolute;
+    display: inline-block;
+    width: 550px;
+    bottom: 575px;
+    left: 100px;
+}
+
+.techname {
+    position: relative;
+    bottom: 22px;
+    left: 56px;
+}
+
+.techhours {
+    position: relative;
+    bottom: 44px;
+    left: 200px;
+}
+
+.hours {
+    position: relative;
+    bottom: 66px;
+    left: 290px;
+}
+
+.billedlabour {
+    position: relative;
+    bottom: 88px;
+    left: 380px;
+}
+
+.billed {
+    position: relative;
+    bottom: 110px;
+    left: 483px;
+}
+
+/**Parts info**/
+
+#partsheader {
+    position: absolute;
+    display: inline-block;
+    width: 550px;
+    bottom: 640px;
+    left: 100px;
+}
+
+#partsinfo {
+    position: absolute;
+    display: inline-block;
+    width: 550px;
+    bottom: 380px;
+    left: 100px;
+}
+
+#partsinfo2 {
+    position: absolute;
+    display: inline-block;
+    width: 550px;
+    bottom: 320px;
+    left: 100px;
+}
+
+.partname {
+    position: relative;
+    bottom: 44px;
+    left: 156px;
+}
+
+.partstring {
+    position: relative;
+    bottom: 44px;
+    left: 156px;
+}
+
+.costt {
+    position: relative;
+    bottom: 88px;
+    left: 312px;
+}
+
+.costval {
+    position: relative;
+    bottom: 88px;
+    left: 312px;
+}
+
+.salet {
+    position: relative;
+    bottom: 132px;
+    left: 392px;  
+}
+
+.saleval {
+    position: relative;
+    bottom: 132px;
+    left: 392px;
+}
+
+.quant {
+    position: relative;
+    bottom: 176px;
+    left: 470px;
+}
+
+.quanvalue {
+    position: relative;
+    bottom: 176px;
+    left: 470px;
+}
+
+.extt {
+    position: relative;
+    bottom: 220px;
+    left: 548px;
+}
+
+.extval {
+    position: relative;
+    bottom: 220px;
+    left: 548px;
 }

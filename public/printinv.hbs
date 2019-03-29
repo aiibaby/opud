@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html moznomarginboxes mozdisallowselectionprint>
+
+<head>
+    <title>Printable Invoice</title>
+    <link href='/css/invoice.css' type='text/css' rel='stylesheet' />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Own Scripts -->
+    <script src='/scripts/printable2.js'></script>
+</head>
+
+<body>
+
+    <div id="printable">
+        <div id="ID" style="display:none">{{roNum}}</div>
+        <div id="wrap">
+            <div id="header">
+                <img id="logo" src="../css/content/bcit.png" />
+                <div id="topRight"></div>
+            </div>
+            <div id="customerInfo"></div>
+            <div id="vehicleInfo1"></div>
+            <div id="vehicleInfo2"></div>
+            <!--<div id="vehicleInfo3"></div>-->
+        </div>
+        <div id="tasksRequested" style="display: none"></div>
+
+
+
+        <div id="footer" class="container">
+            {{!-- <div id="job1">
+                <div id='custreq' class="row">
+                    <h2 id="title">Job: </h2>
+                    <div>
+                        Customer Request:
+                    </div>
+                    <div id="reqname">Oil/Filter change + Inspection</div>
+                    <div id="repcoms_title">
+                        Repair Comments:
+                    </div>
+                    <div id="repcoms">Random short comment</div>
+                </div>
+
+                <div id="labourheader" class="row">
+                    <h4>Labour:</h4>
+                </div>
+
+                <div id="labourinfo" class="row">
+                    <div>Tech 1:</div>
+                    <div class="techname">Naveen Jit</div>
+                    <div class="techhours">Tech Hours:</div>
+                    <div class="hours">4.0</div>
+                    <div class="billedlabour">Billed Labour:</div>
+                    <div class="billed">$400</div>
+                </div>
+
+                <div id="partsheader" class="row">
+                    <h4>Parts:</h4>
+                </div>
+                <div>
+                    <div id="partsinfo" class="row">
+                        <div class="partno">Part #1:</div>
+                        <div class="partid">1234567890123456</div>
+                        <div class="partname">Part 1:</div>
+                        <div class="partstring">1234567890123456</div>
+                        <div class="costt">Cost:</div>
+                        <div class="costval">$3000.00</div>
+                        <div class="salet">Sale:</div>
+                        <div class="saleval">$5000.00</div>
+                        <div class="quant">Quantity:</div>
+                        <div class="quanvalue">3</div>
+                        <div class="extt">Extended amount:</div>
+                        <div class="extval">$15.00</div>
+                    </div>
+
+                    <div id="partsinfo2" class="row">
+                        <div class="partno">Part #1:</div>
+                        <div class="partid">1234567890123456</div>
+                        <div class="partname">Part 1:</div>
+                        <div class="partstring">1234567890123456</div>
+                        <div class="costt">Cost:</div>
+                        <div class="costval">$3000.00</div>
+                        <div class="salet">Sale:</div>
+                        <div class="saleval">$5000.00</div>
+                        <div class="quant">Quantity:</div>
+                        <div class="quanvalue">3</div>
+                        <div class="extt">Extended amount:</div>
+                        <div class="extval">$15.00</div>
+                    </div>
+                </div>
+                <div id='calc'>
+                    <h2 id="total">Job Total:</h2>
+                    <text id="pl">Parts and Labour: </text><br>
+                    <text id="discount">Discounted: </text><br>
+                    <text id="extra">Extra: </text><br>
+                    <text id="subtotal">Subtotal: </text><br>
+                </div>
+            </div> --}}
+
+
+        </div>
+    </div>
+</body>
+
+</html>
