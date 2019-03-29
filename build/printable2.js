@@ -46,15 +46,23 @@ $(document).ready(function () {
                                 },
                                 success: function (data) {
                                     console.log(data)
-                                    for (row in data) {
-                                        var pheader = document.createElement("div");
-                                        pheader.innerHTML = "Parts:"
-                                        document.getElementById(`printTasks${data[row].worktask_id}`).appendChild(pheader)
-                                    }
+                                    addPart(data)
+
+                                }
+                            })
+                            $.ajax({
+                                url: "/rosearch/LabourSearch",
+                                type: "post",
+                                data: {
+                                    id: data[e].worktask_id
+                                },
+                                success: function (data) {
+                                    addLab(data)
+
                                 }
                             })
                         }
-                        //window.print();
+                        window.print();
                     }
                 });
             }
@@ -137,29 +145,68 @@ $(document).ready(function () {
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
         console.log(array)
-        var lastindex = 0;
-        for (let i = 0; i < array.length; i++) {
-            var taskName = array[i].task_name;
-            var taskDiv = document.createElement("div");
-            for (var j = 0; j < 3; j++) {
-                taskName += '<hr>';
-            }
-            taskDiv.id = `printTasks${array[i].worktask_id}`;
-            var pheader = document.createElement("div");
-            pheader.innerHTML = "Parts:"
-            taskDiv.appendChild(pheader)
-            //If index is 3 or divisible by 5 afterwards, add a top padding equal to the top margin of the document
-            if (i === 3 || ((i - 3) % 5) === 0) {
-                taskDiv.style.paddingTop = topPadding;
-            }
-            taskDiv.innerHTML = `${i+1}. ${taskName}`;
-            tasksRequested.appendChild(taskDiv);
-            lastindex++;
-        }
-        if (lastindex === 3 || ((lastindex - 3) % 5) === 0) {
-            footer.style.paddingTop = topPadding;
-        }
+        for (data in array) {
+            console.log(data)
+            var job = document.createElement('div');
+            var cust = document.createElement('div');
+            cust.id = 'custreq';
+            cust.className = 'row';
+            var title = document.createElement('h2');
+            title.id = 'title'
+            title.innerHTML = `Job: ${parseInt(data)+1}`
+            var reqname = document.createElement('div');
+            reqname.id = 'repcoms_title'
+            reqname.innerHTML = `Customer Request: ${array[data].task_name}`
+            var reqcom = document.createElement('div');
+            reqcom.id = 'repcoms_title'
+            reqcom.innerHTML = `Repair Comments:${array[data].comments}`
+            var lHead = document.createElement('div');
+            lHead.id = 'custreq'
+            lHead.className = "row"
+            lHead.innerHTML = `<h4>Labour: </h4>`;
+            var lspot = document.createElement('div');
+            lspot.id = `l${array[data].worktask_id}`
+            var pHead = document.createElement('div');
+            pHead.id = 'custreq'
+            pHead.className = "row"
+            pHead.innerHTML = `<h4>Parts: </h4>`;
+            var pspot = document.createElement('div');
+            var calc = document.createElement('div');
+            calc.id = 'calc';
+            var total = document.createElement('h2');
+            total.id = 'total'
+            total.innerHTML = `Job Total: `
+            var pl = document.createElement('text');
+            pl.id = 'pl'
+            pl.innerHTML = `Parts and Labour: </br>`
+            var discount = document.createElement('text');
+            discount.id = 'discount'
+            discount.innerHTML = `Discounted: </br>`
+            var extra = document.createElement('text');
+            extra.id = 'extra'
+            extra.innerHTML = `Extra: </br>`
+            var sub = document.createElement('text');
+            sub.id = 'subtotal'
+            sub.innerHTML = `Subtotal: </br>`
 
+            calc.appendChild(pl)
+            calc.appendChild(discount)
+            calc.appendChild(extra)
+            calc.appendChild(sub)
+
+            cust.appendChild(title)
+            cust.appendChild(reqname)
+            cust.appendChild(reqcom)
+
+            job.appendChild(cust)
+            job.appendChild(lHead)
+            job.appendChild(lspot)
+            job.appendChild(pHead)
+            job.appendChild(pspot)
+            job.appendChild(calc)
+
+            document.getElementById('footer').appendChild(job)
+        }
     }
 
     getROData();
