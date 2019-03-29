@@ -37,11 +37,6 @@ Stores information on each repair order. Tied to `Vehicle` table at `Vehicle_ID`
 
 Stores the data for individual tasks within each repair order. A repair order could have a number of different tasks. Each row represents an instance of a particular task in the `Task` table.
 
-#### Unused Columns:
-```
-•	 Labor_hrs
-•	 Labor_rate
-```
 
 #### Task
 
@@ -51,8 +46,11 @@ Uncommon (user inputted) tasks will be added to this table when inputted in the 
 
 #### Parts
 
-This table is currently unused. It will store the data for the parts used for each task in `Repair_Tasks`. This will be used in addition to `Labor_hrs` and `Labor_rate` to calculate the cost of each task when generating an invoice (currently not implemented).
+This table stores data for the Parts used for each task in `Repair_Tasks`. This will be used in addition to the `Labour` Table to calculate the cost of each task when generating an invoice.
 
+#### Labour 
+
+This table stores data for the Labour used to complete each task in `Repair_Tasks`. This will be used in addition to the `Parts` Table to calculate the cost of each task when generating an invoice.
 
 ## Application Dependencies
 
@@ -737,18 +735,52 @@ On this page, users can also edit and update certain fields in the report order.
 
 ### Related Files:
 - ro.html
+- order.hbs
 - ro.css
 - ro.js
+- order.js
 - roFunctions.js
 
 ### ro.html
-The HTML for repair order popup window shown in Figure 1 is wrapped inside the <div class=”container-fluid”> div. The HTML for the repair order search and result follows after this div
+The file contains one two sections the HTML for the serch bar and the HTML for the table.
  
-### ro.css
+### order.hbs
+This file holds a basic HTML template for the completed edit RO page. Most of the data is added via the `orders.js` script.
 
+### ro.css
 This is the stylesheet for the repair order page. 
 
 ### ro.js
+
+`resultsTable (on select)`:
+
+Parameters: data
+
+Returns: None
+
+Purpose: 
+- Select the data of the selected row (data in the form of an array)
+
+`searchROBut (event onclick)`:
+
+Parameters: None
+
+Returns: None
+
+Purpose: 
+- Search the database based on the search word, repair order status, and the search parameter values. 
+- Populates the datatable based on the search result with the repair order ID, last name, first name, license plate, make, model and repair order status. 
+
+`window (event onclick)`:
+
+Parameters:  None
+
+Returns: None
+
+Purpose: 
+- Changes the display of the repair order popup screen to none. 
+
+### order.js
 
 `addPartButFunc(worktask_id)`:
 
@@ -761,15 +793,6 @@ Purpose:
 - Creates the input fields for part no., part description, part quantity, part unit price, part sell price and part supplier name. 
 
 Note: The part input fields functionality to save into the database is not implemented and therefore is commented out in the file.
-
-`closePopup()`:
-
-Parameters: None
-
-Returns: None
-
-Purpose: 
-- Close the report order popup screen
 
 `disableInput()`:
 
@@ -797,6 +820,7 @@ Purpose:
   - odometerOut
   - Openclose
   - comments
+  - all part and labour inputs
     - Change the class for saveRO to btn btn-default pull-right visible
     - Change the class for editRO to btn btn-default pull-right invisible
     - Set the background color for the openclose input field to “#fff”
@@ -819,14 +843,6 @@ Returns: None
 Purpose: 
 - Takes the repair order ID (ro_id) and populate the tasks and comments of the repair order 
 
-`resultsTable (on select)`:
-
-Parameters: data
-
-Returns: None
-
-Purpose: 
-- Select the data of the selected row (data in the form of an array)
 
 `saveComments(data)`:
 
@@ -837,15 +853,6 @@ Returns: array
 Purpose: 
 - Takes the input values of the comments textarea and save it in an array
 
-`searchROBut (event onclick)`:
-
-Parameters: None
-
-Returns: None
-
-Purpose: 
-- Search the database based on the search word, repair order status, and the search parameter values. 
-- Populates the datatable based on the search result with the repair order ID, last name, first name, license plate, make, model and repair order status. 
 
 `searchTask(roID, rowData)`:
 
@@ -865,23 +872,33 @@ Returns: None
 Purpose: 
 - Save the comment(s), odometer out, repair order status input values into the database.
 
-`window (event onclick)`:
+`updateLabour(data)`
 
-Parameters:  None
-
-Returns: None
-
-Purpose: 
-- Changes the display of the repair order popup screen to none. 
-
-`window (event keydown)`:
-
-Parameters:  None
+Parameters: data
 
 Returns: None
 
 Purpose: 
-- Disable browser refresh on enter 
+- Save the Labor Tables(s)
+
+`updateParts(data)`
+
+Parameters: data
+
+Returns: None
+
+Purpose: 
+- Save the Part Tables(s)
+
+`addOldParts(data)`
+
+Parameters: data
+
+Returns: None
+
+Purpose: 
+- adds the preexisting parts and labour rows to there respective tables 
+
 
 ### roFunctions.js
 
