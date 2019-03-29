@@ -204,7 +204,7 @@
 #partSection {
     position: absolute;
     display: inline-block;
-    width: 745px;
+    width: 800px;
     bottom: 640px;
     left: 80px;
 }
@@ -215,17 +215,37 @@
     
 }
 
-#partsinfo {
+#partsinfo0 {
     position: absolute;
     display: inline-block;
     left: 0px;
     bottom: -20px;
 }
 
+#partsinfo1 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -50px;
+}
+
 #partsinfo2 {
     position: absolute;
     display: inline-block;
-    width: 550px;
-    bottom: 320px;
-    left: 100px;
+    left:0px;
+    bottom: -80px;
+}
+
+#partsinfo3 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -110px;
+}
+
+#partsinfo4 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -140px;
 }
