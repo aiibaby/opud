@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
     console.log("ready");
-    
+
     var printable = document.getElementById("printable");
     var header = document.getElementById("header");
     var topRight = document.getElementById("topRight");
@@ -12,134 +12,208 @@ $(document).ready(function(){
     var mileageOut = document.getElementById("mileageOut");
     var wheelTorque = document.getElementById("wheelTorque");
     var wrap = document.getElementById("wrap");
-    
+
+    //get parts elements
+
+    var partsinfo = document.getElementById("partsinfo");
+    var tasksinfo = document.getElementById("jobHeader");
+    var jobNumber = document.getElementById("jobNumber");
+
     var topPadding = "70px";
-    
+
     //Run when page is loaded. Ajax call to grab RO data from session
-    function getROData(){
+    function getROData() {
         var id = document.getElementById("ID").innerHTML
         $.ajax({
-            url:"/rosearch/AroSearch",
-            type:"post",
-            data:{
-                roSearchWord : id,
-                roSearchBy : "ro_id",
-                roStatus :"all"
-            },success: function(data){
+            url: "/rosearch/AroSearch",
+            type: "post",
+            data: {
+                roSearchWord: id,
+                roSearchBy: "ro_id",
+                roStatus: "all"
+            },
+            success: function (data) {
                 fillPageData(data[0]);
                 $.ajax({
-                    url:"/rosearch/taskSearch",
-                    type:"post",
-                    data:{
-                        roID:id
+                    url: "/rosearch/taskSearch",
+                    type: "post",
+                    data: {
+                        roID: id
                     },
-                    success: function(data){
-                        
+                    success: function (data) {
+
                         fillTasksRequestedHTML(data);
-                        console.log(data)
-                        // $.ajax({
-                        //     url:"/rosearch/PartSearch",
-                        //     type:"post",
-                        //     data:{
-                        //         id:data[0].worktask_id 
-                        //     },
-                        //     success:function(data){
-                        //         console.log(data)
-                        //         for(row in data){
-                        //             var pheader = document.createElement("div");
-                        //             pheader.innerHTML = "Parts:"
-                        //             document.getElementById(`printTasks${data[row].worktask_id}`).appendChild(pheader)
-                        //         }
-                        //     }
-                        // })
+                        fillJobHeader(data[0]);
+                        
+                        for (e in data) {
+                            $.ajax({
+                                url: "/rosearch/PartSearch",
+                                type: "post",
+                                data: {
+                                    id: data[e].worktask_id
+                                },
+                                success: function (data) {
+                                    fillPart(data[0]);
+                                    console.log(data)
+                                    for (row in data) {
+                                        var pheader = document.createElement("div");
+                                        pheader.innerHTML = "Parts:"
+                                        document.getElementById(`printTasks${data[row].worktask_id}`).appendChild(pheader)
+                                    }
+                                }
+                            })
+                        }
                         //window.print();
                     }
                 });
             }
         });
-        
+
     }
-    
+
+    //----------Invoice Header Section----------
+
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
-    function fillPageData(data){
+    function fillPageData(data) {
         //console.log(data);
-        if(data.first_name == ""){
+        if (data.first_name == "") {
             var customerName = data.last_name
-        }else{
-            var customerName = data.last_name+", "+data.first_name;
+        } else {
+            var customerName = data.last_name + ", " + data.first_name;
         }
-        
+
         //Displayed in the customerInfo div
         var customerData = {
-            "Customer Name" : customerName,
-            "Cell Phone" : data.cell_phone,
-            "Home Phone" : data.home_phone
+            "Customer Name": customerName,
+            "Cell Phone": data.cell_phone,
+            "Home Phone": data.home_phone
         };
-        
+
         //Displayed in vehicleInfo1 div
         var vehicleData1 = {
-            "VIN" : data.vin,
-            "License Plate" : data.license_plate,
-            "Year" : data.year,
-            "Make" : data.make,
+            "VIN": data.vin,
+            "License Plate": data.license_plate,
+            "Year": data.year,
+            "Make": data.make,
         };
-        
+
         //Displayed in vehicleInfo2 div
         var vehicleData2 = {
-            "Model" : data.model,
-            "Odometer (In)" : data.odometer_in,
-            "Odometer (Out)" : data.odometer_out,
+            "Model": data.model,
+            "Odometer (In)": data.odometer_in,
+            "Odometer (Out)": data.odometer_out,
         };
-        
+
         //Displayed in vehicleInfo3 div
-        var vehicleData3 = {
-            "Vehicle Notes" : data.vehicle_notes
-        };
-        
+        // var vehicleData3 = {
+        //     "Vehicle Notes": data.vehicle_notes
+        // };
+
         //Format displayed date and time
         //console.log(data.promised_time)
         var promised_date = data.promised_time.substring(0, 10);
         var promised_time = data.promised_time.substring(11, 16);
-        
+
         //Display the RO # and Promised date and time on the top right
-        topRight.innerHTML = formatLabel("Repair Order #", false)+data.ro_id+formatLabel("Promised Time")+promised_date+" "+promised_time;
-        
+        topRight.innerHTML = formatLabel("Repair Order #", false) + data.ro_id + formatLabel("Promised Time") + promised_date + " " + promised_time;
+
         //Set the HTML for these divs to display the correct information
         customerInfo.innerHTML = fillInfoDiv(customerData);
         vehicleInfo1.innerHTML = fillInfoDiv(vehicleData1);
         vehicleInfo2.innerHTML = fillInfoDiv(vehicleData2);
-        vehicleInfo3.innerHTML = fillInfoDiv(vehicleData3);
-        
+        // vehicleInfo3.innerHTML = fillInfoDiv(vehicleData3);
+
         //Loop through the task array and generate divs
-        
+
     };
-    
+
     //Function used to set whether a label has a line break before it or not
-    function formatLabel(label, breakInBeginning){
-        if(breakInBeginning === false){
-            return ("<b>"+label+":</b> ");
-        }else{
-            return ("<br><b>"+label+":</b> ");
+    function formatLabel(label, breakInBeginning) {
+        if (breakInBeginning === false) {
+            return ("<b>" + label + ":</b> ");
+        } else {
+            return ("<br><b>" + label + ":</b> ");
         };
     };
-    
+
     //Returns a string with the innerHTML needed for the data it takes in
-    function fillInfoDiv(divData){
+    function fillInfoDiv(divData) {
         var returnString = "";
-        for(item in divData){
-            returnString += formatLabel(item)+divData[item];
+        for (item in divData) {
+            returnString += formatLabel(item) + divData[item];
         }
         return returnString;
     }
+
+    //----------Invoice Header Section End----------
+
+
+
+    //----------Job Header Section----------
+
+    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
+    function fillJobHeader(data) {
+        var jobData = {
+            "Customer Request": data.task_name,
+            "Repair Comments": data.comments
+        };
+
+        tasksinfo.innerHTML = fillInfoDiv(jobData);
+        jobNumber.innerHTML = "<b>Job 1:</b>";
+    }
     
+
+    //----------Job Header Section End----------
+
+
+
+    //----------Invoice Parts Section----------
+
+    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
+    function fillPart(data) {
+        var partData = {
+            "Part #": data.part_no,
+            "Part 1": data.part_desc,
+            "Cost": "$"+data.unit_price,
+            "Sale": data.innerHTML = "$"+data.sell_price,
+            "Quantity": data.qty,
+            "Ext. Amount": "$"+data.sell_price * data.qty
+        };
+
+        partsinfo.innerHTML = fillPartDiv(partData);
+    }
+
+    //Function used for formatting the parts section
+    function formatPartLabel(label) {
+        return ("<b>" + label + ":</b> ");
+    }
+    
+    //Returns a string with the innerHTML needed for the data it takes in
+    function fillPartDiv(divData) {
+        var returnString = "";
+        var i = 1;
+        for (item in divData) {
+            if (item === "Ext. Amount") {
+                returnString += formatPartLabel(item) + divData[item]
+            }
+            else {
+                returnString += formatPartLabel(item) + divData[item] + " | ";
+            }
+        }
+        return returnString;
+    }
+
+    //----------Invoice Parts Section End----------
+
+
     //Loops through the task array and create divs to append to the document
-    function fillTasksRequestedHTML(array){
+    function fillTasksRequestedHTML(array) {
         console.log(array)
         var lastindex = 0;
-        for(let i = 0; i < array.length; i++){
+        for (let i = 0; i < array.length; i++) {
             var taskName = array[i].task_name;
             var taskDiv = document.createElement("div");
-            for(var j = 0; j < 3; j++){
+            for (var j = 0; j < 3; j++) {
                 taskName += '<hr>';
             }
             taskDiv.id = `printTasks${array[i].worktask_id}`;
@@ -147,19 +221,19 @@ $(document).ready(function(){
             pheader.innerHTML = "Parts:"
             taskDiv.appendChild(pheader)
             //If index is 3 or divisible by 5 afterwards, add a top padding equal to the top margin of the document
-            if(i === 3 || ((i - 3) % 5) === 0 ){
+            if (i === 3 || ((i - 3) % 5) === 0) {
                 taskDiv.style.paddingTop = topPadding;
             }
             taskDiv.innerHTML = `${i+1}. ${taskName}`;
-            tasksRequested.appendChild(taskDiv);   
+            tasksRequested.appendChild(taskDiv);
             lastindex++;
         }
-        if(lastindex === 3 || ((lastindex - 3) % 5) === 0 ){
+        if (lastindex === 3 || ((lastindex - 3) % 5) === 0) {
             footer.style.paddingTop = topPadding;
         }
-        
+
     }
-    
+
     getROData();
-    
+
 });

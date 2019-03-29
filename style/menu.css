@@ -36,7 +36,7 @@ body {
 
 #headerRow {
     padding: 0px 20px 0px 20px;
-    width: 100vw;
+    width: 100%;
 }
 
 /* Form */
@@ -62,9 +62,6 @@ body {
     float: left;
     width: 95vw;
     padding: 10px 0px 10px 0px;
-    left: 2.5vw;
-    right: 2.5vw;
-    margin: auto;
 }
 
 #menuItems{

@@ -124,7 +124,7 @@ app.post("/print", sessionCheck, function(req, resp){
 });
 
 app.post("/printInvoice", sessionCheck, function(req, resp){
-    resp.render(pF+"/invoiceprint.hbs",{
+    resp.render(pF+"/printinv.hbs",{
         roNum: req.body.roNum,
     })
 });
