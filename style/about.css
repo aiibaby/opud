@@ -52,10 +52,25 @@ body {
     margin-right: auto;
     margin-bottom: 1em;
     background-image: url("content/bcit.png");
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
 .textcenter {
     text-align: center;
+}
+
+#Owen_image {
+    margin-top: 1em;
+    width: 6em;
+    height: 6em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    background-image: url("content/Owen_Avatar.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
