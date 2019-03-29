@@ -156,7 +156,7 @@ Parameters: req.body.LFPres,req.body.RFPres,req.body.LRPres,req.body.RRPres, req
 
 Returns: JSON object
 
-Purposse:
+Purpose:
 - Saves inspection sheet to database and render to repair order page.
 
 `/inspectionCancel`
@@ -165,7 +165,7 @@ Parameters: req.body.num
 
 Returns: JSON object
 
-Purposse:
+Purpose:
 - Cancels information editing for inspection sheet and render back to repair order page.
 
 
