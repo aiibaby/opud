@@ -15,7 +15,11 @@ $(document).ready(function () {
 
     //get parts elements
 
-    var partsinfo = document.getElementById("partsinfo");
+    var partsinfo0 = document.getElementById("partsinfo");
+    var partsinfo1 = document.getElementById("partsinfo2");
+    var partsinfo2 = document.getElementById("partsinfo3");
+    var partsinfo3 = document.getElementById("partsinfo4");
+    var partsinfo4 = document.getElementById("partsinfo5");
     var tasksinfo = document.getElementById("jobHeader");
     var jobNumber = document.getElementById("jobNumber");
 
@@ -53,7 +57,7 @@ $(document).ready(function () {
                                     id: data[e].worktask_id
                                 },
                                 success: function (data) {
-                                    fillPart(data[0]);
+                                    partsLoop(data);
                                     console.log(data)
                                     for (row in data) {
                                         var pheader = document.createElement("div");
@@ -169,18 +173,33 @@ $(document).ready(function () {
 
     //----------Invoice Parts Section----------
 
-    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
-    function fillPart(data) {
-        var partData = {
-            "Part #": data.part_no,
-            "Part 1": data.part_desc,
-            "Cost": "$"+data.unit_price,
-            "Sale": data.innerHTML = "$"+data.sell_price,
-            "Quantity": data.qty,
-            "Ext. Amount": "$"+data.sell_price * data.qty
-        };
+    function partsLoop(data) {
+        for (var i = 0; i < data.length; i++) {
+            fillPart(data[i], i);
+            //console.log(data[i], i)
+        }
+    }
+    
 
-        partsinfo.innerHTML = fillPartDiv(partData);
+    //Uses the session data and categorizes it into different variables so that they can be used to fill parts section
+    function fillPart(data, num) {
+        partnumber = num + 1
+        for (partinfo in data) {
+            var key = "Part " + partnumber;
+            var partData = {
+                "Part #": data.part_no,
+                [key]: data.part_desc,
+                "Cost": "$"+data.unit_price,
+                "Sale": data.innerHTML = "$"+data.sell_price,
+                "Quantity": data.qty,
+                "Ext. Amount": "$"+data.sell_price * data.qty
+            };
+    
+            document.getElementById(`partsinfo${num}`).innerHTML = fillPartDiv(partData);
+
+            //console.log(`partsinfo${num}`);
+        }
+        
     }
 
     //Function used for formatting the parts section
