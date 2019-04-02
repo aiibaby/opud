@@ -152,8 +152,8 @@ $(document).ready(function () {
         console.log(array)
         for(data in array){
             var string = `Part #: ${array[data].part_id} | Part Name: ${array[data].part_desc} | Cost: $${array[data].unit_price} | Sale: $${array[data].sell_price} | Quantity: ${array[data].qty} | Extended amount: $${array[data].qty * array[data].sell_price}`
-            document.getElementById(`pltotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value + (array[data].qty * array[data].unit_price)
-            document.getElementById(`distotal${array[data].worktask_id}`).value = document.getElementById(`distotal${array[data].worktask_id}`).value + (array[data].qty * (array[data].unit_price - array[data].sell_price))
+            document.getElementById(`pltotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) + (array[data].qty * array[data].unit_price)
+            document.getElementById(`distotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`distotal${array[data].worktask_id}`).value) + (array[data].qty * (array[data].unit_price - array[data].sell_price))
             document.getElementById(`subtotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value - document.getElementById(`distotal${array[data].worktask_id}`).value 
             var div = document.createElement('div')
             div.innerHTML = string
@@ -165,7 +165,7 @@ $(document).ready(function () {
         for(data in array){
             var string = `Technician #: ${array[data].labour_id} | Hours: ${array[data].hours} | Billed Labour: $${array[data].hours * array[data].rate}`
             document.getElementById(`pltotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) + parseFloat(array[data].hours * array[data].rate)
-            document.getElementById(`sutotal${array[data].worktask_id}`).value = document.getElementById(`pltotal${array[data].worktask_id}`).value - document.getElementById(`distotal${array[data].worktask_id}`).value 
+            document.getElementById(`sutotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) - parseFloat(document.getElementById(`distotal${array[data].worktask_id}`).value) 
             var div = document.createElement('div')
             div.innerHTML = string
             document.getElementById(`l${array[data].worktask_id}`).appendChild(div)
@@ -182,10 +182,12 @@ $(document).ready(function () {
             var plinp = document.createElement('input')
             plinp.style.display = 'none'
             plinp.id = `pltotal${array[data].worktask_id}`
+            plinp.value = 0
             job.appendChild(plinp)
             var disinp = document.createElement('input')
             disinp.style.display = 'none'
             disinp.id = `distotal${array[data].worktask_id}`
+            disinp.value = 0
             job.appendChild(disinp)
             var subinp = document.createElement('input')
             subinp.style.display = 'none'
