@@ -100,14 +100,12 @@
 }
 
 #calc {
-    position: absolute;
-    left: 800px;
-    bottom: 695px;
+    position: relative;
+    left: 750px;
+    bottom: 125px;
+    width:200px;
 }
 
-#job1 {
-    outline: 3px;
-}
 
 /** Job Info **/
 
@@ -126,11 +124,8 @@
 }
 
 #custreq {
-    position: absolute;
     display: inline-block;
     width: 550px;
-    bottom: 700px;
-    left: 80px;
 }
 
 #reqname {
@@ -141,7 +136,6 @@
 }
 
 #repcoms_title {
-    position: relative;
     bottom: 22px;
 }
 
