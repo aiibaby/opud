@@ -40,7 +40,6 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         fillTasksRequestedHTML(data);
-                        fillJobHeader(data[0]);
                         
                         for (e in data) {
                             $.ajax({
@@ -82,7 +81,6 @@ $(document).ready(function () {
             window.print()
         }
     }
-    //----------Invoice Header Section----------
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data) {
         //console.log(data);
@@ -149,7 +147,6 @@ $(document).ready(function () {
         }
         return returnString;
     }
-
 
     function addPart(array){
         console.log(array)
