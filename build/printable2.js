@@ -7,6 +7,16 @@ $(document).ready(function () {
     var vehicleInfo1 = document.getElementById("vehicleInfo1");
     var vehicleInfo2 = document.getElementById("vehicleInfo2");
 
+    //get parts elements
+
+    var partsinfo0 = document.getElementById("partsinfo");
+    var partsinfo1 = document.getElementById("partsinfo2");
+    var partsinfo2 = document.getElementById("partsinfo3");
+    var partsinfo3 = document.getElementById("partsinfo4");
+    var partsinfo4 = document.getElementById("partsinfo5");
+    var tasksinfo = document.getElementById("jobHeader");
+    var jobNumber = document.getElementById("jobNumber");
+
     var topPadding = "70px";
 
     //Run when page is loaded. Ajax call to grab RO data from session
@@ -30,6 +40,8 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         fillTasksRequestedHTML(data);
+                        fillJobHeader(data[0]);
+                        
                         for (e in data) {
                             $.ajax({
                                 url: "/rosearch/PartSearch",
@@ -70,6 +82,7 @@ $(document).ready(function () {
             window.print()
         }
     }
+    //----------Invoice Header Section----------
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
     function fillPageData(data) {
         //console.log(data);
@@ -137,6 +150,7 @@ $(document).ready(function () {
         return returnString;
     }
 
+
     function addPart(array){
         console.log(array)
         for(data in array){
@@ -160,6 +174,7 @@ $(document).ready(function () {
             document.getElementById(`l${array[data].worktask_id}`).appendChild(div)
         }
      }
+
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
         console.log(array)

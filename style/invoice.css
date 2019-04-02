@@ -109,6 +109,20 @@
 
 /** Job Info **/
 
+#jobNumber {
+    position: absolute;
+    bottom: 840px;
+    left: 80px;
+}
+
+#jobHeader {
+    position: absolute;
+    display: inline-block;
+    width: 550px;
+    bottom: 750px;
+    left: 80px;
+}
+
 #custreq {
     display: inline-block;
     width: 550px;
@@ -138,7 +152,7 @@
     display: inline-block;
     width: 550px;
     bottom: 705px;
-    left: 100px;
+    left: 80px;
 }
 
 #labourinfo {
@@ -146,7 +160,7 @@
     display: inline-block;
     width: 550px;
     bottom: 575px;
-    left: 100px;
+    left: 80px;
 }
 
 .techname {
@@ -181,86 +195,51 @@
 
 /**Parts info**/
 
-#partsheader {
+#partSection {
     position: absolute;
     display: inline-block;
-    width: 550px;
+    width: 800px;
     bottom: 640px;
-    left: 100px;
+    left: 80px;
 }
 
-#partsinfo {
+#partsheader {
+    position: relative;
+    display: inline-block;
+    
+}
+
+#partsinfo0 {
     position: absolute;
     display: inline-block;
-    width: 550px;
-    bottom: 380px;
-    left: 100px;
+    left: 0px;
+    bottom: -20px;
+}
+
+#partsinfo1 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -50px;
 }
 
 #partsinfo2 {
     position: absolute;
     display: inline-block;
-    width: 550px;
-    bottom: 320px;
-    left: 100px;
+    left:0px;
+    bottom: -80px;
 }
 
-.partname {
-    position: relative;
-    bottom: 44px;
-    left: 156px;
+#partsinfo3 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -110px;
 }
 
-.partstring {
-    position: relative;
-    bottom: 44px;
-    left: 156px;
-}
-
-.costt {
-    position: relative;
-    bottom: 88px;
-    left: 312px;
-}
-
-.costval {
-    position: relative;
-    bottom: 88px;
-    left: 312px;
-}
-
-.salet {
-    position: relative;
-    bottom: 132px;
-    left: 392px;  
-}
-
-.saleval {
-    position: relative;
-    bottom: 132px;
-    left: 392px;
-}
-
-.quant {
-    position: relative;
-    bottom: 176px;
-    left: 470px;
-}
-
-.quanvalue {
-    position: relative;
-    bottom: 176px;
-    left: 470px;
-}
-
-.extt {
-    position: relative;
-    bottom: 220px;
-    left: 548px;
-}
-
-.extval {
-    position: relative;
-    bottom: 220px;
-    left: 548px;
+#partsinfo4 {
+    position: absolute;
+    display: inline-block;
+    left:0px;
+    bottom: -140px;
 }

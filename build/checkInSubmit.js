@@ -66,7 +66,7 @@ $(document).ready(function(){
     async function submitButtonClick() {
 
         var commonTasksSelect = document.getElementById("requestsDropdown");
-        var validate = requireValidation(lastNameInput.value, vinInput.value, numOfUnCommonRequests, numOfCommonRequests, cust_id, vehicle_id, datePromised, dateHourPromised, dateMinPromised, dateAmPmPromised);
+        var validate = requireValidation(lastNameInput.value, vinInput.value, numOfUnCommonRequests, numOfCommonRequests, cust_id, vehicle_id, datePromised.value, dateHourPromised.value, dateMinPromised.value, dateAmPmPromised.value);
 
         if (validate.status == "true") {
             if (homephoneverif && cellphoneverif && postalcodeverif && licenseverif && yearverif && odoverif && vinverif){
@@ -114,6 +114,10 @@ $(document).ready(function(){
                     commonTasksSelect.style.borderWidth = '5px'
                     otherSerTextArea.style.borderColor = 'red'
                     otherSerTextArea.style.borderWidth = '5px'
+                }
+                if (validate.error.includes("No date")) {
+                    datePromised.style.borderColor = 'red'
+                    datePromised.style.borderWidth = '5px'
                 }
             }
     }
@@ -390,9 +394,10 @@ $(document).ready(function(){
                     swal("Error","Problems adding data")
                 }
                 else {
-                    swal({title:"Repair Order Successfully Created"}, function () {
+                    swal("Repair Order Successfully Created", "", "success");
+                    setTimeout(() => {
                         location.href = "/orders";
-                    })
+                    }, 1500)
                 }
             }
         })
