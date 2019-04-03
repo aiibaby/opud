@@ -277,6 +277,8 @@ router.post("/updateParts", function (req, resp) {
     temp.push(parseFloat(req.body.row[3]))
     temp.push(parseFloat(req.body.row[4]))
     temp.push(parseInt(req.body.row[5]))
+    
+    console.log(req.body)
     if (req.body.type != "delnew") {
         if (req.body.type == "new") {
             temp.push(parseInt(req.body.id))
@@ -290,6 +292,7 @@ router.post("/updateParts", function (req, resp) {
             temp.push(parseInt(req.body.type))
             var updateOdoQuery = 'Update parts Set part_no = $1, part_desc = $3, qty=$6, unit_price=$4, sell_price=$5, supplier_name=$2 where part_id = $7';
         }
+        console.log(temp)
         pool.connect(function (err, client, done) {
             if (err) {
                 console.log("(updateParts - Unable to connect to the database: " + err);

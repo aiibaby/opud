@@ -21,29 +21,13 @@ $(document).ready(function() {
     var vehicle_info = null;
     
     openPDF.onclick = function(){
-        document.getElementById("roInfo").submit();
-        // $.ajax({
-        //     url: "/print/createPrint",
-        //     type: "post",
-        //     data: vehicle_info,
-        //     success: function(data){
-        //         //window.location = "/print";
-        //         window.open("/print");
-        //     }
-        // });
+        window.open(`/print?x=${roNum.innerHTML}`);
+        //document.getElementById("roInfo").submit();
     }
 
     openInvoice.onclick = function(){
-        document.getElementById("roInfo2").submit();
-        // $.ajax({
-        //     url: "/print/createPrint",
-        //     type: "post",
-        //     data: vehicle_info,
-        //     success: function(data){
-        //         //window.location = "/print";
-        //         window.open("/printInvoice");
-        //     }
-        // });
+        window.open(`/printInvoice?x=${roNum.innerHTML}`);
+        //document.getElementById("roInfo2").submit();
     }
 
     
@@ -164,21 +148,42 @@ $(document).ready(function() {
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "new"){
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = "#5064bd"
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "delnew"
+                    for(data in document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes){
+                        if(!isNaN(parseInt(data))){
+                            document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[data].childNodes[0].disabled = true
+                        }
+                    }
+
                 }
                 else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "del" ){
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = ""
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = ""
+                    for(data in document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes){
+                        if(!isNaN(parseInt(data))){
+                            document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[data].childNodes[0].disabled = true
+                        }
+                    }
                 }
                 else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className == "delnew"){
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = ""
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "new"
+                    for(data in document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes){
+                        if(!isNaN(parseInt(data))){
+                            document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[data].childNodes[0].disabled = true
+                        }
+                    }
                 }
                 else if(document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[0].childNodes[0].value == row &&
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className != "del" ){
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].style.backgroundColor = "#5064bd"
                     document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].className = "del"
+                    for(data in document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes){
+                        if(!isNaN(parseInt(data))){
+                            document.getElementById(`${type}Table${id}`).childNodes[0].childNodes[e].childNodes[data].childNodes[0].disabled = true
+                        }
+                    }
                 }
             }
             
@@ -207,9 +212,14 @@ $(document).ready(function() {
                     document.getElementById('roLicense').innerHTML=`${data[0].license_plate}`
                     document.getElementById('roYear').innerHTML=`${data[0].year}`
                     document.getElementById('roOdometerIn').innerHTML=`${data[0].odometer_in}`
-                    document.getElementById('odometerOut').value=`${data[0].odometer_out}`
+                    if(isNaN(data[0].odometer_out)){
+                        document.getElementById('odometerOut').value=0
+                    }else{
+                        document.getElementById('odometerOut').value=`${data[0].odometer_out}`
+                    }
                     document.getElementById('roMake').innerHTML=`${data[0].make}`
                     document.getElementById('roNotes').innerHTML=`${data[0].vehicle_notes}`
+                    document.getElementById('openclose').value=`${data[0].status}`
                 }
                 else{
                     alert("Error! taskSearch");
@@ -232,7 +242,7 @@ $(document).ready(function() {
                         ptHead = document.getElementById(`PTable${data[row].worktask_id}`).childNodes[0]
                         var partTR = document.createElement('tr');
                         partTR.setAttribute = ('role','row');
-                        partTR.className = `${data[row].part_id}`
+                        partTR.className = `old`
                         var partTH1 = document.createElement('th');
                         partTH1.className = "sorting_asc"
                         var partTH2 = document.createElement('th');
@@ -257,13 +267,13 @@ $(document).ready(function() {
                         inp2.className = 'inp'
                         inp2.style.height='auto'
                         inp2.style.width='10vw'
-                        inp2.value =  `${data[row].supplier_name}`
+                        inp2.value =  `${data[row].part_desc}`
                         inp2.disabled = true
                         var inp3= document.createElement('textarea')
                         inp3.className = 'inp'
                         inp3.style.height='auto'
                         inp3.style.width='10vw'
-                        inp3.value = `${data[row].sell_price}`
+                        inp3.value = `${data[row].qty}`
                         inp3.disabled = true
                         var inp4= document.createElement('textarea')
                         inp4.className = 'inp'
@@ -275,13 +285,13 @@ $(document).ready(function() {
                         inp5.className = 'inp'
                         inp5.style.height='auto'
                         inp5.style.width='10vw'
-                        inp5.value = `${data[row].qty}`
+                        inp5.value = `${data[row].sell_price}`
                         inp5.disabled = true
                         var inp6= document.createElement('textarea')
                         inp6.className = 'inp'
                         inp6.style.height='auto'
                         inp6.style.width='10vw'
-                        inp6.value = `${data[row].part_desc}`
+                        inp6.value = `${data[row].supplier_name}`
                         inp6.disabled = true
                         partTH1.appendChild(inp1);
                         partTH2.appendChild(inp2);
@@ -289,7 +299,7 @@ $(document).ready(function() {
                         partTH4.appendChild(inp4);
                         partTH7.appendChild(inp5);
                         partTH6.appendChild(inp6);
-                        partTH5.innerHTML='Price * Quantity';
+                        partTH5.innerHTML=`${Math.round(data[row].qty * data[row].sell_price* 100) / 100}`;
 
                         partTR.appendChild(partTH1);
                         partTR.appendChild(partTH6);
@@ -352,6 +362,7 @@ $(document).ready(function() {
                         inp4.style.height='auto'
                         inp4.style.width='17vw'
                         inp4.value = `${data[row].rate}`
+                        
                         inp4.disabled = true
                         var inp5= document.createElement('textarea')
                         inp5.className = 'inp'
@@ -361,7 +372,9 @@ $(document).ready(function() {
                         LabourTH2.appendChild(inp2);
                         LabourTH3.appendChild(inp3);
                         LabourTH4.appendChild(inp4);
-                        LabourTH5.innerHTML="Hours * rate";
+                        LabourTH5.innerHTML=`${Math.round(data[row].rate * data[row].hours* 100) / 100}`;
+
+                        
 
                         LabourTR.appendChild(LabourTH1);
                         LabourTR.appendChild(LabourTH2);
@@ -516,7 +529,7 @@ $(document).ready(function() {
                 cell4.appendChild(inp4);
                 cell5.appendChild(inp5);
                 cell6.appendChild(inp6);
-                cell7.innerHTML='Price * Quantity';
+                cell7.innerHTML=`0`;
             }
             partButdel.onclick = function() {
                 id = event.target.id.substring(5)
@@ -646,7 +659,7 @@ $(document).ready(function() {
                 cell22.appendChild(inp2);
                 cell23.appendChild(inp3);
                 cell24.appendChild(inp4);
-                cell25.innerHTML="Hours * rate";
+                cell25.innerHTML=`0`;
             }
             partBut2del.onclick = function() {
                 id = event.target.id.substring(4)
