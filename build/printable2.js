@@ -1,5 +1,10 @@
 $(document).ready(function () {
     console.log("ready");
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var c = url.searchParams.get("x");
+    document.getElementById("ID").innerHTML = c
+
     var x = 0;
     var z = 0;
     var topRight = document.getElementById("topRight");
@@ -7,17 +12,6 @@ $(document).ready(function () {
     var vehicleInfo1 = document.getElementById("vehicleInfo1");
     var vehicleInfo2 = document.getElementById("vehicleInfo2");
 
-    //get parts elements
-
-    var partsinfo0 = document.getElementById("partsinfo");
-    var partsinfo1 = document.getElementById("partsinfo2");
-    var partsinfo2 = document.getElementById("partsinfo3");
-    var partsinfo3 = document.getElementById("partsinfo4");
-    var partsinfo4 = document.getElementById("partsinfo5");
-    var tasksinfo = document.getElementById("jobHeader");
-    var jobNumber = document.getElementById("jobNumber");
-
-    var topPadding = "70px";
 
     //Run when page is loaded. Ajax call to grab RO data from session
     function getROData() {
