@@ -502,27 +502,27 @@ $(document).ready(function() {
                 var inp1= document.createElement('textarea')
                 inp1.className = 'inp'
                 inp1.style.height='auto'
-                inp1.style.width='-webkit-fill-available'
+                inp1.style.width='10vw'
                 var inp2= document.createElement('textarea')
                 inp2.className = 'inp'
                 inp2.style.height='auto'
-                inp2.style.width='-webkit-fill-available'
+                inp2.style.width='10vw'
                 var inp3= document.createElement('textarea')
                 inp3.className = 'inp'
                 inp3.style.height='auto'
-                inp3.style.width='-webkit-fill-available'
+                inp3.style.width='10vw'
                 var inp4= document.createElement('textarea')
                 inp4.className = 'inp'
                 inp4.style.height='auto'
-                inp4.style.width='-webkit-fill-available'
+                inp4.style.width='10vw'
                 var inp5= document.createElement('textarea')
                 inp5.className = 'inp'
                 inp5.style.height='auto'
-                inp5.style.width='-webkit-fill-available'
+                inp5.style.width='10vw'
                 var inp6= document.createElement('textarea')
                 inp6.className = 'inp'
                 inp6.style.height='auto'
-                inp6.style.width='-webkit-fill-available'
+                inp6.style.width='10vw'
                 cell1.appendChild(inp1);
                 cell2.appendChild(inp2);
                 cell3.appendChild(inp3);
@@ -638,23 +638,23 @@ $(document).ready(function() {
                 var inp1= document.createElement('textarea')
                 inp1.className = 'inp'
                 inp1.style.height='auto'
-                inp1.style.width='-webkit-fill-available'
+                inp1.style.width='17vw'
                 var inp2= document.createElement('textarea')
                 inp2.className = 'inp'
                 inp2.style.height='auto'
-                inp2.style.width='-webkit-fill-available'
+                inp2.style.width='17vw'
                 var inp3= document.createElement('textarea')
                 inp3.className = 'inp'
                 inp3.style.height='auto'
-                inp3.style.width='-webkit-fill-available'
+                inp3.style.width='17vw'
                 var inp4= document.createElement('textarea')
                 inp4.className = 'inp'
                 inp4.style.height='auto'
-                inp4.style.width='-webkit-fill-available'
+                inp4.style.width='17vw'
                 var inp5= document.createElement('textarea')
                 inp5.className = 'inp'
                 inp5.style.height='auto'
-                inp5.style.width='-webkit-fill-available'
+                inp5.style.width='17vw'
                 cell21.appendChild(inp1);
                 cell22.appendChild(inp2);
                 cell23.appendChild(inp3);

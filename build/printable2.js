@@ -67,10 +67,15 @@ $(document).ready(function () {
 
     }
     function update(array){
-        document.getElementById(`pl${array[data].worktask_id}`).innerHTML =  `</br> <strong>Parts and Labour:</strong> $${document.getElementById(`pltotal${array[0].worktask_id}`).value}`
-        document.getElementById(`discount${array[data].worktask_id}`).innerHTML = `</br><strong>Discounted:</strong> $${document.getElementById(`distotal${array[0].worktask_id}`).value}`
-        document.getElementById(`subtotal${array[data].worktask_id}`).innerHTML =  `</br> <strong>Subtotal:</strong> $${document.getElementById(`sutotal${array[0].worktask_id}`).value}`
+        console.log(array)
+        if(array.length != 0){
+            document.getElementById(`pl${array[data].worktask_id}`).innerHTML =  `</br> <strong>Parts and Labour:</strong> $${document.getElementById(`pltotal${array[0].worktask_id}`).value}`
+            document.getElementById(`discount${array[data].worktask_id}`).innerHTML = `</br><strong>Discounted:</strong> $${document.getElementById(`distotal${array[0].worktask_id}`).value}`
+            document.getElementById(`subtotal${array[data].worktask_id}`).innerHTML =  `</br> <strong>Subtotal:</strong> $${document.getElementById(`sutotal${array[0].worktask_id}`).value}`
+        }
         z++
+        console.log(z)
+        console.log(z==x)
         if(z==x){
             window.print()
         }
@@ -143,7 +148,6 @@ $(document).ready(function () {
     }
 
     function addPart(array){
-        console.log(array)
         for(data in array){
             var string = `<strong>Part #:</strong> ${array[data].part_id} | <strong>Part Name:</strong> ${array[data].part_desc} | <strong>Cost:</strong> $${array[data].unit_price} | <strong>Sale:</strong> $${array[data].sell_price} | <strong>Quantity:</strong> ${array[data].qty} | <strong>Extended amount:</strong> $${array[data].qty * array[data].sell_price}`
             document.getElementById(`pltotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) + (array[data].qty * array[data].unit_price)
@@ -155,7 +159,6 @@ $(document).ready(function () {
         }
     }
     function addLab(array) {
-        console.log(array)
         for(data in array){
             var string = `<strong>Technician #:</strong> ${array[data].labour_id} | <strong>Hours:</strong> ${array[data].hours} | <strong>Billed Labour:</strong> $${array[data].hours * array[data].rate}`
             document.getElementById(`pltotal${array[data].worktask_id}`).value = parseFloat(document.getElementById(`pltotal${array[data].worktask_id}`).value) + parseFloat(array[data].hours * array[data].rate)
@@ -168,10 +171,9 @@ $(document).ready(function () {
 
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
-        console.log(array)
         for (data in array) {
             x ++;
-            console.log(data)
+            console.log(x)
             var job = document.createElement('div');
             //job.setAttribute('class', 'left')
             var plinp = document.createElement('input')
@@ -191,6 +193,7 @@ $(document).ready(function () {
             var cust = document.createElement('div');
             cust.setAttribute('class', 'left');
             cust.id = 'custreq';
+            cust.style.width = "100vw"
             cust.className = 'row';
             var title = document.createElement('h2');
             title.id = 'title'
@@ -246,8 +249,10 @@ $(document).ready(function () {
             job.appendChild(pHead)
             job.appendChild(pspot)
             job.appendChild(calc)
+            job.style.left = "100px"
+            job.style.position = "relative"
 
-            document.getElementById('footer').appendChild(job)
+            document.getElementById('printable').appendChild(job)
         }
     }
 
