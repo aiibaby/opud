@@ -1,17 +1,17 @@
 $(document).ready(function(){
     console.log("ready");
-    
-    var printable = document.getElementById("printable");
-    var header = document.getElementById("header");
+
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var c = url.searchParams.get("x");
+    document.getElementById("ID").innerHTML = c
+
     var topRight = document.getElementById("topRight");
     var customerInfo = document.getElementById("customerInfo");
     var vehicleInfo1 = document.getElementById("vehicleInfo1");
     var vehicleInfo2 = document.getElementById("vehicleInfo2");
     var tasksRequested = document.getElementById("tasksRequested");
     var footer = document.getElementById("footer");
-    var mileageOut = document.getElementById("mileageOut");
-    var wheelTorque = document.getElementById("wheelTorque");
-    var wrap = document.getElementById("wrap");
     
     var topPadding = "70px";
     
