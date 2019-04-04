@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // user search input and parameters
     
-    // buttons
+    // buttons for edit and save
     var editRO = document.getElementById("editRO");
     var saveRO = document.getElementById("saveRO");
 
