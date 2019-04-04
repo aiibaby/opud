@@ -83,7 +83,7 @@ app.get("/print", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/roprint.html")
 });
 
-app.get("/printInvoice", function(req, resp){
+app.get("/printInvoice", sessionCheck, function(req, resp){
     resp.sendFile(pF+"/invoiceprint.html")
 });
 app.get("/test", function(req, resp){
