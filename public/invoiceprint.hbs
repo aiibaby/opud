@@ -33,41 +33,69 @@
             </div>
             <div id="tasksRequested"></div>
         </div>
-            {{!-- <div id="tasksRequested"></div>
-            <div id="footer">
-                <div id='container'>
-                    <h2 id="title">Job: </h2>
-                    <div id="customerRequest">Customer Request:  </div>
-                    <h3>Tech Description</h3>
-                    <text id="techDescription">Report Notes:</text>
+            <div id="footer" class="container">
+            
+            <div id="inspectionSection">
+
+                <div class="col-md-6 ml-auto" id="inspectionHeader">Inspection Information</div>
+                <div class="col-sm-12" id="inspectionComment">
+                    <div class="row">
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Brake</div>
+                        
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Tire Pressure</div>
+                        
+                        <div class="col-sm-4" style="text-align: center; font-size: 1.2em">Tire Tread</div>
+                        
+                    </div>
                     <br>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{LFPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center" id="LFPRES">{{LFPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Left Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{LFTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Right Front</div>
+                        <div class="col-sm-2" style="text-align: center">{{RFTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Left Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{LRTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRPads}} mm</div>
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRPres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Right Rear</div>
+                        <div class="col-sm-2" style="text-align: center">{{RRTread}} nds</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center"></div>
+                        <div class="col-sm-2" style="text-align: center"></div>
+                        <div class="col-sm-2" style="text-align: center">Spare Tire</div>
+                        <div class="col-sm-2" style="text-align: center">{{SparePres}} PSI</div>
+                        <div class="col-sm-2" style="text-align: center">Spare Tire</div>
+                        <div class="col-sm-2" style="text-align: center">{{SpareTread}} nds</div>
+                    </div>
                     <br>
+                    <div class="row">
+                        <div class="col-sm-2" style="text-align: center; margin-bottom: 1.5em;">Comment</div>
+                        <div class="col-sm-10" style="margin-bottom: 1.5em;">{{InspectionComment}}</div>
+                    </div>
     
-                    <text id="techNum">Tech num:</text>
-                    <text id="techID">ID num:</text>
-                    <text id="techHours">Hours:</text>
-                    <text id="techRate">Rate:</text>
-                    <text id="techTotal">$Total</text>
-                    <br>
-                    <text id="partNum">Part num:</text>
-                    <text id="partDesc">Description:</text>
-                    <text id="partQty">QTY:</text>
-                    <text id="partSellPrice">Sell Price:</text>
-                    <text id="partExt">Ext:</text>
-                </div>
-                
-                <div id='calc'>
-                    <h2 id="total">Job Total</h2>
-                    <text id="pl">Parts and Labour: </text>
-                    <text id="discount">Discounted: </text>
-                    <text id="extra">Extra: </text>
-                    <text id="subtotal">Subtotal: </text>
-                    <text id="pst">PST: </text>
-                    <text id="gst">GST: </text>
-                    <text id="grandTotal">Total:</text>
                 </div>
 
-            </div>
-        </div> --}}
+        </div
     </body>
 </html>
