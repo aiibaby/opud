@@ -168,7 +168,7 @@ $(document).ready(function () {
 
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
-        console.log(array)
+        console.log("filltasks: " + array)
         for (data in array) {
             x ++;
             console.log(data)
