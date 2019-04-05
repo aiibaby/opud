@@ -112,7 +112,7 @@ $(document).ready(function () {
         var promised_time = data.promised_time.substring(11, 16);
 
         //Display the RO # and Promised date and time on the top right
-        topRight.innerHTML = formatLabel("Repair Order #", false) + data.ro_id + formatLabel("Promised Time") + promised_date + " " + promised_time;
+        topRight.innerHTML = formatLabel("Invoice #", false) + data.ro_id + formatLabel("Promised Time") + promised_date + " " + promised_time;
 
         //Set the HTML for these divs to display the correct information
         customerInfo.innerHTML = fillInfoDiv(customerData);
@@ -168,7 +168,7 @@ $(document).ready(function () {
 
     //Loops through the task array and create divs to append to the document
     function fillTasksRequestedHTML(array) {
-        console.log(array)
+        console.log("filltasks: " + array)
         for (data in array) {
             x ++;
             console.log(data)
