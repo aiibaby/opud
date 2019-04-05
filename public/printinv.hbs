@@ -64,6 +64,7 @@
                     <div class="col-sm-2" style="text-align: center" id="LFPRES">{{LFPres}} PSI</div>
                     <div class="col-sm-2" style="text-align: center">Left Front</div>
                     <div class="col-sm-2" style="text-align: center">{{LFTread}} nds</div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-sm-2" style="text-align: center">Right Front</div>
@@ -101,26 +102,6 @@
                 <div class="row">
                     <div class="col-sm-2" style="text-align: center; margin-bottom: 1.5em;">Comment</div>
                     <div class="col-sm-10" style="margin-bottom: 1.5em;">{{InspectionComment}}</div>
-                </div>
-
-                <div class="col-sm-2">
-                    <form action='/invoiceinspection' id='inspectionButt' method='post'>
-                        <input class='invis' name='roNum' type='text' value='{{roNum}}'>
-                        <input class='invis' name='roCustName' type='text' value='{{roCustName}}'>
-                        <input class='invis' name='roTel' type='text' value='{{roTel}}'>
-                        <input class='invis' name='roCell' type='text' value='{{roCell}}'>
-                        <input class='invis' name='roVIN' type='text' value='{{roVIN}}'>
-                        <input class='invis' name='roLicense' type='text' value='{{roLicense}}'>
-                        <input class='invis' name='roYear' type='text' value='{{roYear}}'>
-                        <input class='invis' name='roMake' type='text' value='{{roMake}}'>
-                        <input class='invis' name='roModel' type='text' value='{{roModel}}'>
-                        <input class='invis' name='roOdometerIn' type='text' value='{{roOdometerIn}}'>
-                        <input class='invis' name='odometerOut' type='text' value='{{odometerOut}}'>
-                        <input class='invis' name='roNotes' type='text' value='{{roNotes}}'>
-                        <input class='invis' name='openclose' type='text' value='{{openclose}}'>
-                        <input class='invis' name='promiseDate' type='text' value='{{promiseDate}}'>
-                        <button type="submit" class="btn btn-primary pull-left" id="openInspection">Add / Edit Inspection Sheet</button>
-                    </form>
                 </div>
             </div>
         </div>
