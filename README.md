@@ -927,6 +927,33 @@ Purpose:
 - adds the preexisting parts and labour rows to there respective tables 
 
 
+## Login and Account creation Documentation
+
+### Assumption: 
+- Super User Account is in the database and has the ability to:
+  - Login
+  - Create Student Accounts
+
+### Pre-Requisites:
+- The database must be created and contain the accounts table.
+  
+### javaScript for loginCheck.js:
+
+In the preceding section we will discuss each function:
+
+`login(id, pass)`
+
+Parameters: 
+    - id: the id parameter comes from the loginId input on the login.html
+    - pass: the pass parameter comes from the loginPass input on the login.html
+
+Return: 
+    If the match is True then it will return the current user object but is match is False then it will throw an error that the ID or Password does not match.
+
+Purpose: 
+- the basic login function
+
+
 ### roFunctions.js
 
 This is the server-side script for running the database query that will populate the datatable in the repair order page and the repair order popup screen. 
