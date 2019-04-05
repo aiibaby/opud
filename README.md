@@ -1074,7 +1074,7 @@ This page must be accessed through the Open PDF button in the Repair Order Page 
 - printableFunctions.js
 - invoice.css
 
-### printinv.hbs
+### invoiceprint.html
 
 The HBS page for the rendering the repair order header, job information, and inspection information.
 
