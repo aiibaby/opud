@@ -84,8 +84,49 @@ app.get("/print", sessionCheck, function(req, resp){
 });
 
 app.get("/printInvoice", sessionCheck, function(req, resp){
-    //resp.sendFile(pF+"/invoiceprint.html")
-    resp.render(pF+"/printinv.hbs")
+    inspectionFunctions.selectInspection_init(CURRRO)
+    .then((result) => {
+        if (result.length != 0) {
+            result = result[0]
+            resp.render(pF+"/printinv.hbs",{
+                roNum: req.body.roNum,
+                LFPres: result.lfpres,
+                RFPres: result.rfpres,
+                LRPres: result.lrpres,
+                RRPres: result.rrpres,
+                SparePres: result.sparepres,
+                LFTread: result.lftread,
+                RFTread: result.rftread,
+                LRTread: result.lrtread,
+                RRTread: result.rrtread,
+                SpareTread: result.sparetread,
+                LFPads: result.lfpads,
+                RFPads: result.rfpads,
+                LRPads: result.lrpads,
+                RRPads: result.rrpads,
+                InspectionComment: result.inspectioncomment, 
+            })
+        } else {
+            resp.render(pF+"/printinv.hbs",{
+                roNum: req.body.roNum,
+                LFPres: "",
+                RFPres: "",
+                LRPres: "",
+                RRPres: "",
+                SparePres: "",
+                LFTread: "",
+                RFTread: "",
+                LRTread: "",
+                RRTread: "",
+                SpareTread: "",
+                LFPads: "",
+                RFPads: "",
+                LRPads: "",
+                RRPads: "",
+                InspectionComment: "", 
+            })
+        }
+    })
 });
 app.get("/test", function(req, resp){
     resp.sendFile(pF+"/order.html")
@@ -125,53 +166,54 @@ app.post("/print", sessionCheck, function(req, resp){
 });
 
 app.post("/printInvoice", function(req, resp){
-    inspectionFunctions.selectInspection_init(req.body.roNum)
-    .then((result) => {
-        if (result.length != 0) {
-            result = result[0]
-            res.render(pF+"/printinv.hbs",{
-                roNum: req.body.roNum,
-                LFPres: result.lfpres,
-                RFPres: result.rfpres,
-                LRPres: result.lrpres,
-                RRPres: result.rrpres,
-                SparePres: result.sparepres,
-                LFTread: result.lftread,
-                RFTread: result.rftread,
-                LRTread: result.lrtread,
-                RRTread: result.rrtread,
-                SpareTread: result.sparetread,
-                LFPads: result.lfpads,
-                RFPads: result.rfpads,
-                LRPads: result.lrpads,
-                RRPads: result.rrpads,
-                InspectionComment: result.inspectioncomment, 
-            })
-        } else {
-            res.render(pF+"printinv.hbs",{
-                roNum: req.body.roNum,
-                LFPres: "",
-                RFPres: "",
-                LRPres: "",
-                RRPres: "",
-                SparePres: "",
-                LFTread: "",
-                RFTread: "",
-                LRTread: "",
-                RRTread: "",
-                SpareTread: "",
-                LFPads: "",
-                RFPads: "",
-                LRPads: "",
-                RRPads: "",
-                InspectionComment: "", 
-            })
-        }
-    })
+    // inspectionFunctions.selectInspection_init(req.body.roNum)
+    // .then((result) => {
+    //     if (result.length != 0) {
+    //         result = result[0]
+    //         res.render(pF+"/printinv.hbs",{
+    //             roNum: req.body.roNum,
+    //             LFPres: result.lfpres,
+    //             RFPres: result.rfpres,
+    //             LRPres: result.lrpres,
+    //             RRPres: result.rrpres,
+    //             SparePres: result.sparepres,
+    //             LFTread: result.lftread,
+    //             RFTread: result.rftread,
+    //             LRTread: result.lrtread,
+    //             RRTread: result.rrtread,
+    //             SpareTread: result.sparetread,
+    //             LFPads: result.lfpads,
+    //             RFPads: result.rfpads,
+    //             LRPads: result.lrpads,
+    //             RRPads: result.rrpads,
+    //             InspectionComment: result.inspectioncomment, 
+    //         })
+    //     } else {
+    //         res.render(pF+"printinv.hbs",{
+    //             roNum: req.body.roNum,
+    //             LFPres: "",
+    //             RFPres: "",
+    //             LRPres: "",
+    //             RRPres: "",
+    //             SparePres: "",
+    //             LFTread: "",
+    //             RFTread: "",
+    //             LRTread: "",
+    //             RRTread: "",
+    //             SpareTread: "",
+    //             LFPads: "",
+    //             RFPads: "",
+    //             LRPads: "",
+    //             RRPads: "",
+    //             InspectionComment: "", 
+    //         })
+    //     }
+    // })
 });
 
 
 app.post("/order", (req,res)=>{
+    global.CURRRO = req.body.roNum
     inspectionFunctions.selectInspection_init(req.body.roNum)
     .then((result) => {
         if (result.length != 0) {
