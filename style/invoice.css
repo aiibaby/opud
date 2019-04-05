@@ -247,3 +247,7 @@
 .left {
     left: 200px;
 }
+
+#inspectionSection {
+    position: relative;
+}
