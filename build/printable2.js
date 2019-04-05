@@ -11,6 +11,12 @@ $(document).ready(function () {
     var customerInfo = document.getElementById("customerInfo");
     var vehicleInfo1 = document.getElementById("vehicleInfo1");
     var vehicleInfo2 = document.getElementById("vehicleInfo2");
+    var grandTotalSection = document.getElementById("grandTotalSection");
+    var invoiceTotal = document.getElementById("invoiceTotal");
+
+    //grandTotalvar 
+
+    var grandTotal = 0;
 
 
     //Run when page is loaded. Ajax call to grab RO data from session
@@ -56,6 +62,7 @@ $(document).ready(function () {
                                 success: function (data) {
                                     addLab(data)
                                     update(data)
+                                    
                                 }
                             })
                         }
@@ -72,12 +79,13 @@ $(document).ready(function () {
             document.getElementById(`pl${array[data].worktask_id}`).innerHTML =  `</br> <strong>Parts and Labour:</strong> $${document.getElementById(`pltotal${array[0].worktask_id}`).value}`
             document.getElementById(`discount${array[data].worktask_id}`).innerHTML = `</br><strong>Discounted:</strong> $${document.getElementById(`distotal${array[0].worktask_id}`).value}`
             document.getElementById(`subtotal${array[data].worktask_id}`).innerHTML =  `</br> <strong>Subtotal:</strong> $${document.getElementById(`sutotal${array[0].worktask_id}`).value}`
+            fillGrandTotal(grandTotal);
         }
         z++
         console.log(z)
         console.log(z==x)
         if(z==x){
-            window.print()
+            window.print();
         }
     }
     //Uses the session data and categorizes it into different variables so that they can be used as parameters in other functions
@@ -129,6 +137,19 @@ $(document).ready(function () {
 
     };
 
+    function fillGrandTotal(data) {
+        var PSTGST = 0.12 //for changes in pst/gst change here
+        var total = {
+            "subtotal": data,
+            "pstgst": data * PSTGST,
+            "grandtotal": data + data * PSTGST
+        }
+
+        //invoiceTotal.innerHTML = formatLabel("Invoice Total");
+        grandTotalSection.innerHTML = formatLabel("Subtotal") + "$"+total.subtotal + formatLabel("PST/GST") + "$"+total.pstgst + formatLabel("Grand Total") + "$"+total.grandtotal + "<br><br><br><br>";
+        console.log(grandTotalSection.innerHTML);
+    };
+
     //Function used to set whether a label has a line break before it or not
     function formatLabel(label, breakInBeginning) {
         if (breakInBeginning === false) {
@@ -156,6 +177,8 @@ $(document).ready(function () {
             var div = document.createElement('div')
             div.innerHTML = string
             document.getElementById(`p${array[data].worktask_id}`).appendChild(div)
+            grandTotal += array[data].qty * array[data].sell_price
+            console.log("grand total is " + grandTotal);
         }
     }
     function addLab(array) {
@@ -166,6 +189,8 @@ $(document).ready(function () {
             var div = document.createElement('div')
             div.innerHTML = string
             document.getElementById(`l${array[data].worktask_id}`).appendChild(div)
+            grandTotal += array[data].hours * array[data].rate
+            console.log("grand total is " + grandTotal)
         }
      }
 
